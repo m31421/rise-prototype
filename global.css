@@ -490,7 +490,118 @@ h5 {
   color: var(--color-neutral-850);
 }
 
+.nav-cta-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 901px) {
+  .nav-cta-wrap + .nav-account {
+    margin-left: 16px;
+  }
+}
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.1rem;
+  font-family: inherit;
+  font-size: var(--font-size-15);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-ui);
+  letter-spacing: -0.02em;
+  text-transform: capitalize;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--color-text-on-brand);
+  background: var(--color-brand-orange);
+  border: 1.5px solid var(--color-brand-orange);
+  border-radius: var(--radius-pill);
+  transition:
+    filter var(--motion-duration) var(--motion-ease),
+    transform var(--motion-duration) var(--motion-ease);
+}
+
+.nav-cta:hover {
+  filter: brightness(0.95);
+}
+
+.nav-cta:active {
+  transform: scale(0.98);
+}
+
+.nav-cta:focus-visible {
+  outline: 2px solid var(--color-brand-orange);
+  outline-offset: 2px;
+}
+
+/* Hero availability form — anchor scroll clears sticky header */
+#check-availability {
+  scroll-margin-top: calc(var(--nav-pad-y) * 2 + 48px + 12px);
+}
+
+.nav-cta-mobile {
+  display: none;
+}
+
 @media (max-width: 900px) {
+  #check-availability {
+    scroll-margin-top: calc(var(--nav-pad-y) * 2 + 44px + 12px);
+  }
+
+  .nav-cta-wrap {
+    display: none;
+  }
+
+  .nav-cta-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 50%;
+    bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+    z-index: 90;
+    margin: 0;
+    padding: 0.875rem 1.75rem;
+    max-width: calc(100% - 2rem);
+    width: max-content;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-ui);
+    letter-spacing: -0.02em;
+    text-transform: capitalize;
+    text-decoration: none;
+    text-align: center;
+    color: var(--color-text-on-brand);
+    background: var(--color-brand-orange);
+    border: 1.5px solid var(--color-brand-orange);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.14);
+    transform: translateX(-50%);
+  }
+
+  .nav-cta-mobile:hover {
+    filter: brightness(0.95);
+  }
+
+  .nav-cta-mobile:active {
+    filter: brightness(0.92);
+  }
+
+  .nav-cta-mobile:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: -4px;
+  }
+
+  body {
+    /* Space for fixed pill CTA + safe area */
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
+  }
+
   .site-header {
     border-bottom: 1px solid var(--color-border-subtle);
     box-shadow: none;
@@ -542,6 +653,16 @@ h5 {
     padding: 10px 2px 10px 14px;
     border-left: 1px solid var(--color-border-muted);
     border-radius: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-cta:active {
+    transform: none;
+  }
+
+  .nav-cta-mobile:active {
+    transform: translateX(-50%);
   }
 }
 
@@ -1568,22 +1689,22 @@ a.pricing-card:visited {
   border: 0;
 }
 
-/* Peek tab title — bottom of panel = visible strip above active card */
+/* Peek tab title — top of panel (visible strip in stacked peek) */
 .ioyt__card__peek-label {
   position: absolute;
-  top: auto;
-  bottom: 0;
-  left: clamp(1.25rem, 3vw, 2rem);
-  right: clamp(1.25rem, 3vw, 2rem);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: auto;
   z-index: 4;
-  padding: 12px 0 14px;
+  padding: 16px clamp(1.25rem, 3vw, 1.75rem);
   font-family: var(--font-family-condensed);
   font-size: clamp(14px, 1.5vw, 20px);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: rgba(255, 255, 255, 0.92);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 100%);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
