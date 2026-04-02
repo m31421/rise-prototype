@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<!-- STYLEGUIDE: not for production -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RISE Internet — Style guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&family=Barlow+Semi+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="global.css" />
+  <style>
+    /* Demo chrome only — does not define or override design tokens */
+    .sg {
+      font-family: var(--font-family-sans);
+      color: var(--color-neutral-900);
+      background: var(--color-surface-muted);
+      min-height: 100vh;
+      padding: 2rem 1.5rem 4rem;
+    }
+    /* Neutralize global semantic heading styles (this page is a token preview, not marketing layout) */
+    .sg h1,
+    .sg h2,
+    .sg h3,
+    .sg h4,
+    .sg h5 {
+      font-family: var(--font-family-sans);
+      font-weight: var(--font-weight-bold);
+      text-transform: none;
+      letter-spacing: normal;
+      line-height: var(--line-height-prose);
+      background: none;
+      -webkit-text-fill-color: unset;
+      color: var(--color-neutral-900);
+    }
+    .sg__banner {
+      max-width: 960px;
+      margin: 0 auto 2rem;
+      padding: 0.75rem 1rem;
+      background: var(--color-neutral-900);
+      color: var(--color-white);
+      font-size: var(--font-size-13);
+      border-radius: 8px;
+    }
+    .sg__intro {
+      max-width: 960px;
+      margin: 0 auto 2.5rem;
+    }
+    .sg__intro h1 {
+      margin: 0 0 0.5rem;
+      font-size: var(--font-size-26);
+      font-weight: var(--font-weight-extrabold);
+    }
+    .sg__note {
+      margin: 0 0 1.25rem;
+      font-size: var(--font-size-14);
+      color: var(--color-text-muted);
+      line-height: var(--line-height-prose);
+      max-width: 42rem;
+    }
+    .sg__section {
+      max-width: 960px;
+      margin: 0 auto 3rem;
+      padding: 1.5rem;
+      background: var(--color-white);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--color-border-default);
+    }
+    .sg__section h2 {
+      margin: 0 0 1.25rem;
+      font-size: var(--font-size-20);
+      font-weight: var(--font-weight-bold);
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    .sg__subsection-title {
+      margin: 1.5rem 0 0.75rem;
+      font-size: var(--font-size-15);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-neutral-650);
+    }
+    .sg__subsection-title:first-child {
+      margin-top: 0;
+    }
+    .sg__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+    .sg__grid--wide {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    .sg__swatch {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .sg__swatch-fill {
+      height: 72px;
+      border-radius: 6px;
+      border: 1px solid var(--color-border-muted);
+    }
+    .sg__token-name {
+      font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
+      font-size: 11px;
+      word-break: break-all;
+      color: var(--color-neutral-800);
+    }
+    .sg__hex {
+      font-family: ui-monospace, "Cascadia Code", Menlo, monospace;
+      font-size: var(--font-size-13);
+      color: var(--color-neutral-550);
+    }
+    .sg__alpha-stage {
+      background: #3a3a3a;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 0.5rem;
+    }
+    .sg__alpha-stage .sg__grid {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    .sg__neutral-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .sg__semantic-line {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-border-default);
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+    }
+    .sg__semantic-line code {
+      display: block;
+      font-size: var(--font-size-13);
+      margin-top: 0.35rem;
+      color: var(--color-neutral-550);
+    }
+    .sg__border-demo {
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      border-radius: 6px;
+      background: var(--color-surface);
+    }
+    .sg__border-demo--fill {
+      min-height: 56px;
+    }
+    .sg__clamp-row {
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    .sg__clamp-row:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .sg__clamp-meta {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 11px;
+      color: var(--color-neutral-550);
+      margin: 0.35rem 0 0.5rem;
+      word-break: break-word;
+    }
+    .sg__fixed-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.65rem;
+      font-size: var(--font-size-16);
+    }
+    .sg__fixed-row code {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: var(--font-size-13);
+      color: var(--color-neutral-550);
+      min-width: 12rem;
+    }
+    .sg__weight-row {
+      margin-bottom: 0.75rem;
+    }
+    .sg__lh-block {
+      max-width: 28rem;
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      background: var(--color-surface-muted);
+      border-radius: 6px;
+    }
+    .sg__lh-block p,
+    .sg__lh-lines {
+      margin: 0;
+    }
+    .sg__todo {
+      padding: 1rem;
+      background: var(--color-border-subtle);
+      border-radius: 6px;
+      color: var(--color-neutral-650);
+      font-size: var(--font-size-14);
+    }
+    .sg__radius-demo {
+      background: var(--color-brand-orange);
+      margin-bottom: 0.75rem;
+    }
+    .sg__radius-label {
+      font-size: var(--font-size-13);
+      font-family: ui-monospace, Menlo, monospace;
+      margin-bottom: 0.35rem;
+      color: var(--color-neutral-700);
+    }
+    .sg__font-name {
+      margin: 0.25rem 0 0.75rem;
+      font-size: var(--font-size-13);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-neutral-550);
+    }
+    /* Production heading preview (overrides .sg h* reset; mirrors global.css) */
+    .sg__marketing {
+      padding: 1.25rem 1.25rem 1.5rem;
+      background: var(--color-surface-muted);
+      border-radius: 8px;
+      border: 1px solid var(--color-border-subtle);
+      margin: 0.75rem 0 1.25rem;
+    }
+    .sg__marketing > * + * {
+      margin-top: 0.65rem;
+    }
+    .sg .sg__marketing h1 {
+      font-family: var(--font-family-display);
+      font-weight: var(--font-weight-black);
+      font-size: var(--font-size-h1);
+      line-height: var(--line-height-hero-display);
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+      margin: 0;
+      background: none;
+      -webkit-text-fill-color: unset;
+    }
+    .sg .sg__marketing h2 {
+      font-family: var(--font-family-display);
+      font-weight: var(--font-weight-black);
+      font-size: var(--font-size-h2);
+      line-height: var(--line-height-snug);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+      margin: 0;
+    }
+    .sg .sg__marketing h3 {
+      font-family: var(--font-family-display);
+      font-weight: var(--font-weight-extrabold);
+      font-size: var(--font-size-h3);
+      line-height: var(--line-height-card-title);
+      letter-spacing: normal;
+      text-transform: none;
+      color: var(--color-text-primary);
+      margin: 0;
+    }
+    .sg .sg__marketing h4 {
+      font-family: var(--font-family-display);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-h4);
+      line-height: var(--line-height-label);
+      letter-spacing: normal;
+      text-transform: none;
+      color: var(--color-neutral-450);
+      margin: 0;
+    }
+    .sg .sg__marketing h5 {
+      font-family: var(--font-family-display);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-h5);
+      line-height: var(--line-height-label);
+      letter-spacing: normal;
+      text-transform: none;
+      color: var(--color-text-primary);
+      margin: 0;
+    }
+    .sg__override-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--font-size-14);
+      margin: 0.5rem 0 0;
+    }
+    .sg__override-table th,
+    .sg__override-table td {
+      border: 1px solid var(--color-border-subtle);
+      padding: 0.5rem 0.65rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    .sg__override-table th {
+      background: var(--color-surface-muted);
+      font-weight: var(--font-weight-semibold);
+    }
+    .sg__override-table code {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: var(--font-size-13);
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body class="sg">
+  <div class="sg__banner">STYLEGUIDE: not for production — local preview only.</div>
+
+  <div class="sg__intro">
+    <h1>RISE Internet — design tokens</h1>
+    <p class="text-p text-p--standard">
+      Live preview of tokens and utilities from <code>global.css</code>. Section 6 summarizes semantic <code>h1</code>–<code>h5</code>, utilities, and layout overrides.
+    </p>
+  </div>
+
+  <!-- 1. Brand & accents -->
+  <section class="sg__section" aria-labelledby="sg-h1">
+    <h2 id="sg-h1">1. Color — Brand &amp; Accents</h2>
+    <div class="sg__grid sg__grid--wide">
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-brand-orange)"></div>
+        <span class="sg__token-name">--color-brand-orange</span>
+        <span class="sg__hex">#e85c0d</span>
+      </div>
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-brand-orange-nav)"></div>
+        <span class="sg__token-name">--color-brand-orange-nav</span>
+        <span class="sg__hex">#ff5601</span>
+      </div>
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-hero-headline-start)"></div>
+        <span class="sg__token-name">--color-hero-headline-start</span>
+        <span class="sg__hex">#ff7b00</span>
+      </div>
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-hero-headline-end)"></div>
+        <span class="sg__token-name">--color-hero-headline-end</span>
+        <span class="sg__hex">#e34c06</span>
+      </div>
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-pricing-badge-end)"></div>
+        <span class="sg__token-name">--color-pricing-badge-end</span>
+        <span class="sg__hex">#ff7a2e</span>
+      </div>
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-ioyt-orange-1)"></div>
+        <span class="sg__token-name">--color-ioyt-orange-1</span>
+        <span class="sg__hex">#e85c0d</span>
+      </div>
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-ioyt-orange-2)"></div>
+        <span class="sg__token-name">--color-ioyt-orange-2</span>
+        <span class="sg__hex">#d44f00</span>
+      </div>
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-ioyt-orange-3)"></div>
+        <span class="sg__token-name">--color-ioyt-orange-3</span>
+        <span class="sg__hex">#c24300</span>
+      </div>
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-ioyt-orange-4)"></div>
+        <span class="sg__token-name">--color-ioyt-orange-4</span>
+        <span class="sg__hex">#b03800</span>
+      </div>
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-ioyt-overlay)"></div>
+        <span class="sg__token-name">--color-ioyt-overlay</span>
+        <span class="sg__hex">#1a0a05</span>
+      </div>
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-cta-gradient-1)"></div>
+        <span class="sg__token-name">--color-cta-gradient-1</span>
+        <span class="sg__hex">#ff9a3c</span>
+      </div>
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-cta-gradient-2)"></div>
+        <span class="sg__token-name">--color-cta-gradient-2</span>
+        <span class="sg__hex">#ff6a1a</span>
+      </div>
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-cta-gradient-4)"></div>
+        <span class="sg__token-name">--color-cta-gradient-4</span>
+        <span class="sg__hex">#c73a08</span>
+      </div>
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-cta-button)"></div>
+        <span class="sg__token-name">--color-cta-button</span>
+        <span class="sg__hex">#c73a08</span>
+      </div>
+      <div class="sg__swatch">
+        <div class="sg__swatch-fill" style="background: var(--color-cta-button-border)"></div>
+        <span class="sg__token-name">--color-cta-button-border</span>
+        <span class="sg__hex">#a82f06</span>
+      </div>
+    </div>
+
+    <h3 class="sg__subsection-title">Transparent / alpha (on dark gray)</h3>
+    <div class="sg__alpha-stage">
+      <div class="sg__grid">
+        <div class="sg__swatch">
+          <div class="sg__swatch-fill" style="background: var(--color-white-transparent)"></div>
+          <span class="sg__token-name">--color-white-transparent</span>
+          <span class="sg__hex">rgba(255,255,255,0)</span>
+        </div>
+        <div class="sg__swatch">
+          <div class="sg__swatch-fill" style="background: var(--color-white-25)"></div>
+          <span class="sg__token-name">--color-white-25</span>
+          <span class="sg__hex">rgba(255,255,255,0.25)</span>
+        </div>
+        <div class="sg__swatch">
+          <div class="sg__swatch-fill" style="background: var(--color-white-35)"></div>
+          <span class="sg__token-name">--color-white-35</span>
+          <span class="sg__hex">rgba(255,255,255,0.35)</span>
+        </div>
+        <div class="sg__swatch">
+          <div class="sg__swatch-fill" style="background: var(--color-brand-orange-15)"></div>
+          <span class="sg__token-name">--color-brand-orange-15</span>
+          <span class="sg__hex">rgba(232,92,13,0.15)</span>
+        </div>
+        <div class="sg__swatch">
+          <div class="sg__swatch-fill" style="background: var(--color-brand-orange-20)"></div>
+          <span class="sg__token-name">--color-brand-orange-20</span>
+          <span class="sg__hex">rgba(232,92,13,0.2)</span>
+        </div>
+        <div class="sg__swatch">
+          <div class="sg__swatch-fill" style="background: var(--color-brand-orange-35)"></div>
+          <span class="sg__token-name">--color-brand-orange-35</span>
+          <span class="sg__hex">rgba(232,92,13,0.35)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Neutrals -->
+  <section class="sg__section" aria-labelledby="sg-h2">
+    <h2 id="sg-h2">2. Color — Neutrals</h2>
+    <div class="sg__neutral-row">
+      <div class="sg__swatch" style="min-width: 120px">
+        <div class="sg__swatch-fill" style="background: var(--color-neutral-900)"></div>
+        <span class="sg__token-name">--color-neutral-900</span>
+        <span class="sg__hex">#1a1a1a</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 120px">
+        <div class="sg__swatch-fill" style="background: var(--color-neutral-850)"></div>
+        <span class="sg__token-name">--color-neutral-850</span>
+        <span class="sg__hex">#1c1c1c</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 120px">
+        <div class="sg__swatch-fill" style="background: var(--color-neutral-800)"></div>
+        <span class="sg__token-name">--color-neutral-800</span>
+        <span class="sg__hex">#262626</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 120px">
+        <div class="sg__swatch-fill" style="background: var(--color-neutral-700)"></div>
+        <span class="sg__token-name">--color-neutral-700</span>
+        <span class="sg__hex">#333</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 120px">
+        <div class="sg__swatch-fill" style="background: var(--color-neutral-650)"></div>
+        <span class="sg__token-name">--color-neutral-650</span>
+        <span class="sg__hex">#444</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 120px">
+        <div class="sg__swatch-fill" style="background: var(--color-neutral-600)"></div>
+        <span class="sg__token-name">--color-neutral-600</span>
+        <span class="sg__hex">#555</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 120px">
+        <div class="sg__swatch-fill" style="background: var(--color-neutral-550)"></div>
+        <span class="sg__token-name">--color-neutral-550</span>
+        <span class="sg__hex">#666</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 120px">
+        <div class="sg__swatch-fill" style="background: var(--color-neutral-500)"></div>
+        <span class="sg__token-name">--color-neutral-500</span>
+        <span class="sg__hex">#757575</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 120px">
+        <div class="sg__swatch-fill" style="background: var(--color-neutral-450)"></div>
+        <span class="sg__token-name">--color-neutral-450</span>
+        <span class="sg__hex">#888</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Semantic text -->
+  <section class="sg__section" aria-labelledby="sg-h3">
+    <h2 id="sg-h3">3. Color — Semantic Text Aliases</h2>
+    <div class="sg__semantic-line" style="color: var(--color-text-primary); background: var(--color-white)">
+      The quick brown fox jumps
+      <code>--color-text-primary → var(--color-neutral-900) → #1a1a1a</code>
+    </div>
+    <div class="sg__semantic-line" style="color: var(--color-text-body); background: var(--color-white)">
+      The quick brown fox jumps
+      <code>--color-text-body → var(--color-neutral-700) → #333</code>
+    </div>
+    <div class="sg__semantic-line" style="color: var(--color-text-muted); background: var(--color-white)">
+      The quick brown fox jumps
+      <code>--color-text-muted → var(--color-neutral-600) → #555</code>
+    </div>
+    <div class="sg__semantic-line" style="color: var(--color-text-subtle); background: var(--color-white)">
+      The quick brown fox jumps
+      <code>--color-text-subtle → var(--color-neutral-550) → #666</code>
+    </div>
+    <div class="sg__semantic-line" style="color: var(--color-text-placeholder); background: var(--color-white)">
+      The quick brown fox jumps
+      <code>--color-text-placeholder → var(--color-neutral-500) → #757575</code>
+    </div>
+    <div class="sg__semantic-line" style="color: var(--color-text-on-brand); background: var(--color-brand-orange)">
+      The quick brown fox jumps
+      <code>--color-text-on-brand → var(--color-white) → #fff</code>
+    </div>
+  </section>
+
+  <!-- 4. Borders & surfaces -->
+  <section class="sg__section" aria-labelledby="sg-h4">
+    <h2 id="sg-h4">4. Color — Borders &amp; Surfaces</h2>
+    <div class="sg__border-demo" style="border: 2px solid var(--color-border-default)">
+      <strong>--color-border-default</strong> — #e0e0e0 (2px solid on card)
+    </div>
+    <div class="sg__border-demo" style="border: 2px solid var(--color-border-muted)">
+      <strong>--color-border-muted</strong> — #e5e5e5
+    </div>
+    <div class="sg__border-demo" style="border: 2px solid var(--color-border-subtle)">
+      <strong>--color-border-subtle</strong> — #f0f0f0
+    </div>
+    <div class="sg__border-demo sg__border-demo--fill" style="background: var(--color-surface); border: 1px dashed var(--color-border-default)">
+      <strong>--color-surface</strong> — filled background (#fff)
+    </div>
+    <div class="sg__border-demo sg__border-demo--fill" style="background: var(--color-surface-muted); border: 1px dashed var(--color-border-default)">
+      <strong>--color-surface-muted</strong> — #f5f5f5
+    </div>
+    <div class="sg__border-demo sg__border-demo--fill" style="background: var(--color-white); border: 1px solid var(--color-neutral-450)">
+      <strong>--color-white</strong> — #fff
+    </div>
+  </section>
+
+  <!-- 5. Font families -->
+  <section class="sg__section" aria-labelledby="sg-h5">
+    <h2 id="sg-h5">5. Typography — Font Families</h2>
+    <p style="font-family: var(--font-family-sans); font-size: var(--font-size-20); margin: 0 0 0.5rem">
+      RISE Internet — Blazing Fast
+    </p>
+    <code class="sg__token-name">--font-family-sans</code>
+    <p class="sg__font-name">Font: Barlow</p>
+    <p style="font-family: var(--font-family-display); font-size: var(--font-size-20); margin: 1rem 0 0.5rem">
+      RISE Internet — Blazing Fast
+    </p>
+    <code class="sg__token-name">--font-family-display</code>
+    <p class="sg__font-name">Font: Barlow Semi Condensed</p>
+    <p style="font-family: var(--font-family-condensed); font-size: var(--font-size-20); margin: 1rem 0 0.5rem">
+      RISE Internet — Blazing Fast
+    </p>
+    <code class="sg__token-name">--font-family-condensed</code>
+    <p class="sg__font-name">Font: Barlow Condensed</p>
+    <p style="font-family: var(--font-family-ioyt-display); font-size: var(--font-size-20); margin: 1rem 0 0.5rem">
+      RISE Internet — Blazing Fast
+    </p>
+    <code class="sg__token-name">--font-family-ioyt-display</code>
+    <p class="sg__font-name">Font: Barlow Semi Condensed</p>
+  </section>
+
+  <!-- 6. Semantic headings -->
+  <section class="sg__section" aria-labelledby="sg-h6">
+    <h2 id="sg-h6">6. Semantic headings (production)</h2>
+    <p class="sg__note">
+      Use plain <code>h1</code>–<code>h5</code> in markup. Base styles use <code>font-size: var(--font-size-h*)</code>. Section-specific <strong>size</strong> differences are done by setting <code>--font-size-h2</code> (or another level) on a layout ancestor—custom properties inherit, so <code>h2</code> picks up the value without extra <code>font-size</code> rules. Avoid BEM-style heading classes and avoid new <code>--font-size-{section}-*</code> tokens.
+    </p>
+
+    <h3 class="sg__subsection-title">Level tokens (<code>:root</code>)</h3>
+    <div class="sg__semantic-line">
+      <strong>--font-size-h1</strong> → <code>var(--font-size-display)</code>
+      <code>clamp(3rem, 5.5vw + 1.75rem, 9rem)</code>
+    </div>
+    <div class="sg__semantic-line">
+      <strong>--font-size-h2</strong> → <code>var(--font-size-section-title)</code>
+      <code>clamp(36px, 8vw, 64px)</code>
+    </div>
+    <div class="sg__semantic-line">
+      <strong>--font-size-h3</strong> → <code>var(--font-size-26)</code> <code>26px</code>
+    </div>
+    <div class="sg__semantic-line">
+      <strong>--font-size-h4</strong> → <code>var(--font-size-16)</code> <code>16px</code>
+    </div>
+    <div class="sg__semantic-line">
+      <strong>--font-size-h5</strong> → <code>var(--font-size-14)</code> <code>14px</code>
+    </div>
+
+    <h3 class="sg__subsection-title">Utilities (accent lines inside headings)</h3>
+    <div class="sg__semantic-line">
+      <strong>.text-primary</strong> — <code>color: var(--color-text-primary)</code>
+    </div>
+    <div class="sg__semantic-line">
+      <strong>.text-brand</strong> — <code>color: var(--color-brand-orange)</code>
+    </div>
+    <div class="sg__semantic-line">
+      <strong>.heading-line</strong> — <code>display: block</code> (stack lines; <code>.nmc h2</code> adds spacing between adjacent lines)
+    </div>
+
+    <h3 class="sg__subsection-title">Two-tone section title (example)</h3>
+    <div class="sg__marketing">
+      <h2>
+        <span class="text-primary heading-line">Simply Dependable,</span>
+        <span class="text-brand heading-line">Affordable Service</span>
+      </h2>
+    </div>
+    <code class="sg__token-name" style="display: block; margin-top: 0.25rem">&lt;h2&gt;&lt;span class="text-primary heading-line"&gt;…&lt;/span&gt;&lt;span class="text-brand heading-line"&gt;…&lt;/span&gt;&lt;/h2&gt;</code>
+
+    <h3 class="sg__subsection-title">Default levels (global element styles)</h3>
+    <p class="sg__font-name">Preview below matches <code>h1</code>–<code>h5</code> in <code>global.css</code> (not section overrides).</p>
+    <div class="sg__marketing">
+      <h1>Hero level</h1>
+      <h2>Section title</h2>
+      <h3>Subsection or card title</h3>
+      <h4>Plan name · muted</h4>
+      <h5>Small heading</h5>
+    </div>
+
+    <h3 class="sg__subsection-title">Where layouts override headings</h3>
+    <p class="sg__font-name">These selectors in <code>global.css</code> adjust size, color, or treatment for a specific block. Headings in HTML stay unclassed.</p>
+    <table class="sg__override-table">
+      <thead>
+        <tr>
+          <th scope="col">Selector</th>
+          <th scope="col">Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>.hero h1</code></td>
+          <td>Gradient fill (size from base <code>h1</code> / <code>--font-size-h1</code>)</td>
+        </tr>
+        <tr>
+          <td><code>.ioyt</code></td>
+          <td>Sets <code>--font-size-h2</code> to a larger clamp for the IOYT headline</td>
+        </tr>
+        <tr>
+          <td><code>.ioyt__text-layer h2</code></td>
+          <td>Font family, color, flex layout (inherits <code>h2</code> size from <code>.ioyt</code>)</td>
+        </tr>
+        <tr>
+          <td><code>.nmc</code></td>
+          <td>Sets <code>--font-size-h2: var(--font-size-section-title-sm)</code></td>
+        </tr>
+        <tr>
+          <td><code>.nmc h2</code></td>
+          <td>Letter-spacing and line-height (inherits size)</td>
+        </tr>
+        <tr>
+          <td><code>.gofaster__headline-col</code></td>
+          <td>Sets <code>--font-size-h2</code>; narrow viewports use a smaller clamp</td>
+        </tr>
+        <tr>
+          <td><code>.gofaster__headline-col h2</code></td>
+          <td>Line-height and color (inherits size)</td>
+        </tr>
+        <tr>
+          <td><code>.gofaster__team-col h3</code></td>
+          <td>Margin below the heading in the team column</td>
+        </tr>
+        <tr>
+          <td><code>.better-cta</code></td>
+          <td>Sets <code>--font-size-h2</code>; mobile breakpoint uses a smaller clamp</td>
+        </tr>
+        <tr>
+          <td><code>.better-cta h2</code></td>
+          <td>On-brand color, letter-spacing, line-height (inherits size)</td>
+        </tr>
+        <tr>
+          <td><code>.pricing-card__speed-block h4</code></td>
+          <td>Plan name label inside each pricing card</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 7. Clamp -->
+  <section class="sg__section" aria-labelledby="sg-h7">
+    <h2 id="sg-h7">7. Typography — Responsive Display Sizes (clamp)</h2>
+    <p class="sg__font-name">
+      Role-based tokens for headings (see §6). Font: Barlow Semi Condensed for headline samples below; same for <code>--font-size-ioyt-prop*</code> rows.
+    </p>
+
+    <div class="sg__clamp-row">
+      <div class="sg__clamp-meta">--font-size-display (h1 / <code>--font-size-h1</code>)</div>
+      <p class="sg__clamp-meta" style="margin: 0">clamp(3rem, 5.5vw + 1.75rem, 9rem)</p>
+      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: var(--font-size-display); line-height: var(--line-height-hero-display)">
+        Simply Dependable
+      </p>
+    </div>
+    <div class="sg__clamp-row">
+      <div class="sg__clamp-meta">--font-size-section-title (default h2 / <code>--font-size-h2</code>)</div>
+      <p class="sg__clamp-meta" style="margin: 0">clamp(36px, 8vw, 64px)</p>
+      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: var(--font-size-section-title); line-height: var(--line-height-snug)">
+        Simply Dependable
+      </p>
+    </div>
+    <div class="sg__clamp-row">
+      <div class="sg__clamp-meta">--font-size-section-title-sm (e.g. <code>.nmc</code> sets <code>--font-size-h2</code> to this)</div>
+      <p class="sg__clamp-meta" style="margin: 0">clamp(1.75rem, 4.5vw, 3rem)</p>
+      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: var(--font-size-section-title-sm); line-height: var(--line-height-heading)">
+        NO MORE COMPROMISE
+      </p>
+    </div>
+
+    <h3 class="sg__subsection-title">Other <code>h2</code> scales (scoped <code>--font-size-h2</code>, not separate tokens)</h3>
+    <p class="sg__clamp-meta" style="margin-bottom: 0.75rem">Demonstrations only—same values as in <code>global.css</code> on <code>.ioyt</code>, <code>.gofaster__headline-col</code>, and <code>.better-cta</code>.</p>
+    <div class="sg__clamp-row">
+      <div class="sg__clamp-meta">IOYT · <code>.ioyt { --font-size-h2 }</code></div>
+      <p class="sg__clamp-meta" style="margin: 0">clamp(40px, 6vw, 80px)</p>
+      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: clamp(40px, 6vw, 80px); line-height: var(--line-height-snug); color: var(--color-brand-orange); text-transform: uppercase">
+        Internet on Your Terms
+      </p>
+    </div>
+    <div class="sg__clamp-row">
+      <div class="sg__clamp-meta">Go Faster · <code>.gofaster__headline-col { --font-size-h2 }</code></div>
+      <p class="sg__clamp-meta" style="margin: 0">clamp(36px, 5vw, 64px)</p>
+      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: clamp(36px, 5vw, 64px); line-height: var(--line-height-tight); text-transform: uppercase">
+        Go Faster With Rise
+      </p>
+    </div>
+    <div class="sg__clamp-row">
+      <div class="sg__clamp-meta">Go Faster (narrow) · <code>@media (max-width: 480px)</code> on column</div>
+      <p class="sg__clamp-meta" style="margin: 0">clamp(32px, 9vw, 48px)</p>
+      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: clamp(32px, 9vw, 48px); line-height: var(--line-height-tight); text-transform: uppercase">
+        Go Faster With Rise
+      </p>
+    </div>
+    <div class="sg__clamp-row">
+      <div class="sg__clamp-meta">Better CTA · <code>.better-cta { --font-size-h2 }</code></div>
+      <p class="sg__clamp-meta" style="margin: 0">clamp(1.65rem, 5.2vw, 3.15rem)</p>
+      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: clamp(1.65rem, 5.2vw, 3.15rem); line-height: var(--line-height-heading); text-transform: uppercase">
+        You Deserve Better
+      </p>
+    </div>
+    <div class="sg__clamp-row">
+      <div class="sg__clamp-meta">Better CTA (small screens) · <code>@media (max-width: 540px)</code></div>
+      <p class="sg__clamp-meta" style="margin: 0">clamp(1.35rem, 5.5vw, 1.85rem)</p>
+      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: clamp(1.35rem, 5.5vw, 1.85rem); line-height: var(--line-height-heading); text-transform: uppercase">
+        You Deserve Better
+      </p>
+    </div>
+    <div class="sg__clamp-row">
+      <div class="sg__clamp-meta">--font-size-ioyt-prop · Font: Barlow Semi Condensed</div>
+      <p class="sg__clamp-meta" style="margin: 0">clamp(14px, 2vw, 22px)</p>
+      <p style="margin: 0; font-family: var(--font-family-ioyt-display); font-weight: var(--font-weight-black); font-size: var(--font-size-ioyt-prop); text-transform: uppercase; color: var(--color-neutral-650)">
+        Total Home Wi-Fi
+      </p>
+    </div>
+    <div class="sg__clamp-row">
+      <div class="sg__clamp-meta">--font-size-ioyt-prop-active · Font: Barlow Semi Condensed</div>
+      <p class="sg__clamp-meta" style="margin: 0">clamp(18px, 2.8vw, 32px)</p>
+      <p style="margin: 0; font-family: var(--font-family-ioyt-display); font-weight: var(--font-weight-black); font-size: var(--font-size-ioyt-prop-active); text-transform: uppercase; color: var(--color-brand-orange)">
+        Total Home Wi-Fi
+      </p>
+    </div>
+  </section>
+
+  <!-- 8. Fixed sizes -->
+  <section class="sg__section" aria-labelledby="sg-h8">
+    <h2 id="sg-h8">8. Typography — Fixed Sizes</h2>
+    <p class="sg__font-name">Font: Barlow (regular)</p>
+    <div style="font-family: var(--font-family-sans); font-weight: var(--font-weight-normal)">
+      <div class="sg__fixed-row"><code>--font-size-13 · 13px</code><span style="font-size: var(--font-size-13)">The quick brown fox jumps over the lazy dog.</span></div>
+      <div class="sg__fixed-row"><code>--font-size-14 · 14px</code><span style="font-size: var(--font-size-14)">The quick brown fox jumps over the lazy dog.</span></div>
+      <div class="sg__fixed-row"><code>--font-size-15 · 15px</code><span style="font-size: var(--font-size-15)">The quick brown fox jumps over the lazy dog.</span></div>
+      <div class="sg__fixed-row"><code>--font-size-16 · 16px</code><span style="font-size: var(--font-size-16)">The quick brown fox jumps over the lazy dog.</span></div>
+      <div class="sg__fixed-row"><code>--font-size-20 · 20px</code><span style="font-size: var(--font-size-20)">The quick brown fox jumps over the lazy dog.</span></div>
+      <div class="sg__fixed-row"><code>--font-size-22 · 22px</code><span style="font-size: var(--font-size-22)">The quick brown fox jumps over the lazy dog.</span></div>
+      <div class="sg__fixed-row"><code>--font-size-26 · 26px</code><span style="font-size: var(--font-size-26)">The quick brown fox jumps over the lazy dog.</span></div>
+      <div class="sg__fixed-row"><code>--font-size-36 · 36px</code><span style="font-size: var(--font-size-36)">The quick brown fox jumps over the lazy dog.</span></div>
+      <div class="sg__fixed-row"><code>--font-size-40 · 40px</code><span style="font-size: var(--font-size-40)">The quick brown fox jumps over the lazy dog.</span></div>
+      <div class="sg__fixed-row"><code>--font-size-52 · 52px</code><span style="font-size: var(--font-size-52)">The quick brown fox jumps over the lazy dog.</span></div>
+      <div class="sg__fixed-row"><code>--font-size-body · 1rem</code><span style="font-size: var(--font-size-body)">The quick brown fox jumps over the lazy dog.</span></div>
+      <div class="sg__fixed-row"><code>--font-size-subhead-lg · 1.125rem</code><span style="font-size: var(--font-size-subhead-lg)">The quick brown fox jumps over the lazy dog.</span></div>
+      <div class="sg__fixed-row"><code>--font-size-nmc-label-sm · 0.9375rem</code><span style="font-size: var(--font-size-nmc-label-sm)">The quick brown fox jumps over the lazy dog.</span></div>
+    </div>
+  </section>
+
+  <!-- 9. Weights -->
+  <section class="sg__section" aria-labelledby="sg-h9">
+    <h2 id="sg-h9">9. Typography — Font Weights</h2>
+    <p class="sg__font-name">Font: Barlow Semi Condensed</p>
+    <p class="sg__weight-row" style="font-family: var(--font-family-display); font-size: var(--font-size-22); font-weight: var(--font-weight-normal)">RISE Internet</p>
+    <code class="sg__token-name">--font-weight-normal · 400</code>
+    <p class="sg__weight-row" style="font-family: var(--font-family-display); font-size: var(--font-size-22); font-weight: var(--font-weight-medium)">RISE Internet</p>
+    <code class="sg__token-name">--font-weight-medium · 500</code>
+    <p class="sg__weight-row" style="font-family: var(--font-family-display); font-size: var(--font-size-22); font-weight: var(--font-weight-semibold)">RISE Internet</p>
+    <code class="sg__token-name">--font-weight-semibold · 600</code>
+    <p class="sg__weight-row" style="font-family: var(--font-family-display); font-size: var(--font-size-22); font-weight: var(--font-weight-bold)">RISE Internet</p>
+    <code class="sg__token-name">--font-weight-bold · 700</code>
+    <p class="sg__weight-row" style="font-family: var(--font-family-display); font-size: var(--font-size-22); font-weight: var(--font-weight-extrabold)">RISE Internet</p>
+    <code class="sg__token-name">--font-weight-extrabold · 800</code>
+    <p class="sg__weight-row" style="font-family: var(--font-family-display); font-size: var(--font-size-22); font-weight: var(--font-weight-black)">RISE Internet</p>
+    <code class="sg__token-name">--font-weight-black · 900</code>
+  </section>
+
+  <!-- 10. Line heights -->
+  <section class="sg__section" aria-labelledby="sg-h10">
+    <h2 id="sg-h10">10. Typography — Line Heights</h2>
+    <p class="sg__font-name">Font: Barlow · size 16px</p>
+    <p class="sg__clamp-meta" style="margin-bottom: 1rem">Same three lines in one block (forced line breaks); only <code>line-height</code> changes.</p>
+
+    <div class="sg__lh-block" style="line-height: var(--line-height-none); font-size: var(--font-size-16); font-family: var(--font-family-sans)">
+      <div class="sg__lh-lines">
+        Line one of sample paragraph text for comparison.<br />
+        Line two continues the thought with more words.<br />
+        Line three concludes this short demonstration block.
+      </div>
+    </div>
+    <code class="sg__token-name">--line-height-none · 0</code>
+
+    <div class="sg__lh-block" style="line-height: var(--line-height-hero-display); font-size: var(--font-size-16); font-family: var(--font-family-sans)">
+      <div class="sg__lh-lines">
+        Line one of sample paragraph text for comparison.<br />
+        Line two continues the thought with more words.<br />
+        Line three concludes this short demonstration block.
+      </div>
+    </div>
+    <code class="sg__token-name">--line-height-hero-display · 0.95</code>
+
+    <div class="sg__lh-block" style="line-height: var(--line-height-tight); font-size: var(--font-size-16); font-family: var(--font-family-sans)">
+      <div class="sg__lh-lines">
+        Line one of sample paragraph text for comparison.<br />
+        Line two continues the thought with more words.<br />
+        Line three concludes this short demonstration block.
+      </div>
+    </div>
+    <code class="sg__token-name">--line-height-tight · 1</code>
+
+    <div class="sg__lh-block" style="line-height: var(--line-height-snug); font-size: var(--font-size-16); font-family: var(--font-family-sans)">
+      <div class="sg__lh-lines">
+        Line one of sample paragraph text for comparison.<br />
+        Line two continues the thought with more words.<br />
+        Line three concludes this short demonstration block.
+      </div>
+    </div>
+    <code class="sg__token-name">--line-height-snug · 1.05</code>
+
+    <div class="sg__lh-block" style="line-height: var(--line-height-ui); font-size: var(--font-size-16); font-family: var(--font-family-sans)">
+      <div class="sg__lh-lines">
+        Line one of sample paragraph text for comparison.<br />
+        Line two continues the thought with more words.<br />
+        Line three concludes this short demonstration block.
+      </div>
+    </div>
+    <code class="sg__token-name">--line-height-ui · 1.08</code>
+
+    <div class="sg__lh-block" style="line-height: var(--line-height-heading); font-size: var(--font-size-16); font-family: var(--font-family-sans)">
+      <div class="sg__lh-lines">
+        Line one of sample paragraph text for comparison.<br />
+        Line two continues the thought with more words.<br />
+        Line three concludes this short demonstration block.
+      </div>
+    </div>
+    <code class="sg__token-name">--line-height-heading · 1.1</code>
+
+    <div class="sg__lh-block" style="line-height: var(--line-height-card-title); font-size: var(--font-size-16); font-family: var(--font-family-sans)">
+      <div class="sg__lh-lines">
+        Line one of sample paragraph text for comparison.<br />
+        Line two continues the thought with more words.<br />
+        Line three concludes this short demonstration block.
+      </div>
+    </div>
+    <code class="sg__token-name">--line-height-card-title · 1.2</code>
+
+    <div class="sg__lh-block" style="line-height: var(--line-height-label); font-size: var(--font-size-16); font-family: var(--font-family-sans)">
+      <div class="sg__lh-lines">
+        Line one of sample paragraph text for comparison.<br />
+        Line two continues the thought with more words.<br />
+        Line three concludes this short demonstration block.
+      </div>
+    </div>
+    <code class="sg__token-name">--line-height-label · 1.25</code>
+
+    <div class="sg__lh-block" style="line-height: var(--line-height-body); font-size: var(--font-size-16); font-family: var(--font-family-sans)">
+      <div class="sg__lh-lines">
+        Line one of sample paragraph text for comparison.<br />
+        Line two continues the thought with more words.<br />
+        Line three concludes this short demonstration block.
+      </div>
+    </div>
+    <code class="sg__token-name">--line-height-body · 1.4</code>
+
+    <div class="sg__lh-block" style="line-height: var(--line-height-relaxed); font-size: var(--font-size-16); font-family: var(--font-family-sans)">
+      <div class="sg__lh-lines">
+        Line one of sample paragraph text for comparison.<br />
+        Line two continues the thought with more words.<br />
+        Line three concludes this short demonstration block.
+      </div>
+    </div>
+    <code class="sg__token-name">--line-height-relaxed · 1.45</code>
+
+    <div class="sg__lh-block" style="line-height: var(--line-height-subhead); font-size: var(--font-size-16); font-family: var(--font-family-sans)">
+      <div class="sg__lh-lines">
+        Line one of sample paragraph text for comparison.<br />
+        Line two continues the thought with more words.<br />
+        Line three concludes this short demonstration block.
+      </div>
+    </div>
+    <code class="sg__token-name">--line-height-subhead · 1.5</code>
+
+    <div class="sg__lh-block" style="line-height: var(--line-height-prose); font-size: var(--font-size-16); font-family: var(--font-family-sans)">
+      <div class="sg__lh-lines">
+        Line one of sample paragraph text for comparison.<br />
+        Line two continues the thought with more words.<br />
+        Line three concludes this short demonstration block.
+      </div>
+    </div>
+    <code class="sg__token-name">--line-height-prose · 1.6</code>
+
+    <div class="sg__lh-block" style="line-height: var(--line-height-loose); font-size: var(--font-size-16); font-family: var(--font-family-sans)">
+      <div class="sg__lh-lines">
+        Line one of sample paragraph text for comparison.<br />
+        Line two continues the thought with more words.<br />
+        Line three concludes this short demonstration block.
+      </div>
+    </div>
+    <code class="sg__token-name">--line-height-loose · 1.65</code>
+  </section>
+
+  <!-- 11. text-p -->
+  <section class="sg__section" aria-labelledby="sg-h11">
+    <h2 id="sg-h11">11. Text Paragraph Classes</h2>
+    <p class="sg__font-name">Font: Barlow (via <code>var(--font-family-sans)</code> on <code>.text-p</code>)</p>
+    <p class="text-p text-p--announcement" style="margin-bottom: 1rem">Refer a friend and you both save on your next bill.</p>
+    <code class="sg__token-name">.text-p.text-p--announcement</code>
+
+    <p class="text-p text-p--subhead" style="margin: 1rem 0">See what you can do with reliable internet and remarkable service.</p>
+    <code class="sg__token-name">.text-p.text-p--subhead</code>
+
+    <p class="text-p text-p--lead" style="margin: 1rem 0">Unlimited data, flexible plans, and support on your terms.</p>
+    <code class="sg__token-name">.text-p.text-p--lead</code>
+
+    <p class="text-p text-p--standard" style="margin: 1rem 0">Standard body copy for descriptions and intros.</p>
+    <code class="sg__token-name">.text-p.text-p--standard</code>
+
+    <p class="text-p text-p--compact" style="margin: 1rem 0">Smaller supporting text for dense UI and footnotes.</p>
+    <code class="sg__token-name">.text-p.text-p--compact</code>
+
+    <div style="background: var(--color-brand-orange); padding: 1rem; border-radius: 8px; margin-top: 1rem">
+      <p class="text-p text-p--on-brand" style="margin: 0">No hidden fees. No contracts. No hassle.</p>
+    </div>
+    <code class="sg__token-name">.text-p.text-p--on-brand</code>
+
+    <p class="text-p text-p--caption" style="margin: 1rem 0 0">Plan details and disclaimers in small print.</p>
+    <code class="sg__token-name">.text-p.text-p--caption</code>
+  </section>
+
+  <!-- 12. Spacing -->
+  <section class="sg__section" aria-labelledby="sg-h12">
+    <h2 id="sg-h12">12. Spacing</h2>
+    <p class="sg__todo">No <code>--space-*</code> tokens defined yet — TODO.</p>
+  </section>
+
+  <!-- 13. Radius -->
+  <section class="sg__section" aria-labelledby="sg-h13">
+    <h2 id="sg-h13">13. Border Radius</h2>
+    <div class="sg__radius-label">--radius-pill · 9999px</div>
+    <div class="sg__radius-demo" style="width: 200px; height: 48px; border-radius: var(--radius-pill)"></div>
+
+    <div class="sg__radius-label" style="margin-top: 1rem">--radius-card · 16px</div>
+    <div class="sg__radius-demo" style="width: 80px; height: 80px; border-radius: var(--radius-card)"></div>
+
+    <div class="sg__radius-label" style="margin-top: 1rem">--radius-nmc-card · 20px</div>
+    <div class="sg__radius-demo" style="width: 80px; height: 80px; border-radius: var(--radius-nmc-card)"></div>
+
+    <div class="sg__radius-label" style="margin-top: 1rem">--radius-nmc-icon · 10px</div>
+    <div class="sg__radius-demo" style="width: 48px; height: 48px; border-radius: var(--radius-nmc-icon)"></div>
+
+    <div class="sg__radius-label" style="margin-top: 1rem">--radius-ioyt-image · 12px</div>
+    <div class="sg__radius-demo" style="width: 120px; height: 80px; border-radius: var(--radius-ioyt-image)"></div>
+  </section>
+</body>
+</html>

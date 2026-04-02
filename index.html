@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RISE Internet — Speed, Service, and Value</title>
+  <meta name="description" content="See what you can do with reliable internet + remarkable service from RISE Internet." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&family=Barlow+Semi+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Styles — single stylesheet -->
+  <link rel="stylesheet" href="global.css" />
+
+  <!-- IOYT scroll cards: preload so decode is ready for sticky scroll (intrinsic sizes on each img) -->
+  <link rel="preload" as="image" href="images/scroll-img-01.png?v=20260401" />
+  <link rel="preload" as="image" href="images/scroll-img-02.png?v=2026040120" />
+  <link rel="preload" as="image" href="images/scroll-img-03.png?v=20260401" />
+  <link rel="preload" as="image" href="images/scroll-img-04.png?v=20260401" />
+</head>
+<body>
+  <script>
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("img-reveal");
+    }
+  </script>
+
+  <!-- Site header (nav) -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="logo" href="/" aria-label="Rise Internet home">
+        <img src="Logo.svg" alt="" width="123" height="48" decoding="async" />
+      </a>
+
+      <div class="nav-tray">
+        <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+          <ul>
+            <li class="nav-item">
+              <a class="nav-item__btn" href="#plans">
+                Plans
+                <svg class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-item__btn" href="#about">
+                About Rise
+                <svg class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-item__btn" href="#support">
+                Support
+                <svg class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-item__btn" href="#business">Business</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="nav-account">
+          <a class="account-link" href="#account">
+            <svg class="icon-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 12a4 4 0 100-8 4 4 0 000 8z" stroke="currentColor" stroke-width="1.5" />
+              <path d="M4 20a8 8 0 0116 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+            <span class="account-link__label">Account</span>
+            <svg class="icon-chevron account-link__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+
+        <button type="button" class="nav-menu-btn" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- 1. Hero -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero__announcement">
+        <p class="text-p text-p--announcement">
+          <a href="#refer">Know someone who deserves better internet? <span class="hero__announcement__link-em">Refer a friend</span> and you both win.</a>
+        </p>
+      </div>
+
+      <div class="hero__stage">
+        <div class="hero__photos">
+          <div class="hero__photo-wrap hero__photo-wrap--tl" data-parallax="0.06">
+            <div class="hero__photo-tilt">
+              <img
+                src="images/photo-02.png"
+                width="260"
+                height="195"
+                loading="lazy"
+                decoding="async"
+                alt="Person with headphones using a tablet outdoors near water"
+              />
+            </div>
+          </div>
+          <div class="hero__photo-wrap hero__photo-wrap--tr" data-parallax="0.08">
+            <div class="hero__photo-tilt">
+              <img
+                src="images/photo-03.png"
+                width="240"
+                height="320"
+                loading="lazy"
+                decoding="async"
+                alt="Hands holding a smartphone out of a car window over a sunny field"
+              />
+            </div>
+          </div>
+          <div class="hero__photo-wrap hero__photo-wrap--cr" data-parallax="0.065">
+            <div class="hero__photo-tilt">
+              <img
+                src="images/photo-04.png"
+                width="1032"
+                height="648"
+                loading="lazy"
+                decoding="async"
+                alt="Happy family using fast internet at home"
+              />
+            </div>
+          </div>
+          <div class="hero__photo-wrap hero__photo-wrap--bl" data-parallax="0.05">
+            <div class="hero__photo-tilt">
+              <img
+                src="images/photo-01.png"
+                width="1032"
+                height="648"
+                loading="lazy"
+                decoding="async"
+                alt="Two people smiling and pointing, excited at home"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__inner">
+          <h1 id="hero-heading">
+            SPEED, SERVICE,<br />
+            AND VALUE
+          </h1>
+          <p class="hero__subhead text-p text-p--subhead">
+            See what you can do with reliable internet + remarkable service.
+          </p>
+
+          <form
+            class="hero__search"
+            role="search"
+            aria-label="Check service availability at your address"
+            action="#"
+            method="get"
+          >
+            <div class="hero__search-inner">
+              <label for="hero-address" class="visually-hidden">Address, city, or ZIP code</label>
+              <input
+                id="hero-address"
+                class="hero__input"
+                type="search"
+                name="q"
+                placeholder="Enter your address, city or zip code"
+                autocomplete="street-address"
+                inputmode="text"
+              />
+              <button type="submit" class="hero__submit" aria-label="Check availability">
+                <span class="hero__submit-text">Check Availability</span>
+                <svg class="hero__submit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Pricing -->
+    <section class="pricing" aria-labelledby="pricing-heading">
+      <div class="pricing__inner">
+        <div class="pricing__header">
+          <h2 id="pricing-heading">
+            <span class="text-primary heading-line">Simply Dependable,</span>
+            <span class="text-brand heading-line">Affordable Service</span>
+          </h2>
+        </div>
+
+        <div class="pricing__grid">
+          <a
+            href="#"
+            class="pricing-card"
+            data-pricing-card="left"
+            aria-label="Check availability for Family plan"
+          >
+            <div class="pricing-card__body">
+              <div class="pricing-card__speed-block">
+                <span class="pricing-card__up-to">Up to</span>
+                <p class="pricing-card__speed">150 Mbps</p>
+                <h4>Family</h4>
+              </div>
+
+              <div class="pricing-card__price-block">
+                <span class="pricing-card__price">$29.99</span>
+                <span class="pricing-card__per-month">/ month</span>
+              </div>
+
+              <ul class="pricing-card__features">
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Total Home Advanced Wi-Fi</span>
+                  <span class="pricing-card__feature-value">$15.00</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Connected device support</span>
+                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">10 devices</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Simultaneous HD video streaming</span>
+                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">2+ devices</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">HD video calling</span>
+                  <span class="pricing-card__feature-value">
+                    <span aria-hidden="true">&#10003;</span>
+                    <span class="sr-only">Included</span>
+                  </span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Connection fee</span>
+                  <span class="pricing-card__feature-value">$99.50</span>
+                </li>
+              </ul>
+
+              <p class="pricing-card__tagline text-p text-p--caption">Smart home support &amp; online gaming performance</p>
+
+              <span class="pricing-card__cta">Check Availability</span>
+            </div>
+          </a>
+
+          <a
+            href="#"
+            class="pricing-card pricing-card--featured"
+            data-pricing-card="center"
+            aria-label="Check availability for Power Up plan, recommended"
+          >
+            <div class="pricing-card__badge">Recommended</div>
+            <div class="pricing-card__body">
+              <div class="pricing-card__speed-block">
+                <span class="pricing-card__up-to">Up to</span>
+                <p class="pricing-card__speed">500 Mbps</p>
+                <h4>Power Up</h4>
+              </div>
+
+              <div class="pricing-card__price-block">
+                <span class="pricing-card__price">$49.99</span>
+                <span class="pricing-card__per-month">/ month</span>
+              </div>
+
+              <ul class="pricing-card__features">
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Total Home Advanced Wi-Fi</span>
+                  <span class="pricing-card__feature-value">$7.50</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Connected device support</span>
+                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">20+ devices</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Simultaneous HD video streaming</span>
+                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">5+ devices</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">HD video calling</span>
+                  <span class="pricing-card__feature-value">
+                    <span aria-hidden="true">&#10003;</span>
+                    <span class="sr-only">Included</span>
+                  </span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Connection fee</span>
+                  <span class="pricing-card__feature-value">$49.50</span>
+                </li>
+              </ul>
+
+              <p class="pricing-card__tagline text-p text-p--caption">
+                Full smart home connection, fast large file downloads and uploads, competitive online gaming
+              </p>
+
+              <span class="pricing-card__cta">Check Availability</span>
+            </div>
+          </a>
+
+          <a href="#" class="pricing-card" data-pricing-card="right" aria-label="Check availability for Pro plan">
+            <div class="pricing-card__body">
+              <div class="pricing-card__speed-block">
+                <span class="pricing-card__up-to">Up to</span>
+                <p class="pricing-card__speed">1 Gbps</p>
+                <h4>Pro</h4>
+              </div>
+
+              <div class="pricing-card__price-block">
+                <span class="pricing-card__price">$79.99</span>
+                <span class="pricing-card__per-month">/ month</span>
+              </div>
+
+              <ul class="pricing-card__features">
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Total Home Advanced Wi-Fi</span>
+                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">Free</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Connected device support</span>
+                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">30+ devices</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Simultaneous HD video streaming</span>
+                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">10+ devices</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">HD video calling</span>
+                  <span class="pricing-card__feature-value">
+                    <span aria-hidden="true">&#10003;</span>
+                    <span class="sr-only">Included</span>
+                  </span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Connection fee</span>
+                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">Free</span>
+                </li>
+              </ul>
+
+              <p class="pricing-card__tagline text-p text-p--caption">
+                Professional online gaming, emerging technology needs, massive file downloads and uploads
+              </p>
+
+              <span class="pricing-card__cta">Check Availability</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Internet on Your Terms -->
+    <section class="ioyt" id="internet-on-your-terms">
+      <div class="ioyt__stage">
+        <div class="ioyt__headline">
+          <h2>
+            <span>Internet on</span>
+            <span>Your Terms</span>
+          </h2>
+        </div>
+
+        <div class="ioyt__stack">
+          <div class="ioyt__card" data-card="0">
+            <div class="ioyt__card__panel">
+              <div class="ioyt__card__image">
+                <img
+                  src="images/scroll-img-01.png?v=20260401"
+                  srcset="images/scroll-img-01.png?v=20260401 1126w"
+                  sizes="(max-width: 768px) 100vw, min(78vw, 1212px)"
+                  width="1126"
+                  height="601"
+                  alt="Family using home Wi-Fi"
+                  loading="eager"
+                  decoding="async"
+                  fetchpriority="high"
+                />
+              </div>
+              <div class="ioyt__card__content">
+                <h3 class="ioyt__card__title">Total Home Advanced Wi-Fi</h3>
+                <a class="ioyt__card__cta" href="#pricing-heading">Learn more</a>
+                <p class="ioyt__card__body">
+                  Full whole-home coverage with advanced Wi-Fi equipment that keeps every device connected in every room.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ioyt__card" data-card="1">
+            <div class="ioyt__card__panel">
+              <div class="ioyt__card__image">
+                <img
+                  src="images/scroll-img-02.png?v=2026040120"
+                  srcset="images/scroll-img-02.png?v=2026040120 2424w"
+                  sizes="(max-width: 768px) 100vw, min(78vw, 1212px)"
+                  width="2424"
+                  height="1294"
+                  alt="Person on phone"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+              <div class="ioyt__card__content">
+                <h3 class="ioyt__card__title ioyt__card__title--split">
+                  <span class="ioyt__card__title-line">Digital Phone</span>
+                  <span class="ioyt__card__title-sub">ActivePhone</span>
+                </h3>
+                <a class="ioyt__card__cta" href="#pricing-heading">Learn more</a>
+                <p class="ioyt__card__body">
+                  Crystal-clear digital home phone service with unlimited local and long-distance calling included.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ioyt__card" data-card="2">
+            <div class="ioyt__card__panel">
+              <div class="ioyt__card__image">
+                <img
+                  src="images/scroll-img-03.png?v=20260401"
+                  srcset="images/scroll-img-03.png?v=20260401 1126w"
+                  sizes="(max-width: 768px) 100vw, min(78vw, 1212px)"
+                  width="1126"
+                  height="601"
+                  alt="RISE technician"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+              <div class="ioyt__card__content">
+                <h3 class="ioyt__card__title">Service Upgrades</h3>
+                <a class="ioyt__card__cta" href="#pricing-heading">Learn more</a>
+                <p class="ioyt__card__body">
+                  Easily upgrade your plan as your needs grow — no technician visit required, no hassle.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ioyt__card" data-card="3">
+            <div class="ioyt__card__panel">
+              <div class="ioyt__card__image">
+                <img
+                  src="images/scroll-img-04.png?v=20260401"
+                  srcset="images/scroll-img-04.png?v=20260401 1126w"
+                  sizes="(max-width: 768px) 100vw, min(78vw, 1212px)"
+                  width="1126"
+                  height="601"
+                  alt="Happy RISE customer"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+              <div class="ioyt__card__content">
+                <h3 class="ioyt__card__title">Plans for You, by You</h3>
+                <a class="ioyt__card__cta" href="#pricing-heading">Build your plan</a>
+                <p class="ioyt__card__body">
+                  Flexible plans built around your life — not ours. No contracts, no hidden fees, no compromise.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. No More Compromise -->
+    <section class="nmc" aria-labelledby="nmc-heading">
+      <div class="nmc__inner">
+        <h2 id="nmc-heading">
+          <span class="text-primary heading-line">NO MORE</span>
+          <span class="text-brand heading-line">COMPROMISE.</span>
+        </h2>
+        <p class="nmc__lead text-p text-p--lead">
+          You shouldn&apos;t have to choose between great service and great value. Rise brings you the speed you need,
+          unlimited data, and flexible plans on your terms.
+        </p>
+        <ul class="nmc__features">
+          <li class="nmc__feature">
+            <span class="nmc__icon" aria-hidden="true">
+              <img src="images/icon-logo.svg" alt="" width="28" height="28" decoding="async" />
+            </span>
+            <span class="nmc__label">Unlimited Data</span>
+          </li>
+          <li class="nmc__feature">
+            <span class="nmc__icon" aria-hidden="true">
+              <img src="images/icon-speed.svg" alt="" width="28" height="28" decoding="async" />
+            </span>
+            <span class="nmc__label">Reliably Fast</span>
+          </li>
+          <li class="nmc__feature">
+            <span class="nmc__icon" aria-hidden="true">
+              <img src="images/icon-support.svg" alt="" width="28" height="28" decoding="async" />
+            </span>
+            <span class="nmc__label">24/7 US Support</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. Go Faster -->
+    <section class="gofaster">
+      <div class="gofaster__inner">
+
+        <div class="gofaster__top-row">
+          <div class="gofaster__headline-col">
+            <h2>
+              <span class="heading-line">Go Faster Than Ever</span> <span class="text-brand heading-line">With Rise</span>
+            </h2>
+          </div>
+          <div class="gofaster__intro-col">
+            <p class="gofaster__intro-text text-p text-p--standard">
+              Up to 1 Gbps of pure speed — built for everything you need.
+              Stream, work, game, and connect every device without breaking
+              a sweat.
+            </p>
+            <a href="#" class="gofaster__cta">Level Up</a>
+          </div>
+        </div>
+
+        <div class="gofaster__bottom-row">
+
+          <div class="gofaster__team-col">
+            <h3>We're on your team</h3>
+            <p class="gofaster__team-body text-p text-p--compact">
+              You've got fun things to do. Work things. Life things. The last
+              thing you need is to be stuck waiting around. Our local
+              technicians help keep you online wherever you live. And if you
+              have a question, 24/7 support is only a phone call away.
+            </p>
+
+            <nav class="gofaster__links" aria-label="Support links">
+              <ul class="gofaster__link-list">
+                <li class="gofaster__link-item">
+                  <a href="tel:18442007473" class="gofaster__link-row">
+                    <span class="gofaster__link-label">
+                      24/7 Support
+                      <span class="gofaster__link-phone">1.844.200.7473</span>
+                    </span>
+                    <span class="gofaster__link-arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li class="gofaster__link-item">
+                  <a href="#" class="gofaster__link-row">
+                    <span class="gofaster__link-label">Pay My Bill</span>
+                    <span class="gofaster__link-arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li class="gofaster__link-item">
+                  <a href="#" class="gofaster__link-row">
+                    <span class="gofaster__link-label">Move Service</span>
+                    <span class="gofaster__link-arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li class="gofaster__link-item">
+                  <a href="#" class="gofaster__link-row">
+                    <span class="gofaster__link-label">Upgrade</span>
+                    <span class="gofaster__link-arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li class="gofaster__link-item">
+                  <a href="#" class="gofaster__link-row">
+                    <span class="gofaster__link-label">Troubleshoot</span>
+                    <span class="gofaster__link-arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li class="gofaster__link-item">
+                  <a href="#" class="gofaster__link-row">
+                    <span class="gofaster__link-label">FAQs</span>
+                    <span class="gofaster__link-arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li class="gofaster__link-item">
+                  <a href="#" class="gofaster__link-row">
+                    <span class="gofaster__link-label">Careers</span>
+                    <span class="gofaster__link-arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="gofaster__image-col">
+            <div class="gofaster__image-wrap">
+              <img
+                class="gofaster__image"
+                src="images/image-whoweare.png"
+                alt="RISE Internet team member"
+                width="600"
+                height="700"
+                loading="lazy"
+                decoding="async"
+              />
+              <a href="#" class="gofaster__who-card" aria-label="Learn who we are">
+                <span>Who We Are</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Better Internet CTA -->
+    <section class="better-cta" aria-labelledby="better-cta-heading">
+      <div class="better-cta__inner">
+        <h2 id="better-cta-heading">
+          YOU DESERVE BETTER INTERNET,<br />
+          LET&apos;S MAKE IT HAPPEN.
+        </h2>
+        <p class="better-cta__lead text-p text-p--on-brand">No hidden fees. No contracts. No hassle.</p>
+        <form
+          class="hero__search"
+          role="search"
+          aria-label="Check Rise Internet availability for your address"
+          action="#"
+          method="get"
+        >
+          <div class="hero__search-inner">
+            <label for="cta-address" class="visually-hidden">Address, city, or ZIP code</label>
+            <input
+              id="cta-address"
+              class="hero__input"
+              type="search"
+              name="q"
+              placeholder="Enter your address, city or zip code"
+              autocomplete="street-address"
+              inputmode="text"
+            />
+            <button type="submit" class="hero__submit" aria-label="Check availability">
+              <span class="hero__submit-text">Check Availability</span>
+              <svg class="hero__submit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" aria-label="Footer — coming soon">
+    <!-- TODO: add markup -->
+  </footer>
+
+  <!-- Scripts — GSAP first, then section scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="image-reveal.js"></script>
+
+  <!-- Section scripts in page order (match DOM: hero → pricing → IOYT → gofaster) -->
+  <script src="hero-parallax.js"></script>
+  <script src="tilt.js"></script>
+  <script src="pricing.js"></script>
+  <script src="InternetOnYourTerms.js"></script>
+  <script src="GoFaster.js"></script>
+  <script>
+    document.querySelectorAll(".hero__photo-tilt").forEach(function (el) {
+      new Tilt(el, { maxRotation: 8, scale: 1.02, glare: true, glareOpacity: 0.12 });
+    });
+    if (typeof ScrollTrigger !== "undefined") {
+      requestAnimationFrame(function () {
+        ScrollTrigger.refresh();
+      });
+    }
+  </script>
+  <script>
+    (function () {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var ioyt = document.querySelector(".ioyt");
+      if (!ioyt) return;
+
+      var triggered = false;
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && !triggered) {
+              triggered = true;
+              ioyt.classList.add("ioyt--headline-visible");
+              observer.disconnect();
+            }
+          });
+        },
+        {
+          threshold: 0.08,
+        }
+      );
+
+      observer.observe(ioyt);
+    })();
+  </script>
+
+<!--
+  POST-ASSEMBLY CHECKLIST
+  [ ] All section classes present: .hero .pricing .ioyt .nmc .gofaster .better-cta
+  [ ] Google Fonts loaded once
+  [ ] global.css linked once
+  [ ] GSAP loaded once
+  [ ] All image paths use images/ folder
+  [ ] No inline <style> blocks from standalone files
+  [ ] No duplicate IDs across sections
+  [ ] hero-parallax.js loaded after .hero markup exists in DOM
+  [ ] InternetOnYourTerms.js loaded after .ioyt markup exists in DOM
+  [ ] GoFaster.js loaded after .gofaster markup exists in DOM
+-->
+</body>
+</html>
