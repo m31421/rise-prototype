@@ -500,34 +500,55 @@
     <!-- COMPONENT: No More Compromise — global.css .nmc -->
     <section class="nmc" data-component="nmc" aria-labelledby="nmc-heading">
       <div class="nmc__inner">
-        <h2 id="nmc-heading">
-          <span class="text-primary heading-line">NO MORE</span>
-          <span class="text-brand heading-line">COMPROMISE.</span>
-        </h2>
-        <p class="nmc__lead body-lg">
-          You shouldn&apos;t have to choose between great service and great value. Rise brings you the speed you need,
-          unlimited data, and flexible plans on your terms.
-        </p>
-        <ul class="nmc__features">
-          <li class="nmc__feature">
-            <span class="nmc__icon" aria-hidden="true">
-              <img src="images/icon-logo.svg" alt="" width="28" height="28" decoding="async" />
-            </span>
-            <span class="nmc__label">Unlimited Data</span>
-          </li>
-          <li class="nmc__feature">
-            <span class="nmc__icon" aria-hidden="true">
-              <img src="images/icon-speed.svg" alt="" width="28" height="28" decoding="async" />
-            </span>
-            <span class="nmc__label">Reliably Fast</span>
-          </li>
-          <li class="nmc__feature">
-            <span class="nmc__icon" aria-hidden="true">
-              <img src="images/icon-support.svg" alt="" width="28" height="28" decoding="async" />
-            </span>
-            <span class="nmc__label">24/7 US Support</span>
-          </li>
-        </ul>
+        <div class="nmc__col nmc__col--head">
+          <h2 id="nmc-heading">
+            <span class="text-primary heading-line">NO MORE</span>
+            <span class="text-brand heading-line">COMPROMISE</span>
+          </h2>
+          <p class="nmc__lead body-lg">
+            You shouldn&apos;t have to choose between great service and great value. Rise brings you the speed you need,
+            unlimited data, and flexible plans on your terms.
+          </p>
+        </div>
+
+        <div class="nmc__col nmc__col--media">
+          <figure class="nmc__figure">
+            <picture>
+              <source type="image/webp" srcset="images/nomorecompromise-2.webp" />
+              <img
+                class="nmc__photo"
+                src="images/nomorecompromise-2.png"
+                alt="Parent and child using a tablet together at home"
+                width="640"
+                height="640"
+                decoding="async"
+              />
+            </picture>
+          </figure>
+        </div>
+
+        <div class="nmc__col nmc__col--features">
+          <ul class="nmc__features">
+            <li class="nmc__feature">
+              <span class="nmc__label">Unlimited Data</span>
+              <span class="nmc__icon" aria-hidden="true">
+                <img src="images/icon-logo.svg" alt="" width="28" height="28" decoding="async" />
+              </span>
+            </li>
+            <li class="nmc__feature">
+              <span class="nmc__label">Reliably Fast</span>
+              <span class="nmc__icon" aria-hidden="true">
+                <img src="images/icon-speed.svg" alt="" width="28" height="28" decoding="async" />
+              </span>
+            </li>
+            <li class="nmc__feature">
+              <span class="nmc__label">24/7 US Support</span>
+              <span class="nmc__icon" aria-hidden="true">
+                <img src="images/icon-support.svg" alt="" width="28" height="28" decoding="async" />
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -615,15 +636,20 @@
 
           <div class="gofaster__image-col">
             <div class="gofaster__image-wrap">
-              <img
-                class="gofaster__image"
-                src="images/image-whoweare.png"
-                alt="RISE Internet team member"
-                width="600"
-                height="700"
-                loading="lazy"
-                decoding="async"
-              />
+              <div class="gofaster__image-tilt">
+                <picture>
+                  <source type="image/webp" srcset="images/image-whoweare.webp" />
+                  <img
+                    class="gofaster__image"
+                    src="images/image-whoweare.png"
+                    alt="RISE Internet team member"
+                    width="600"
+                    height="700"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </div>
               <a href="#" class="gofaster__who-card" aria-label="Learn who we are">
                 <span>Who We Are</span>
                 <span aria-hidden="true">→</span>
@@ -943,6 +969,12 @@
   <script src="GoFaster.js"></script>
   <script>
     document.querySelectorAll(".hero__photo-tilt").forEach(function (el) {
+      new Tilt(el, { maxRotation: 8, scale: 1.02, glare: true, glareOpacity: 0.12 });
+    });
+    document.querySelectorAll(".nmc__figure").forEach(function (el) {
+      new Tilt(el, { maxRotation: 8, scale: 1.02, glare: true, glareOpacity: 0.12 });
+    });
+    document.querySelectorAll(".gofaster__image-tilt").forEach(function (el) {
       new Tilt(el, { maxRotation: 8, scale: 1.02, glare: true, glareOpacity: 0.12 });
     });
     if (typeof ScrollTrigger !== "undefined") {
