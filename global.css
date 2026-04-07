@@ -36,6 +36,8 @@
   --type-max-ioyt-headline: 7.5rem;
   --type-max-ioyt-card-title: 4rem;
   --type-max-section-h2: 4rem;
+  /* Pricing · NMC · Go Faster — shared h2 scale (see .pricing, .nmc, .gofaster__headline-col) */
+  --font-size-section-h2: clamp(2.5rem, 6.25vw + 0.65rem, 3.5rem);
 
   --text-9: clamp(3rem, 5.5vw + 1.75rem, 6rem);
   --text-8: clamp(2rem, 5.5vw + 0.5rem, 3rem);
@@ -255,7 +257,7 @@ h5 {
 }
 
 .nmc h2 .heading-line + .heading-line {
-  margin-top: 0.04em;
+  margin-top: 0;
 }
 
 .body-xl {
@@ -749,6 +751,7 @@ h5 {
   .hero h1 {
     font-weight: var(--font-weight-black);
     letter-spacing: 0.02em;
+    line-height: 0.88;
     color: var(--color-white);
     background: none;
     background-clip: unset;
@@ -912,7 +915,7 @@ h5 {
   .hero__photo-wrap--tr {
     width: min(108px, 29vw);
     right: max(-1.35rem, -7vw);
-    top: calc(-1 * var(--hero-tr-overlap) + 1.5rem);
+    top: calc(-1 * var(--hero-tr-overlap) + 2.75rem);
   }
 
   .hero__photo-wrap--cr {
@@ -1150,7 +1153,7 @@ h5 {
   .hero__photo-wrap--tr {
     width: min(100px, 28vw);
     right: max(-1.5rem, -8vw);
-    top: calc(-1 * var(--hero-tr-overlap) + 1.75rem);
+    top: calc(-1 * var(--hero-tr-overlap) + 3.25rem);
   }
 
   .hero__photo-wrap--cr {
@@ -1181,8 +1184,7 @@ h5 {
    ============================================================================= */
 
 .pricing {
-  /* Larger than default h2 / --text-8 for section title */
-  --font-size-h2: clamp(2.5rem, 6.25vw + 0.65rem, 3.5rem);
+  --font-size-h2: var(--font-size-section-h2);
   background: var(--color-surface);
   padding: 80px 5% 48px;
 }
@@ -1475,12 +1477,12 @@ a.pricing-card:visited {
 }
 
 @media (max-width: 768px) {
-  .pricing {
-    padding: clamp(4.5rem, 12vw, 6rem) 5% 48px;
+  :root {
+    --font-size-section-h2: clamp(32px, 8vw, 52px);
   }
 
-  .pricing__header h2 {
-    font-size: clamp(32px, 8vw, 52px);
+  .pricing {
+    padding: clamp(4.5rem, 12vw, 6rem) 5% 48px;
   }
 
   .pricing__grid {
@@ -1979,7 +1981,7 @@ a.pricing-card:visited {
    ============================================================================= */
 
 .nmc {
-  --font-size-h2: var(--text-8);
+  --font-size-h2: var(--font-size-section-h2);
   padding: 48px 5% 56px;
   background: var(--color-white);
 }
@@ -1996,7 +1998,7 @@ a.pricing-card:visited {
 
 .nmc h2 {
   font-weight: var(--font-weight-black);
-  line-height: var(--line-height-heading);
+  line-height: 1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
@@ -2135,7 +2137,7 @@ a.pricing-card:visited {
 }
 
 .gofaster__headline-col {
-  --font-size-h2: clamp(36px, 5vw, var(--type-max-section-h2));
+  --font-size-h2: var(--font-size-section-h2);
 }
 
 .gofaster__headline-col h2 {
@@ -2352,7 +2354,6 @@ a.pricing-card:visited {
   }
 
   .gofaster__headline-col {
-    --font-size-h2: clamp(28px, 6vw, 44px);
     margin-bottom: 1.25rem;
   }
 
@@ -2448,10 +2449,6 @@ a.pricing-card:visited {
 
   .gofaster__inner {
     padding: 0 5%;
-  }
-
-  .gofaster__headline-col {
-    --font-size-h2: clamp(28px, 7.5vw, 42px);
   }
 
   .gofaster__link-row {

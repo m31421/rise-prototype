@@ -14,7 +14,7 @@
   --footer-card-max: 1600px;
   --footer-card-radius: 28px;
   /* Space between CTA band and white card (no overlap) */
-  --footer-cta-main-gap: clamp(1.75rem, 5vw, 3rem);
+  --footer-cta-main-gap: clamp(2.25rem, 6.5vw, 4rem);
   --footer-legal-gap: 2rem;
   width: 100%;
   margin: 0;
@@ -466,7 +466,7 @@
   .footer-block {
     /* Visual spacing + same clearance as former body padding (fixed nav CTA + home indicator) — keeps reserve inside orange band */
     padding-bottom: calc(
-      clamp(2.75rem, 8vw, 4.25rem) + 3.5rem + env(safe-area-inset-bottom, 0px)
+      clamp(1.75rem, 5.5vw, 3rem) + 3rem + env(safe-area-inset-bottom, 0px)
     );
   }
 
@@ -489,6 +489,24 @@
     width: 100%;
     box-sizing: border-box;
   }
+
+  .footer-legal__links {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .footer-legal__links li {
+    width: 100%;
+    max-width: 22rem;
+  }
+
+  .footer-legal__links a {
+    display: block;
+    text-align: center;
+  }
 }
 
 /* =============================================================================
@@ -498,7 +516,7 @@
 @media (max-width: 600px) {
   .footer-block {
     padding-bottom: calc(
-      clamp(3.5rem, 11vw, 6rem) + 3.5rem + env(safe-area-inset-bottom, 0px)
+      clamp(2.25rem, 8vw, 4.25rem) + 3rem + env(safe-area-inset-bottom, 0px)
     );
   }
 
@@ -545,9 +563,5 @@
 
   .footer-legal__left {
     align-items: center;
-  }
-
-  .footer-legal__links {
-    justify-content: center;
   }
 }
