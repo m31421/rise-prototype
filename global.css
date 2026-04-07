@@ -774,7 +774,7 @@ h5 {
   .hero__stage {
     min-height: auto;
     padding-top: clamp(0.5rem, 2vh, 1.25rem);
-    padding-bottom: clamp(7rem, 24vw, 9.5rem);
+    padding-bottom: clamp(4.5rem, 16vw, 7rem);
   }
 
   .hero__inner {
