@@ -35,47 +35,64 @@
         <img src="Logo.svg" alt="" width="123" height="48" decoding="async" />
       </a>
 
-      <div class="nav-tray">
-        <nav class="primary-nav" id="primary-nav" aria-label="Primary">
-          <ul>
-            <li class="nav-item">
-              <a class="nav-item__btn" href="#plans">
-                Plans
-                <svg class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-item__btn" href="#about">
-                About Rise
-                <svg class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-item__btn" href="#support">
-                Support
-                <svg class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-item__btn" href="#business">Business</a>
-            </li>
-          </ul>
-        </nav>
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul>
+          <li class="nav-item">
+            <a class="nav-item__btn" href="#plans">
+              Plans
+              <svg class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item__btn" href="#about">
+              About Rise
+              <svg class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item__btn" href="#support">
+              Support
+              <svg class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item__btn" href="#business">Business</a>
+          </li>
+        </ul>
+      </nav>
 
+      <div class="nav-tray">
         <div class="nav-cta-wrap">
-          <a
-            class="nav-cta"
-            href="#check-availability"
-            aria-label="Check availability at your address"
-            aria-hidden="true"
-            tabindex="-1"
-          >Check availability</a>
+          <form
+            id="nav-check-availability"
+            class="nav-cta__form"
+            role="search"
+            aria-label="Check service availability at your address"
+            action="#"
+            method="get"
+          >
+            <div class="nav-cta__shell">
+              <div class="nav-cta__input-track">
+                <input
+                  id="nav-availability-address"
+                  class="hero__input nav-cta__input"
+                  type="search"
+                  name="q"
+                  placeholder="Enter your address, city or zip code"
+                  aria-label="Address, city, or ZIP code"
+                  autocomplete="street-address"
+                  inputmode="text"
+                />
+              </div>
+              <button type="submit" class="nav-cta__submit" id="nav-availability-submit">Check Availability</button>
+            </div>
+          </form>
         </div>
 
         <div class="nav-account">
@@ -84,8 +101,8 @@
               <path d="M12 12a4 4 0 100-8 4 4 0 000 8z" stroke="currentColor" stroke-width="1.5" />
               <path d="M4 20a8 8 0 0116 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
             </svg>
-            <span class="account-link__label">Account</span>
-            <svg class="icon-chevron account-link__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <span class="visually-hidden">Account</span>
+            <svg class="icon-chevron visually-hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
@@ -769,40 +786,89 @@
     </div>
   </footer>
 
-  <a class="nav-cta-mobile" href="#check-availability" aria-label="Check availability at your address">Check availability</a>
+  <div class="nav-cta-mobile" aria-hidden="true">
+    <form
+      id="mobile-check-availability"
+      class="hero__search nav-cta-mobile__form"
+      role="search"
+      aria-label="Check service availability at your address"
+      action="#"
+      method="get"
+    >
+      <div class="hero__search-inner">
+        <input
+          id="mobile-availability-address"
+          class="hero__input"
+          type="search"
+          name="q"
+          placeholder="Enter address…"
+          aria-label="Address, city, or ZIP code"
+          autocomplete="street-address"
+          inputmode="text"
+        />
+        <button type="submit" class="hero__submit" aria-label="Check availability">
+          <span class="hero__submit-text">Check Availability</span>
+          <svg class="hero__submit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
 
   <script>
     (function () {
       var cta = document.querySelector(".nav-cta-mobile");
-      var navCta = document.querySelector(".nav-cta");
       var navCtaWrap = document.querySelector(".nav-cta-wrap");
+      var navForm = document.getElementById("nav-check-availability");
+      var navInput = document.getElementById("nav-availability-address");
+      var navSubmit = document.getElementById("nav-availability-submit");
+      var mobileForm = document.getElementById("mobile-check-availability");
+      var mobileInput = document.getElementById("mobile-availability-address");
       var hero = document.querySelector(".hero");
       var form = document.getElementById("check-availability");
       var input = document.getElementById("hero-address");
-      if (!cta || !form) return;
+      if (!cta || !form || !mobileForm || !mobileInput) return;
 
-      var mqMobile = window.matchMedia("(max-width: 900px)");
+      /* Sticky bottom CTA replaces header pill at ≤1200px (see global.css) */
+      var mqStickyNavCta = window.matchMedia("(max-width: 1200px)");
 
-      if (mqMobile.matches) {
+      if (mqStickyNavCta.matches) {
         cta.setAttribute("aria-hidden", "true");
-        cta.setAttribute("tabindex", "-1");
+      }
+
+      if (navForm) {
+        navForm.setAttribute("aria-hidden", "true");
+        if (navInput) navInput.setAttribute("tabindex", "-1");
+        if (navSubmit) navSubmit.setAttribute("tabindex", "-1");
       }
 
       function setDesktopNavPastHero(pastHero) {
-        if (!navCtaWrap || !navCta) return;
+        if (!navCtaWrap || !navForm) return;
         if (pastHero) {
           navCtaWrap.classList.add("nav-cta-wrap--visible");
-          navCta.removeAttribute("aria-hidden");
-          navCta.removeAttribute("tabindex");
+          navForm.removeAttribute("aria-hidden");
+          if (navInput) {
+            navInput.removeAttribute("tabindex");
+            if (input) navInput.value = input.value;
+          }
+          if (navSubmit) {
+            navSubmit.removeAttribute("tabindex");
+          }
         } else {
           navCtaWrap.classList.remove("nav-cta-wrap--visible");
-          navCta.setAttribute("aria-hidden", "true");
-          navCta.setAttribute("tabindex", "-1");
+          navForm.setAttribute("aria-hidden", "true");
+          if (navInput) {
+            navInput.setAttribute("tabindex", "-1");
+          }
+          if (navSubmit) {
+            navSubmit.setAttribute("tabindex", "-1");
+          }
         }
       }
 
       function setCtaPastHero(pastHero) {
-        if (!mqMobile.matches) {
+        if (!mqStickyNavCta.matches) {
           cta.classList.remove("nav-cta-mobile--visible");
           cta.removeAttribute("aria-hidden");
           cta.removeAttribute("tabindex");
@@ -813,11 +879,10 @@
         if (pastHero) {
           cta.classList.add("nav-cta-mobile--visible");
           cta.setAttribute("aria-hidden", "false");
-          cta.removeAttribute("tabindex");
+          if (input && mobileInput) mobileInput.value = input.value;
         } else {
           cta.classList.remove("nav-cta-mobile--visible");
           cta.setAttribute("aria-hidden", "true");
-          cta.setAttribute("tabindex", "-1");
         }
       }
 
@@ -831,7 +896,7 @@
           { threshold: 0, rootMargin: "0px" }
         );
         io.observe(hero);
-        mqMobile.addEventListener("change", function () {
+        mqStickyNavCta.addEventListener("change", function () {
           var r = hero.getBoundingClientRect();
           var vh = window.innerHeight || document.documentElement.clientHeight;
           var intersects = r.bottom > 0 && r.top < vh;
@@ -839,26 +904,27 @@
         });
       }
 
-      cta.addEventListener("click", function (e) {
-        if (!mqMobile.matches) return;
-        e.preventDefault();
-        var target = form.querySelector(".hero__search-inner") || form;
-        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        target.scrollIntoView({
-          behavior: reduce ? "auto" : "smooth",
-          block: "center",
-          inline: "nearest",
+      if (navForm && navInput) {
+        navForm.addEventListener("submit", function (e) {
+          if (mqStickyNavCta.matches) return;
+          e.preventDefault();
+          if (input) input.value = navInput.value;
+          if (typeof form.requestSubmit === "function") {
+            form.requestSubmit();
+          } else {
+            form.submit();
+          }
         });
-        if (history.replaceState) {
-          history.replaceState(null, "", "#check-availability");
-        }
-        var focusInput = function () {
-          if (input) input.focus({ preventScroll: true });
-        };
-        if (reduce) {
-          focusInput();
+      }
+
+      mobileForm.addEventListener("submit", function (e) {
+        if (!mqStickyNavCta.matches) return;
+        e.preventDefault();
+        if (input) input.value = mobileInput.value;
+        if (typeof form.requestSubmit === "function") {
+          form.requestSubmit();
         } else {
-          window.setTimeout(focusInput, 480);
+          form.submit();
         }
       });
     })();
