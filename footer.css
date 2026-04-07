@@ -95,7 +95,7 @@
   margin: 0;
   font-family: var(--font-family-display);
   font-weight: var(--font-weight-extrabold, 800);
-  font-size: clamp(2.6rem, 6.5vw, 5.5rem);
+  font-size: clamp(2rem, 5vw, 4rem);
   line-height: 1;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -116,6 +116,7 @@
 /* Beat global .text-primary / .text-brand on spans so both lines match the heading */
 #footer-cta-heading.footer-cta__title .heading-line {
   color: var(--color-white);
+  letter-spacing: 0;
 }
 
 /* Subheadline */
@@ -462,8 +463,15 @@
    ============================================================================= */
 
 @media (max-width: 900px) {
+  .footer-block {
+    /* Visual spacing + same clearance as former body padding (fixed nav CTA + home indicator) — keeps reserve inside orange band */
+    padding-bottom: calc(
+      clamp(2.75rem, 8vw, 4.25rem) + 3.5rem + env(safe-area-inset-bottom, 0px)
+    );
+  }
+
   .footer-main {
-    padding-bottom: clamp(1.5rem, 4.5vw, 2.75rem);
+    padding-bottom: clamp(2rem, 6vw, 3.25rem);
   }
 
   .footer-nav {
@@ -488,8 +496,14 @@
    ============================================================================= */
 
 @media (max-width: 600px) {
+  .footer-block {
+    padding-bottom: calc(
+      clamp(3.5rem, 11vw, 6rem) + 3.5rem + env(safe-area-inset-bottom, 0px)
+    );
+  }
+
   .footer-main {
-    padding-bottom: clamp(2rem, 6vw, 3.5rem);
+    padding-bottom: clamp(2.5rem, 8vw, 4.5rem);
   }
 
   .footer-card {
@@ -497,7 +511,8 @@
   }
 
   #footer-cta-heading.footer-cta__title {
-    font-size: clamp(2rem, 8vw, 3rem);
+    font-size: clamp(1.65rem, 6.5vw, 2.5rem);
+    letter-spacing: 0;
   }
 
   /* Footer CTA search matches hero on mobile — see global.css @media (max-width: 900px) */

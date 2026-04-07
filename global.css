@@ -18,7 +18,8 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
-  --font-weight-black: 900;
+  /* Display / marketing headings — same numeric weight as extrabold (no 900 in type ramp) */
+  --font-weight-black: var(--font-weight-extrabold);
 
   /* ——— Typography — line-height — */
   --line-height-display: 0.95;
@@ -543,10 +544,7 @@ h5 {
     outline-offset: 2px;
   }
 
-  body {
-    /* Space for fixed pill CTA + safe area (tighter than desktop so less gap below footer) */
-    padding-bottom: calc(3.5rem + env(safe-area-inset-bottom, 0px));
-  }
+  /* Scroll clearance for fixed .nav-cta-mobile lives on .footer-block (footer.css) so it’s orange, not a white body strip */
 
   .site-header {
     border-bottom: 1px solid var(--color-border-subtle);
@@ -1603,11 +1601,11 @@ a.pricing-card:visited {
   will-change: transform;
 }
 
-/* IOYT headline: bespoke clamp (not a single --text-* step) */
+/* IOYT headline: bespoke clamp (not a single --text-* step) — Barlow Semi Condensed 800 */
 .ioyt__headline h2 {
   font-family: var(--font-family-display);
   font-size: clamp(48px, 7.5vw, var(--type-max-ioyt-headline));
-  font-weight: var(--font-weight-black);
+  font-weight: var(--font-weight-extrabold);
   text-transform: uppercase;
   letter-spacing: -0.01em;
   line-height: 0.95;
@@ -1838,6 +1836,8 @@ a.pricing-card:visited {
   }
 
   .ioyt__headline h2 {
+    font-family: var(--font-family-display);
+    font-weight: var(--font-weight-extrabold);
     color: #ffffff;
     font-size: clamp(36px, 9vw, 56px);
   }
@@ -1924,6 +1924,8 @@ a.pricing-card:visited {
   }
 
   .ioyt__headline h2 {
+    font-family: var(--font-family-display);
+    font-weight: var(--font-weight-extrabold);
     color: #ffffff !important;
   }
 
