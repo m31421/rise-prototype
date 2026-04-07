@@ -238,7 +238,8 @@ h5 {
 @media (max-width: 900px) {
   :root {
     /* h2 step — higher floor on small viewports (default --text-8 min was 2rem) */
-    --text-8: clamp(2.375rem, 6.25vw + 0.55rem, 3rem);
+    --text-8: clamp(2.5rem, 6.75vw + 0.6rem, 3.25rem);
+    --font-size-section-h2: clamp(2.65rem, 6.75vw + 0.72rem, 3.75rem);
     /* h3 step — default --text-6 was fixed 1.625rem */
     --text-6: clamp(1.75rem, 4vw + 0.5rem, 2rem);
   }
@@ -485,6 +486,27 @@ h5 {
 }
 
 @media (min-width: 901px) {
+  /* “Check availability” fades in after scrolling past the hero; slot stays reserved so primary nav stays centered (see index.html IO) */
+  .nav-cta-wrap:not(.nav-cta-wrap--visible) .nav-cta {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .nav-cta-wrap.nav-cta-wrap--visible .nav-cta {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-cta-wrap .nav-cta {
+    transition:
+      opacity 0.25s ease,
+      visibility 0.25s ease,
+      filter var(--motion-duration) var(--motion-ease),
+      transform var(--motion-duration) var(--motion-ease);
+  }
+
   .nav-cta-wrap + .nav-account {
     margin-left: 16px;
   }
@@ -535,9 +557,21 @@ h5 {
     text-align: center;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.14);
     transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.25s ease,
+      visibility 0.25s ease;
   }
 
-  .nav-cta-mobile:active {
+  .nav-cta-mobile.nav-cta-mobile--visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-cta-mobile.nav-cta-mobile--visible:active {
     transform: translateX(-50%) scale(0.98);
   }
 
@@ -915,7 +949,7 @@ h5 {
   .hero__photo-wrap--tr {
     width: min(108px, 29vw);
     right: max(-1.35rem, -7vw);
-    top: calc(-1 * var(--hero-tr-overlap) + 2.75rem);
+    top: calc(-1 * var(--hero-tr-overlap) + 4rem);
   }
 
   .hero__photo-wrap--cr {
@@ -1140,8 +1174,14 @@ h5 {
     transform: none;
   }
 
-  .nav-cta-mobile:active {
+  .nav-cta-mobile.nav-cta-mobile--visible:active {
     transform: translateX(-50%);
+  }
+
+  @media (max-width: 900px) {
+    .nav-cta-mobile {
+      transition: none;
+    }
   }
 }
 
@@ -1153,7 +1193,7 @@ h5 {
   .hero__photo-wrap--tr {
     width: min(100px, 28vw);
     right: max(-1.5rem, -8vw);
-    top: calc(-1 * var(--hero-tr-overlap) + 3.25rem);
+    top: calc(-1 * var(--hero-tr-overlap) + 4.5rem);
   }
 
   .hero__photo-wrap--cr {
@@ -1478,7 +1518,7 @@ a.pricing-card:visited {
 
 @media (max-width: 768px) {
   :root {
-    --font-size-section-h2: clamp(32px, 8vw, 52px);
+    --font-size-section-h2: clamp(36px, 9vw, 58px);
   }
 
   .pricing {

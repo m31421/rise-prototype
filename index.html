@@ -69,7 +69,13 @@
         </nav>
 
         <div class="nav-cta-wrap">
-          <a class="nav-cta" href="#check-availability" aria-label="Check availability at your address">Check availability</a>
+          <a
+            class="nav-cta"
+            href="#check-availability"
+            aria-label="Check availability at your address"
+            aria-hidden="true"
+            tabindex="-1"
+          >Check availability</a>
         </div>
 
         <div class="nav-account">
@@ -764,6 +770,99 @@
   </footer>
 
   <a class="nav-cta-mobile" href="#check-availability" aria-label="Check availability at your address">Check availability</a>
+
+  <script>
+    (function () {
+      var cta = document.querySelector(".nav-cta-mobile");
+      var navCta = document.querySelector(".nav-cta");
+      var navCtaWrap = document.querySelector(".nav-cta-wrap");
+      var hero = document.querySelector(".hero");
+      var form = document.getElementById("check-availability");
+      var input = document.getElementById("hero-address");
+      if (!cta || !form) return;
+
+      var mqMobile = window.matchMedia("(max-width: 900px)");
+
+      if (mqMobile.matches) {
+        cta.setAttribute("aria-hidden", "true");
+        cta.setAttribute("tabindex", "-1");
+      }
+
+      function setDesktopNavPastHero(pastHero) {
+        if (!navCtaWrap || !navCta) return;
+        if (pastHero) {
+          navCtaWrap.classList.add("nav-cta-wrap--visible");
+          navCta.removeAttribute("aria-hidden");
+          navCta.removeAttribute("tabindex");
+        } else {
+          navCtaWrap.classList.remove("nav-cta-wrap--visible");
+          navCta.setAttribute("aria-hidden", "true");
+          navCta.setAttribute("tabindex", "-1");
+        }
+      }
+
+      function setCtaPastHero(pastHero) {
+        if (!mqMobile.matches) {
+          cta.classList.remove("nav-cta-mobile--visible");
+          cta.removeAttribute("aria-hidden");
+          cta.removeAttribute("tabindex");
+          setDesktopNavPastHero(pastHero);
+          return;
+        }
+        setDesktopNavPastHero(false);
+        if (pastHero) {
+          cta.classList.add("nav-cta-mobile--visible");
+          cta.setAttribute("aria-hidden", "false");
+          cta.removeAttribute("tabindex");
+        } else {
+          cta.classList.remove("nav-cta-mobile--visible");
+          cta.setAttribute("aria-hidden", "true");
+          cta.setAttribute("tabindex", "-1");
+        }
+      }
+
+      if (hero) {
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              setCtaPastHero(!entry.isIntersecting);
+            });
+          },
+          { threshold: 0, rootMargin: "0px" }
+        );
+        io.observe(hero);
+        mqMobile.addEventListener("change", function () {
+          var r = hero.getBoundingClientRect();
+          var vh = window.innerHeight || document.documentElement.clientHeight;
+          var intersects = r.bottom > 0 && r.top < vh;
+          setCtaPastHero(!intersects);
+        });
+      }
+
+      cta.addEventListener("click", function (e) {
+        if (!mqMobile.matches) return;
+        e.preventDefault();
+        var target = form.querySelector(".hero__search-inner") || form;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        target.scrollIntoView({
+          behavior: reduce ? "auto" : "smooth",
+          block: "center",
+          inline: "nearest",
+        });
+        if (history.replaceState) {
+          history.replaceState(null, "", "#check-availability");
+        }
+        var focusInput = function () {
+          if (input) input.focus({ preventScroll: true });
+        };
+        if (reduce) {
+          focusInput();
+        } else {
+          window.setTimeout(focusInput, 480);
+        }
+      });
+    })();
+  </script>
 
   <!-- Scripts — GSAP first, then section scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
