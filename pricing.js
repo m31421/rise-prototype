@@ -19,7 +19,8 @@
       rotateY: 0,
       x: 0,
     });
-    gsap.set(centerCard, { scale: 1.02 });
+    /* Featured plan is first column (Pro): keep slight scale emphasis */
+    gsap.set(leftCard, { scale: 1.02 });
     return;
   }
 
@@ -46,11 +47,6 @@
       })
       .to(
         leftCard,
-        { autoAlpha: 1, y: 0, duration: durM, ease: "power2.out" },
-        introDelayM
-      )
-      .to(
-        centerCard,
         {
           autoAlpha: 1,
           y: 0,
@@ -58,6 +54,11 @@
           duration: durM,
           ease: "power2.out",
         },
+        introDelayM
+      )
+      .to(
+        centerCard,
+        { autoAlpha: 1, y: 0, duration: durM, ease: "power2.out" },
         introDelayM + staggerM
       )
       .to(
@@ -69,21 +70,22 @@
   }
 
   /* Each card starts hidden / offset so they can enter one after another. */
+  /* Order: Pro (featured, left) → Power Up (center) → Family (right) */
   gsap.set(leftCard, {
-    rotateY: 5,
-    x: -12,
-    scale: 0.97,
-    autoAlpha: 0,
-    y: 36,
-    transformOrigin: "right center",
-  });
-  gsap.set(centerCard, {
     rotateY: 0,
     x: 0,
     scale: 0.94,
     autoAlpha: 0,
     y: 44,
     transformOrigin: "center center",
+  });
+  gsap.set(centerCard, {
+    rotateY: 5,
+    x: -12,
+    scale: 0.97,
+    autoAlpha: 0,
+    y: 36,
+    transformOrigin: "right center",
   });
   gsap.set(rightCard, {
     rotateY: -5,
@@ -112,9 +114,8 @@
     leftCard,
     {
       rotateY: 0,
-      x: 0,
+      scale: 1.02,
       y: 0,
-      scale: 1,
       autoAlpha: 1,
       duration: cardDuration,
       ease: "power3.out",
@@ -126,8 +127,9 @@
     centerCard,
     {
       rotateY: 0,
-      scale: 1.02,
+      x: 0,
       y: 0,
+      scale: 1,
       autoAlpha: 1,
       duration: cardDuration,
       ease: "power3.out",
@@ -179,23 +181,23 @@
     if (coarse || typeof Tilt === "undefined") return;
 
     new Tilt(leftCard, {
-      maxRotation: 3,
-      scale: 1.01,
-      perspective: 1200,
-      glare: true,
-      glareOpacity: 0.05,
-      onMove: makeShadowUpdater(leftCard, 24, 0.07),
-      onRest: tiltRestGsap(leftCard, { rotateY: 0, x: 0, scale: 1 }),
-    });
-
-    new Tilt(centerCard, {
       maxRotation: 4,
       scale: 1.02,
       perspective: 1000,
       glare: true,
       glareOpacity: 0.08,
-      onMove: makeShadowUpdater(centerCard, 32, 0.1),
-      onRest: tiltRestGsap(centerCard, { rotateY: 0, x: 0, scale: 1.02 }),
+      onMove: makeShadowUpdater(leftCard, 32, 0.1),
+      onRest: tiltRestGsap(leftCard, { rotateY: 0, x: 0, scale: 1.02 }),
+    });
+
+    new Tilt(centerCard, {
+      maxRotation: 3,
+      scale: 1.01,
+      perspective: 1200,
+      glare: true,
+      glareOpacity: 0.05,
+      onMove: makeShadowUpdater(centerCard, 24, 0.07),
+      onRest: tiltRestGsap(centerCard, { rotateY: 0, x: 0, scale: 1 }),
     });
 
     new Tilt(rightCard, {

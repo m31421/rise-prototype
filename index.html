@@ -9,10 +9,11 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&family=Barlow+Semi+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- Styles — single stylesheet -->
+  <!-- Styles -->
   <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="footer.css" />
 
   <!-- IOYT scroll cards: preload so decode is ready for sticky scroll (intrinsic sizes on each img) -->
   <link rel="preload" as="image" href="images/scroll-img-01.png?v=20260401" />
@@ -27,8 +28,8 @@
     }
   </script>
 
-  <!-- Site header (nav) -->
-  <header class="site-header">
+  <!-- COMPONENT: Site header — global.css .site-header -->
+  <header class="site-header" data-component="site-header">
     <div class="nav-inner">
       <a class="logo" href="/" aria-label="Rise Internet home">
         <img src="Logo.svg" alt="" width="123" height="48" decoding="async" />
@@ -95,10 +96,10 @@
 
   <main id="main">
 
-    <!-- 1. Hero -->
-    <section class="hero" aria-labelledby="hero-heading">
+    <!-- COMPONENT: Hero — global.css .hero; hero-parallax.js; tilt.js on .hero__photo-tilt -->
+    <section class="hero" data-component="hero" aria-labelledby="hero-heading">
       <div class="hero__announcement">
-        <p class="text-p text-p--announcement">
+        <p class="body-md">
           <a href="#refer">Know someone who deserves better internet? <span class="hero__announcement__link-em">Refer a friend</span> and you both win.</a>
         </p>
       </div>
@@ -160,7 +161,7 @@
             SPEED, SERVICE,<br />
             AND VALUE
           </h1>
-          <p class="hero__subhead text-p text-p--subhead">
+          <p class="hero__subhead body-xl">
             See what you can do with reliable internet + remarkable service.
           </p>
 
@@ -195,8 +196,8 @@
       </div>
     </section>
 
-    <!-- 2. Pricing -->
-    <section class="pricing" aria-labelledby="pricing-heading">
+    <!-- COMPONENT: Pricing — global.css .pricing; pricing.js -->
+    <section class="pricing" data-component="pricing" aria-labelledby="pricing-heading">
       <div class="pricing__inner">
         <div class="pricing__header">
           <h2 id="pricing-heading">
@@ -208,108 +209,11 @@
         <div class="pricing__grid">
           <a
             href="#"
-            class="pricing-card"
-            data-pricing-card="left"
-            aria-label="Check availability for Family plan"
-          >
-            <div class="pricing-card__body">
-              <div class="pricing-card__speed-block">
-                <span class="pricing-card__up-to">Up to</span>
-                <p class="pricing-card__speed">150 Mbps</p>
-                <h4>Family</h4>
-              </div>
-
-              <div class="pricing-card__price-block">
-                <span class="pricing-card__price">$29.99</span>
-                <span class="pricing-card__per-month">/ month</span>
-              </div>
-
-              <ul class="pricing-card__features">
-                <li class="pricing-card__feature">
-                  <span class="pricing-card__feature-name">Total Home Advanced Wi-Fi</span>
-                  <span class="pricing-card__feature-value">$15.00</span>
-                </li>
-                <li class="pricing-card__feature">
-                  <span class="pricing-card__feature-name">Connected device support</span>
-                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">10 devices</span>
-                </li>
-                <li class="pricing-card__feature">
-                  <span class="pricing-card__feature-name">Simultaneous HD video streaming</span>
-                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">2+ devices</span>
-                </li>
-                <li class="pricing-card__feature">
-                  <span class="pricing-card__feature-name">HD video calling</span>
-                  <span class="pricing-card__feature-value">
-                    <span aria-hidden="true">&#10003;</span>
-                    <span class="sr-only">Included</span>
-                  </span>
-                </li>
-                <li class="pricing-card__feature">
-                  <span class="pricing-card__feature-name">Connection fee</span>
-                  <span class="pricing-card__feature-value">$99.50</span>
-                </li>
-              </ul>
-
-              <p class="pricing-card__tagline text-p text-p--caption">Smart home support &amp; online gaming performance</p>
-
-              <span class="pricing-card__cta">Check Availability</span>
-            </div>
-          </a>
-
-          <a
-            href="#"
             class="pricing-card pricing-card--featured"
-            data-pricing-card="center"
-            aria-label="Check availability for Power Up plan, recommended"
+            data-pricing-card="left"
+            aria-label="Check availability for Pro plan, recommended"
           >
             <div class="pricing-card__badge">Recommended</div>
-            <div class="pricing-card__body">
-              <div class="pricing-card__speed-block">
-                <span class="pricing-card__up-to">Up to</span>
-                <p class="pricing-card__speed">500 Mbps</p>
-                <h4>Power Up</h4>
-              </div>
-
-              <div class="pricing-card__price-block">
-                <span class="pricing-card__price">$49.99</span>
-                <span class="pricing-card__per-month">/ month</span>
-              </div>
-
-              <ul class="pricing-card__features">
-                <li class="pricing-card__feature">
-                  <span class="pricing-card__feature-name">Total Home Advanced Wi-Fi</span>
-                  <span class="pricing-card__feature-value">$7.50</span>
-                </li>
-                <li class="pricing-card__feature">
-                  <span class="pricing-card__feature-name">Connected device support</span>
-                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">20+ devices</span>
-                </li>
-                <li class="pricing-card__feature">
-                  <span class="pricing-card__feature-name">Simultaneous HD video streaming</span>
-                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">5+ devices</span>
-                </li>
-                <li class="pricing-card__feature">
-                  <span class="pricing-card__feature-name">HD video calling</span>
-                  <span class="pricing-card__feature-value">
-                    <span aria-hidden="true">&#10003;</span>
-                    <span class="sr-only">Included</span>
-                  </span>
-                </li>
-                <li class="pricing-card__feature">
-                  <span class="pricing-card__feature-name">Connection fee</span>
-                  <span class="pricing-card__feature-value">$49.50</span>
-                </li>
-              </ul>
-
-              <p class="pricing-card__tagline text-p text-p--caption">
-                Full smart home connection, fast large file downloads and uploads, competitive online gaming
-              </p>
-
-              <span class="pricing-card__cta">Check Availability</span>
-            </div>
-          </a>
-
-          <a href="#" class="pricing-card" data-pricing-card="right" aria-label="Check availability for Pro plan">
             <div class="pricing-card__body">
               <div class="pricing-card__speed-block">
                 <span class="pricing-card__up-to">Up to</span>
@@ -348,9 +252,106 @@
                 </li>
               </ul>
 
-              <p class="pricing-card__tagline text-p text-p--caption">
+              <p class="pricing-card__tagline body-sm">
                 Professional online gaming, emerging technology needs, massive file downloads and uploads
               </p>
+
+              <span class="pricing-card__cta">Check Availability</span>
+            </div>
+          </a>
+
+          <a
+            href="#"
+            class="pricing-card"
+            data-pricing-card="center"
+            aria-label="Check availability for Power Up plan"
+          >
+            <div class="pricing-card__body">
+              <div class="pricing-card__speed-block">
+                <span class="pricing-card__up-to">Up to</span>
+                <p class="pricing-card__speed">500 Mbps</p>
+                <h4>Power Up</h4>
+              </div>
+
+              <div class="pricing-card__price-block">
+                <span class="pricing-card__price">$49.99</span>
+                <span class="pricing-card__per-month">/ month</span>
+              </div>
+
+              <ul class="pricing-card__features">
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Total Home Advanced Wi-Fi</span>
+                  <span class="pricing-card__feature-value">$7.50</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Connected device support</span>
+                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">20+ devices</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Simultaneous HD video streaming</span>
+                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">5+ devices</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">HD video calling</span>
+                  <span class="pricing-card__feature-value">
+                    <span aria-hidden="true">&#10003;</span>
+                    <span class="sr-only">Included</span>
+                  </span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Connection fee</span>
+                  <span class="pricing-card__feature-value">$49.50</span>
+                </li>
+              </ul>
+
+              <p class="pricing-card__tagline body-sm">
+                Full smart home connection, fast large file downloads and uploads, competitive online gaming
+              </p>
+
+              <span class="pricing-card__cta">Check Availability</span>
+            </div>
+          </a>
+
+          <a href="#" class="pricing-card" data-pricing-card="right" aria-label="Check availability for Family plan">
+            <div class="pricing-card__body">
+              <div class="pricing-card__speed-block">
+                <span class="pricing-card__up-to">Up to</span>
+                <p class="pricing-card__speed">150 Mbps</p>
+                <h4>Family</h4>
+              </div>
+
+              <div class="pricing-card__price-block">
+                <span class="pricing-card__price">$29.99</span>
+                <span class="pricing-card__per-month">/ month</span>
+              </div>
+
+              <ul class="pricing-card__features">
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Total Home Advanced Wi-Fi</span>
+                  <span class="pricing-card__feature-value">$15.00</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Connected device support</span>
+                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">10 devices</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Simultaneous HD video streaming</span>
+                  <span class="pricing-card__feature-value pricing-card__feature-value--bold">2+ devices</span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">HD video calling</span>
+                  <span class="pricing-card__feature-value">
+                    <span aria-hidden="true">&#10003;</span>
+                    <span class="sr-only">Included</span>
+                  </span>
+                </li>
+                <li class="pricing-card__feature">
+                  <span class="pricing-card__feature-name">Connection fee</span>
+                  <span class="pricing-card__feature-value">$99.50</span>
+                </li>
+              </ul>
+
+              <p class="pricing-card__tagline body-sm">Smart home support &amp; online gaming performance</p>
 
               <span class="pricing-card__cta">Check Availability</span>
             </div>
@@ -359,8 +360,8 @@
       </div>
     </section>
 
-    <!-- 3. Internet on Your Terms -->
-    <section class="ioyt" id="internet-on-your-terms">
+    <!-- COMPONENT: Internet on Your Terms — global.css .ioyt; InternetOnYourTerms.js -->
+    <section class="ioyt" data-component="ioyt" id="internet-on-your-terms">
       <div class="ioyt__stage">
         <div class="ioyt__headline">
           <h2>
@@ -473,14 +474,14 @@
       </div>
     </section>
 
-    <!-- 4. No More Compromise -->
-    <section class="nmc" aria-labelledby="nmc-heading">
+    <!-- COMPONENT: No More Compromise — global.css .nmc -->
+    <section class="nmc" data-component="nmc" aria-labelledby="nmc-heading">
       <div class="nmc__inner">
         <h2 id="nmc-heading">
           <span class="text-primary heading-line">NO MORE</span>
           <span class="text-brand heading-line">COMPROMISE.</span>
         </h2>
-        <p class="nmc__lead text-p text-p--lead">
+        <p class="nmc__lead body-lg">
           You shouldn&apos;t have to choose between great service and great value. Rise brings you the speed you need,
           unlimited data, and flexible plans on your terms.
         </p>
@@ -507,8 +508,8 @@
       </div>
     </section>
 
-    <!-- 5. Go Faster -->
-    <section class="gofaster">
+    <!-- COMPONENT: Go Faster — global.css .gofaster; GoFaster.js -->
+    <section class="gofaster" data-component="gofaster">
       <div class="gofaster__inner">
 
         <div class="gofaster__top-row">
@@ -518,7 +519,7 @@
             </h2>
           </div>
           <div class="gofaster__intro-col">
-            <p class="gofaster__intro-text text-p text-p--standard">
+            <p class="gofaster__intro-text body-lg">
               Up to 1 Gbps of pure speed — built for everything you need.
               Stream, work, game, and connect every device without breaking
               a sweat.
@@ -531,7 +532,7 @@
 
           <div class="gofaster__team-col">
             <h3>We're on your team</h3>
-            <p class="gofaster__team-body text-p text-p--compact">
+            <p class="gofaster__team-body body-md">
               You've got fun things to do. Work things. Life things. The last
               thing you need is to be stuck waiting around. Our local
               technicians help keep you online wherever you live. And if you
@@ -610,36 +611,40 @@
         </div>
       </div>
     </section>
+  </main>
 
-    <!-- 6. Better Internet CTA -->
-    <section class="better-cta" aria-labelledby="better-cta-heading">
-      <div class="better-cta__inner">
-        <h2 id="better-cta-heading">
-          YOU DESERVE BETTER INTERNET,<br />
-          LET&apos;S MAKE IT HAPPEN.
+  <!-- COMPONENT: Footer — footer.css (.footer-block, .footer-cta, .footer-card, .footer-legal) -->
+  <footer class="site-footer" data-component="site-footer">
+    <!-- Orange gradient spans CTA + footer card (see .footer-block) -->
+    <div class="footer-block">
+    <section class="footer-cta" aria-labelledby="footer-cta-heading">
+      <div class="footer-cta__inner">
+        <h2 id="footer-cta-heading" class="footer-cta__title">
+          <span class="heading-line">YOU DESERVE BETTER INTERNET,</span>
+          <span class="heading-line">LET&apos;S MAKE IT HAPPEN.</span>
         </h2>
-        <p class="better-cta__lead text-p text-p--on-brand">No hidden fees. No contracts. No hassle.</p>
+        <p class="footer-cta__sub">No hidden fees. No contracts. No hassle.</p>
         <form
-          class="hero__search"
+          class="footer-cta__form"
           role="search"
-          aria-label="Check Rise Internet availability for your address"
+          aria-label="Check service availability at your address"
           action="#"
           method="get"
         >
-          <div class="hero__search-inner">
-            <label for="cta-address" class="visually-hidden">Address, city, or ZIP code</label>
+          <div class="footer-cta__search-inner">
+            <label for="footer-cta-address" class="visually-hidden">Address, city, or ZIP code</label>
             <input
-              id="cta-address"
-              class="hero__input"
+              id="footer-cta-address"
+              class="footer-cta__input"
               type="search"
               name="q"
               placeholder="Enter your address, city or zip code"
               autocomplete="street-address"
               inputmode="text"
             />
-            <button type="submit" class="hero__submit" aria-label="Check availability">
-              <span class="hero__submit-text">Check Availability</span>
-              <svg class="hero__submit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <button type="submit" class="footer-cta__submit" aria-label="Check availability">
+              <span class="footer-cta__submit-text">Check Availability</span>
+              <svg class="footer-cta__submit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </button>
@@ -647,11 +652,115 @@
         </form>
       </div>
     </section>
-  </main>
 
-  <!-- Footer -->
-  <footer class="site-footer" aria-label="Footer — coming soon">
-    <!-- TODO: add markup -->
+    <div class="footer-main">
+      <div class="footer-card">
+        <nav class="footer-nav" aria-label="Footer">
+          <div class="footer-nav__group">
+            <p class="footer-nav__label" id="footer-nav-internet">Internet</p>
+            <ul class="footer-nav__list" aria-labelledby="footer-nav-internet">
+              <li><a href="#check-availability">Check Availability</a></li>
+              <li><a href="#pricing-heading">Compare Plans</a></li>
+              <li><a href="#plans">Coverage Map</a></li>
+              <li><a href="#plans">Fiber Internet</a></li>
+              <li><a href="#business">Business</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav__group">
+            <p class="footer-nav__label" id="footer-nav-addons">Add-ons</p>
+            <ul class="footer-nav__list" aria-labelledby="footer-nav-addons">
+              <li><a href="#internet-on-your-terms">Advanced Wi-Fi</a></li>
+              <li><a href="#support">Digital Phone</a></li>
+              <li><a href="#plans">Service Upgrades</a></li>
+              <li><a href="#internet-on-your-terms">eero Router</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav__group">
+            <p class="footer-nav__label" id="footer-nav-about">About Rise</p>
+            <ul class="footer-nav__list" aria-labelledby="footer-nav-about">
+              <li><a href="#about">Who We Are</a></li>
+              <li><a href="#about">Customer Reviews</a></li>
+              <li><a href="#about">Rise Blog</a></li>
+              <li><a href="#about">News &amp; Events</a></li>
+              <li><a href="#about">Jobs</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav__group">
+            <p class="footer-nav__label" id="footer-nav-support">Support</p>
+            <ul class="footer-nav__list" aria-labelledby="footer-nav-support">
+              <li><a href="#support">Support Center</a></li>
+              <li><a href="#support">24/7 Support</a></li>
+              <li><a href="#support">FAQs</a></li>
+              <li><a href="#support">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav__group">
+            <p class="footer-nav__label" id="footer-nav-account">My Account</p>
+            <ul class="footer-nav__list" aria-labelledby="footer-nav-account">
+              <li><a href="#account">MyRise Portal</a></li>
+              <li><a href="#account">Pay My Bill</a></li>
+              <li><a href="#support">Account Support</a></li>
+              <li><a href="#refer">Refer a Friend</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav__phone">
+            <a class="footer-phone" href="tel:+18442007473">
+              <svg class="footer-phone__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              <span>1.844.200.7473</span>
+            </a>
+          </div>
+        </nav>
+
+        <div class="footer-card__bottom">
+          <ul class="footer-social" aria-label="Social media">
+            <li>
+              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2c-.3-1.1-1.2-2-2.3-2.3C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.2.4C1.7 4.2.8 5.1.5 6.2 0 8.1 0 12 0 12s0 3.9.5 5.8c.3 1.1 1.2 2 2.3 2.3 1.9.4 9.2.4 9.2.4s7.3 0 9.2-.4c1.1-.3 2-1.2 2.3-2.3.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.5v-7l6 3.5-6 3.5z"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.x.com/" target="_blank" rel="noopener noreferrer" aria-label="X">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+            </li>
+          </ul>
+          <a class="footer-mark" href="/" aria-label="Rise Internet home">
+            <img src="Logo.svg" alt="" width="123" height="48" decoding="async" />
+          </a>
+        </div>
+
+        <div class="footer-legal">
+          <div class="footer-legal__inner">
+            <div class="footer-legal__left">
+              <p class="footer-legal__copy">© 2026 RISE INTERNET</p>
+            </div>
+            <ul class="footer-legal__links">
+              <li><a href="#">All Policies and Agreements</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Open Internet Statement and Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
   </footer>
 
   <a class="nav-cta-mobile" href="#check-availability" aria-label="Check availability at your address">Check availability</a>
@@ -704,17 +813,16 @@
   </script>
 
 <!--
-  POST-ASSEMBLY CHECKLIST
-  [ ] All section classes present: .hero .pricing .ioyt .nmc .gofaster .better-cta
+  POST-ASSEMBLY CHECKLIST (single index.html; sections are data-component hooks)
+  [ ] Components present: site-header, hero, pricing, ioyt, nmc, gofaster, site-footer
   [ ] Google Fonts loaded once
-  [ ] global.css linked once
+  [ ] global.css and footer.css linked once
   [ ] GSAP loaded once
   [ ] All image paths use images/ folder
-  [ ] No inline <style> blocks from standalone files
   [ ] No duplicate IDs across sections
-  [ ] hero-parallax.js loaded after .hero markup exists in DOM
-  [ ] InternetOnYourTerms.js loaded after .ioyt markup exists in DOM
-  [ ] GoFaster.js loaded after .gofaster markup exists in DOM
+  [ ] hero-parallax.js after [data-component="hero"]
+  [ ] InternetOnYourTerms.js after [data-component="ioyt"]
+  [ ] GoFaster.js after [data-component="gofaster"]
 -->
 </body>
 </html>

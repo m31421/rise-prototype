@@ -912,22 +912,22 @@ h5 {
   }
 
   .hero__photo-wrap--tr {
-    width: min(132px, 36vw);
-    right: max(-1rem, -4vw);
-    top: calc(-1 * var(--hero-tr-overlap));
+    width: min(108px, 29vw);
+    right: max(-1.35rem, -7vw);
+    top: calc(-1 * var(--hero-tr-overlap) + 1.5rem);
   }
 
   .hero__photo-wrap--cr {
     width: min(180px, 48vw);
-    top: clamp(82vh, 90%, 100vh);
+    top: clamp(76vh, 84%, 94vh);
     bottom: auto;
     right: max(-0.35rem, 1vw);
   }
 
   .hero__photo-wrap--bl {
-    width: min(210px, 56vw);
+    width: min(172px, 46vw);
     top: auto;
-    left: max(-1.25rem, -3vw);
+    left: max(-2rem, -8vw);
     bottom: clamp(5.25rem, 13vw, 7.25rem);
     transform: none;
   }
@@ -1012,7 +1012,7 @@ h5 {
 .hero__photo-wrap--cr {
   width: clamp(240px, 30vw, 380px);
   height: auto;
-  top: clamp(65vh, 77%, 92vh);
+  top: clamp(58vh, 70%, 85vh);
   right: max(-1rem, -2vw);
 }
 
@@ -1150,16 +1150,19 @@ h5 {
   }
 
   .hero__photo-wrap--tr {
-    width: min(120px, 32vw);
+    width: min(100px, 28vw);
+    right: max(-1.5rem, -8vw);
+    top: calc(-1 * var(--hero-tr-overlap) + 1.75rem);
   }
 
   .hero__photo-wrap--cr {
     width: min(164px, 44vw);
-    top: clamp(86vh, 94%, 100vh);
+    top: clamp(80vh, 88%, 98vh);
   }
 
   .hero__photo-wrap--bl {
-    width: min(190px, 52vw);
+    width: min(156px, 42vw);
+    left: max(-2.25rem, -10vw);
   }
 }
 
@@ -1308,10 +1311,10 @@ a.pricing-card:visited {
   margin: 0 0 4px;
   font-family: var(--font-family-display);
   font-size: clamp(2.5rem, 8vw, 3rem);
-  font-weight: var(--font-weight-black);
+  font-weight: var(--font-weight-extrabold);
   line-height: var(--line-height-snug);
   color: var(--color-text-primary);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .pricing-card__speed-block h4 {
@@ -1475,7 +1478,7 @@ a.pricing-card:visited {
 
 @media (max-width: 768px) {
   .pricing {
-    padding: 48px 5%;
+    padding: clamp(4.5rem, 12vw, 6rem) 5% 48px;
   }
 
   .pricing__header h2 {
