@@ -7,18 +7,130 @@
   <title>RISE Internet — Style guide</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="footer.css" />
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      .sg__pricing-secondary-panel--light .pricing-card.sg__pricing-secondary-card.sg__pricing-secondary--hover:not(.pricing-card--featured) .pricing-card__cta:not(:disabled):not([aria-disabled="true"]),
+      .sg__pricing-secondary-panel--light .pricing-card.sg__pricing-secondary-card.sg__pricing-secondary--active:not(.pricing-card--featured) .pricing-card__cta:not(:disabled):not([aria-disabled="true"]),
+      .sg .sg__pricing-secondary-panel--dark .pricing-card.sg__pricing-secondary-card.sg__pricing-secondary--hover:not(.pricing-card--featured) .pricing-card__cta:not(:disabled):not([aria-disabled="true"]),
+      .sg .sg__pricing-secondary-panel--dark .pricing-card.sg__pricing-secondary-card.sg__pricing-secondary--active:not(.pricing-card--featured) .pricing-card__cta:not(:disabled):not([aria-disabled="true"]) {
+        transform: none;
+      }
+    }
     /* Demo chrome only — does not define or override design tokens */
     .sg {
       font-family: var(--font-family-sans);
-      color: var(--color-neutral-900);
-      background: var(--color-surface-muted);
+      color: var(--color-black-100);
+      background: var(--color-grey-100);
       min-height: 100vh;
-      padding: 2rem 1.5rem 4rem;
+      margin: 0;
+      padding: 0;
     }
-    /* Neutralize global semantic heading styles (this page is a token preview, not marketing layout) */
+    .sg__layout {
+      display: grid;
+      grid-template-columns: minmax(200px, 13.5rem) minmax(0, 1fr);
+      gap: 0;
+      max-width: none;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem clamp(1rem, 3vw, 2.5rem) 4rem;
+      align-items: start;
+      box-sizing: border-box;
+    }
+    .sg__nav {
+      position: sticky;
+      top: 1.25rem;
+      align-self: start;
+      max-height: calc(100vh - 2.5rem);
+      overflow-y: auto;
+      padding-right: 1.25rem;
+      margin-right: 0.25rem;
+      border-right: 1px solid var(--color-grey-100);
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      font-size: var(--text-2);
+    }
+    .sg__nav-title {
+      font-size: var(--text-2);
+      font-weight: var(--font-weight-semibold);
+      margin: 0 0 0.55rem;
+      color: var(--color-grey-400);
+      letter-spacing: 0.02em;
+    }
+    .sg__nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .sg__nav li {
+      margin: 0;
+    }
+    .sg__nav a {
+      display: block;
+      padding: 0.28rem 0.45rem;
+      margin: 0 -0.45rem;
+      border-radius: 6px;
+      font-size: var(--text-2);
+      line-height: 1.35;
+      color: var(--color-black-100);
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition:
+        background 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease;
+    }
+    .sg__nav a:hover,
+    .sg__nav a.is-active {
+      background: rgba(255, 255, 255, 0.98);
+      color: var(--color-orange-red);
+      border-left-color: var(--color-orange-red);
+      font-weight: var(--font-weight-semibold);
+    }
+    .sg__nav a.is-active {
+      padding: calc(0.28rem + 4px) calc(0.45rem + 4px);
+      margin: 0 calc(-0.45rem - 4px);
+      border-radius: 4px;
+    }
+    .sg__nav a:focus-visible {
+      outline: 2px solid var(--color-orange-red);
+      outline-offset: 2px;
+    }
+    .sg__main {
+      min-width: 0;
+      padding-left: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .sg__layout {
+        grid-template-columns: 1fr;
+        padding: 1.25rem 1rem 3rem;
+      }
+      .sg__nav {
+        position: static;
+        max-height: none;
+        overflow: visible;
+        padding: 0 0 1rem;
+        margin: 0 0 0.25rem;
+        border-right: none;
+        border-bottom: 1px solid var(--color-grey-100);
+      }
+      .sg__nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.15rem 0.75rem;
+      }
+      .sg__main {
+        padding-left: 0;
+      }
+    }
+    /* Neutralize global heading styles on the style guide (token preview, not page layout) */
     .sg h1,
     .sg h2,
     .sg h3,
@@ -31,53 +143,56 @@
       line-height: var(--line-height-prose);
       background: none;
       -webkit-text-fill-color: unset;
-      color: var(--color-neutral-900);
+      color: var(--color-black-100);
     }
     .sg__banner {
-      max-width: 960px;
-      margin: 0 auto 2rem;
+      max-width: none;
+      margin: 0 0 2rem;
       padding: 0.75rem 1rem;
-      background: var(--color-neutral-900);
-      color: var(--color-white);
-      font-size: var(--text-1);
+      background: var(--color-black-100);
+      color: var(--color-white-100);
+      font-size: 10px;
       border-radius: 8px;
     }
     .sg__intro {
-      max-width: 960px;
-      margin: 0 auto 2.5rem;
+      max-width: none;
+      margin: 0 0 2.5rem;
+      scroll-margin-top: 1rem;
     }
     .sg__intro h1 {
       margin: 0 0 0.5rem;
-      font-size: var(--text-6);
+      font-size: var(--font-size-h4);
       font-weight: var(--font-weight-extrabold);
+      line-height: var(--line-height-xl-heading);
     }
     .sg__note {
       margin: 0 0 1.25rem;
-      font-size: var(--text-2);
-      color: var(--color-text-muted);
+      font-size: var(--text-1);
+      color: var(--color-grey-400);
       line-height: var(--line-height-prose);
       max-width: 42rem;
     }
     .sg__section {
-      max-width: 960px;
-      margin: 0 auto 3rem;
+      max-width: none;
+      margin: 0 0 3rem;
       padding: 1.5rem;
-      background: var(--color-white);
+      background: var(--color-white-100);
       border-radius: var(--radius-card);
-      border: 1px solid var(--color-border-default);
+      border: 1px solid var(--color-grey-100);
+      scroll-margin-top: 1rem;
     }
     .sg__section h2 {
       margin: 0 0 1.25rem;
       font-size: var(--text-5);
       font-weight: var(--font-weight-bold);
       padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--color-border-subtle);
+      border-bottom: 1px solid var(--color-grey-100);
     }
     .sg__subsection-title {
       margin: 1.5rem 0 0.75rem;
-      font-size: var(--text-3);
+      font-size: var(--text-2);
       font-weight: var(--font-weight-semibold);
-      color: var(--color-neutral-650);
+      color: var(--color-grey-400);
     }
     .sg__subsection-title:first-child {
       margin-top: 0;
@@ -98,93 +213,240 @@
     .sg__swatch-fill {
       height: 72px;
       border-radius: 6px;
-      border: 1px solid var(--color-border-muted);
+      border: 1px solid var(--color-grey-100);
+    }
+    /* Primary CTA showcase — light surround (marketing CTAs sit on pale panels / white cards) */
+    .sg__cta-showcase {
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius-card);
+      background: var(--color-grey-100);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    .sg__cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem 1.5rem;
+      align-items: flex-end;
+    }
+    .sg__cta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      align-items: flex-start;
+      min-width: 0;
+    }
+    .sg__cta-item label {
+      margin: 0;
+      font-size: 10px;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-grey-400);
+    }
+    .sg__cta-item .cta-primary.sg__cta--hover {
+      background: var(--cta-primary-bg-hover);
+      box-shadow: var(--cta-primary-shadow-hover);
+    }
+    .sg__cta-item .cta-primary.sg__cta--pressed {
+      background: var(--cta-primary-bg-active);
+      filter: none;
+      transform: scale(0.98);
+      box-shadow: none;
+    }
+    .sg__cta-item .cta-primary.sg__cta--focus {
+      outline: 2px solid var(--cta-primary-focus-ring);
+      outline-offset: 2px;
+    }
+
+    .sg__cta-item .cta-secondary.cta-secondary--orange.sg__cta--hover {
+      background: color-mix(in srgb, var(--color-orange-red) 92%, #fff);
+    }
+    .sg__cta-item .cta-secondary.cta-secondary--orange.sg__cta--pressed {
+      background: color-mix(in srgb, var(--color-orange-red) 86%, #000);
+      transform: scale(0.99);
+    }
+    .sg__cta-item .cta-secondary.sg__cta--focus {
+      outline: 2px solid var(--color-orange-red);
+      outline-offset: 2px;
+    }
+    /*
+     * Secondary pricing — two surrounds:
+     * Light panel: white tile + dark bar (same as index pricing cards; global.css).
+     * Dark panel: black tile + white bar (inverse).
+     */
+    .sg__pricing-secondary-panel--light .pricing-card.sg__pricing-secondary-card {
+      background: var(--color-surface);
+      border: var(--border-card);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+    }
+    .sg__pricing-secondary-panel--light .pricing-card.sg__pricing-secondary-card.sg__pricing-secondary--hover:not(.pricing-card--featured) .pricing-card__cta:not(:disabled):not([aria-disabled="true"]) {
+      opacity: 0.88;
+      transform: translateY(-1px);
+    }
+    .sg__pricing-secondary-panel--light .pricing-card.sg__pricing-secondary-card.sg__pricing-secondary--active:not(.pricing-card--featured) .pricing-card__cta:not(:disabled):not([aria-disabled="true"]) {
+      opacity: 0.92;
+      transform: translateY(0);
+    }
+    .sg__pricing-secondary-panel--light .pricing-card.sg__pricing-secondary-card.sg__pricing-secondary--focus:not(.pricing-card--featured) .pricing-card__cta {
+      outline: 2px solid var(--color-orange-red);
+      outline-offset: 2px;
+    }
+
+    .sg .sg__pricing-secondary-panel--dark .pricing-card.sg__pricing-secondary-card {
+      background: var(--color-black-100);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: none;
+      color: var(--color-white-100);
+    }
+    .sg .sg__pricing-secondary-panel--dark .pricing-card.sg__pricing-secondary-card .pricing-card__cta {
+      background: var(--color-white-100);
+      color: var(--color-black-100);
+    }
+    .sg .sg__pricing-secondary-panel--dark .pricing-card.sg__pricing-secondary-card:not(.pricing-card--featured):hover .pricing-card__cta:not(:disabled):not([aria-disabled="true"]) {
+      opacity: 1;
+      transform: translateY(-1px);
+      background: var(--color-grey-100);
+      color: var(--color-black-100);
+    }
+    .sg .sg__pricing-secondary-panel--dark .pricing-card.sg__pricing-secondary-card:not(.pricing-card--featured):active .pricing-card__cta:not(:disabled):not([aria-disabled="true"]) {
+      opacity: 1;
+      transform: translateY(0);
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--color-black-100);
+    }
+    .sg .sg__pricing-secondary-panel--dark .pricing-card.sg__pricing-secondary-card .pricing-card__cta:disabled,
+    .sg .sg__pricing-secondary-panel--dark .pricing-card.sg__pricing-secondary-card .pricing-card__cta[aria-disabled="true"] {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.35);
+      color: rgba(22, 22, 22, 0.5);
+      pointer-events: none;
+    }
+    .sg .sg__pricing-secondary-panel--dark .pricing-card.sg__pricing-secondary-card.sg__pricing-secondary--hover:not(.pricing-card--featured) .pricing-card__cta:not(:disabled):not([aria-disabled="true"]) {
+      opacity: 1;
+      transform: translateY(-1px);
+      background: var(--color-grey-100);
+      color: var(--color-black-100);
+    }
+    .sg .sg__pricing-secondary-panel--dark .pricing-card.sg__pricing-secondary-card.sg__pricing-secondary--active:not(.pricing-card--featured) .pricing-card__cta:not(:disabled):not([aria-disabled="true"]) {
+      opacity: 1;
+      transform: translateY(0);
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--color-black-100);
+    }
+    .sg .sg__pricing-secondary-panel--dark .pricing-card.sg__pricing-secondary-card.sg__pricing-secondary--focus:not(.pricing-card--featured) .pricing-card__cta {
+      outline: 2px solid var(--color-orange-red);
+      outline-offset: 2px;
+    }
+    .sg__pricing-secondary-panel {
+      margin-top: 1rem;
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius-card);
+    }
+    .sg__pricing-secondary-panel--light {
+      background: var(--color-grey-100);
+      border: 1px solid var(--color-grey-100);
+    }
+    .sg__pricing-secondary-panel--dark {
+      background: var(--color-black-100);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .sg__pricing-secondary-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem 1.5rem;
+      align-items: flex-end;
+    }
+    .sg__pricing-secondary-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      align-items: flex-start;
+      width: min(100%, 200px);
+      min-width: 0;
+    }
+    .sg__pricing-secondary-item label {
+      margin: 0;
+      font-size: 10px;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-grey-400);
+    }
+    .sg__pricing-secondary-panel--dark .sg__pricing-secondary-item label {
+      color: rgba(255, 255, 255, 0.45);
+    }
+    .sg__pricing-secondary-card {
+      width: 100%;
+      margin: 0;
     }
     .sg__token-name {
       font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
-      font-size: 11px;
+      font-size: 10px;
       word-break: break-all;
-      color: var(--color-neutral-800);
+      color: var(--color-grey-800);
     }
     .sg__hex {
       font-family: ui-monospace, "Cascadia Code", Menlo, monospace;
-      font-size: var(--text-1);
-      color: var(--color-neutral-550);
+      font-size: 10px;
+      color: var(--color-grey-400);
+    }
+    .sg__alpha-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
     }
     .sg__alpha-stage {
-      background: #3a3a3a;
       padding: 1rem;
       border-radius: 8px;
-      margin-top: 0.5rem;
+    }
+    .sg__alpha-stage--dark {
+      background: #3a3a3a;
+    }
+    .sg__alpha-stage--light {
+      background: var(--color-white-100);
+      border: 1px solid var(--color-grey-100);
+    }
+    .sg__alpha-stage-label {
+      margin: 0 0 0.65rem;
+      font-size: var(--text-2);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: 0.02em;
+    }
+    .sg__alpha-stage--dark .sg__alpha-stage-label {
+      color: rgba(255, 255, 255, 0.55);
+    }
+    .sg__alpha-stage--light .sg__alpha-stage-label {
+      color: var(--color-grey-400);
     }
     .sg__alpha-stage .sg__grid {
       grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    .sg__alpha-stage--dark .sg__token-name {
+      color: rgba(255, 255, 255, 0.92);
+    }
+    .sg__alpha-stage--dark .sg__hex {
+      color: rgba(255, 255, 255, 0.45);
     }
     .sg__neutral-row {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
     }
-    .sg__semantic-line {
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--color-border-default);
-      border-radius: 6px;
-      margin-bottom: 0.75rem;
-    }
-    .sg__semantic-line code {
-      display: block;
-      font-size: var(--text-1);
-      margin-top: 0.35rem;
-      color: var(--color-neutral-550);
-    }
     .sg__border-demo {
       padding: 1rem;
       margin-bottom: 0.75rem;
       border-radius: 6px;
-      background: var(--color-surface);
+      background: var(--color-white-100);
     }
     .sg__border-demo--fill {
       min-height: 56px;
-    }
-    .sg__clamp-row {
-      margin-bottom: 1.25rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--color-border-subtle);
-    }
-    .sg__clamp-row:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-    .sg__clamp-meta {
-      font-family: ui-monospace, Menlo, monospace;
-      font-size: 11px;
-      color: var(--color-neutral-550);
-      margin: 0.35rem 0 0.5rem;
-      word-break: break-word;
-    }
-    .sg__fixed-row {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.65rem;
-      font-size: var(--text-4);
-    }
-    .sg__fixed-row code {
-      font-family: ui-monospace, Menlo, monospace;
-      font-size: var(--text-1);
-      color: var(--color-neutral-550);
-      min-width: 12rem;
-    }
-    .sg__weight-row {
-      margin-bottom: 0.75rem;
     }
     .sg__lh-block {
       max-width: 28rem;
       margin-bottom: 1rem;
       padding: 0.75rem;
-      background: var(--color-surface-muted);
+      background: var(--color-grey-100);
       border-radius: 6px;
     }
     .sg__lh-block p,
@@ -193,142 +455,723 @@
     }
     .sg__todo {
       padding: 1rem;
-      background: var(--color-border-subtle);
+      background: var(--color-grey-100);
       border-radius: 6px;
-      color: var(--color-neutral-650);
-      font-size: var(--text-2);
+      color: var(--color-grey-400);
+      font-size: var(--text-1);
+    }
+    .sg__spacing-live {
+      list-style: none;
+      margin: 0.75rem 0 0;
+      padding: 0;
+    }
+    .sg__spacing-live li {
+      display: grid;
+      grid-template-columns: minmax(8.5rem, auto) 1fr;
+      gap: var(--space-12);
+      align-items: center;
+      margin-bottom: var(--space-8);
+    }
+    .sg__spacing-live-label code {
+      font-size: var(--text-3);
+    }
+    .sg__spacing-live-bar-wrap {
+      height: 18px;
+      background: var(--color-grey-100);
+      border-radius: 4px;
+      min-width: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+    .sg__spacing-live-bar {
+      display: block;
+      height: 100%;
+      background: var(--color-orange-100);
+      border-radius: 4px;
     }
     .sg__radius-demo {
-      background: var(--color-brand-orange);
+      background: var(--color-orange-red);
       margin-bottom: 0.75rem;
     }
     .sg__radius-label {
-      font-size: var(--text-1);
+      font-size: 10px;
       font-family: ui-monospace, Menlo, monospace;
       margin-bottom: 0.35rem;
-      color: var(--color-neutral-700);
+      color: var(--color-grey-800);
     }
     .sg__font-name {
       margin: 0.25rem 0 0.75rem;
-      font-size: var(--text-1);
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      font-size: var(--text-3);
       font-weight: var(--font-weight-medium);
-      color: var(--color-neutral-550);
+      line-height: var(--line-height-prose);
+      color: var(--color-grey-400);
     }
-    /* Production heading preview (overrides .sg h* reset; mirrors global.css) */
-    .sg__marketing {
-      padding: 1.25rem 1.25rem 1.5rem;
-      background: var(--color-surface-muted);
-      border-radius: 8px;
-      border: 1px solid var(--color-border-subtle);
-      margin: 0.75rem 0 1.25rem;
-    }
-    .sg__marketing > * + * {
-      margin-top: 0.65rem;
-    }
-    .sg .sg__marketing h1 {
-      font-family: var(--font-family-display);
-      font-weight: var(--font-weight-black);
-      font-size: var(--font-size-h1);
-      line-height: var(--line-height-display);
-      letter-spacing: -0.01em;
-      text-transform: uppercase;
-      color: var(--color-text-primary);
-      margin: 0;
-      background: none;
-      -webkit-text-fill-color: unset;
-    }
-    .sg .sg__marketing h2 {
-      font-family: var(--font-family-display);
-      font-weight: var(--font-weight-black);
-      font-size: var(--font-size-h2);
-      line-height: var(--line-height-snug);
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      color: var(--color-text-primary);
-      margin: 0;
-    }
-    .sg .sg__marketing h3 {
-      font-family: var(--font-family-display);
-      font-weight: var(--font-weight-extrabold);
-      font-size: var(--font-size-h3);
-      line-height: var(--line-height-title);
-      letter-spacing: -0.01em;
-      text-transform: none;
-      color: var(--color-text-primary);
-      margin: 0;
-    }
-    .sg .sg__marketing h4 {
-      font-family: var(--font-family-display);
-      font-weight: var(--font-weight-bold);
-      font-size: var(--font-size-h4);
-      line-height: var(--line-height-label);
-      letter-spacing: normal;
-      text-transform: none;
-      color: var(--color-neutral-450);
-      margin: 0;
-    }
-    .sg .sg__marketing h5 {
-      font-family: var(--font-family-sans);
-      font-weight: var(--font-weight-bold);
-      font-size: var(--font-size-h5);
-      line-height: var(--line-height-label);
-      letter-spacing: normal;
-      text-transform: none;
-      color: var(--color-text-primary);
-      margin: 0;
-    }
-    .sg__override-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: var(--text-2);
-      margin: 0.5rem 0 0;
-    }
-    .sg__override-table th,
-    .sg__override-table td {
-      border: 1px solid var(--color-border-subtle);
-      padding: 0.5rem 0.65rem;
-      text-align: left;
-      vertical-align: top;
-    }
-    .sg__override-table th {
-      background: var(--color-surface-muted);
-      font-weight: var(--font-weight-semibold);
-    }
-    .sg__override-table code {
+    .sg__font-name code {
       font-family: ui-monospace, Menlo, monospace;
+      font-size: 0.92em;
+    }
+    /* Typography spec sheet — white stage, sample + meta row */
+    .sg__type-stage {
+      background: var(--color-white-100);
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-grey-100);
+      border-radius: 12px;
+      padding: 2rem 1.75rem 2.5rem;
+      margin: 0 0 1.5rem;
+    }
+    .sg__type-group {
+      margin-bottom: 2.5rem;
+    }
+    .sg__type-group:last-child {
+      margin-bottom: 0;
+    }
+    .sg__type-group-label {
+      font-size: 10px;
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-grey-400);
+      margin: 0 0 1.35rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid var(--color-grey-100);
+    }
+    .sg__type-group:first-child .sg__type-group-label {
+      margin-top: 0;
+    }
+    .sg__type-row {
+      margin-bottom: 2.5rem;
+    }
+    .sg__type-group .sg__type-row:last-child {
+      margin-bottom: 0;
+    }
+    .sg__type-sample {
+      margin: 0 0 0.55rem;
+      color: var(--color-text-primary);
+    }
+    .sg__type-meta {
+      margin: 0;
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--color-grey-400);
+      max-width: 52rem;
+    }
+    .sg__type-after {
+      margin-top: 1.25rem;
+    }
+    .sg__type-stage .sg__type-sample--multiline {
+      font-family: var(--font-family-sans);
+      font-size: var(--text-4);
+      font-weight: var(--font-weight-normal);
+      color: var(--color-text-body);
+    }
+    @media (max-width: 600px) {
+      .sg__type-stage {
+        padding: 1.5rem 1.15rem 1.75rem;
+        border-radius: 10px;
+      }
+      .sg__type-row {
+        margin-bottom: 2rem;
+      }
+      .sg__type-meta {
+        font-size: 10px;
+      }
+    }
+    /* —— Forms / input gallery (mirrors production where viewport breakpoints apply) —— */
+    .sg__ui-meta {
+      margin: 0.35rem 0 0;
       font-size: var(--text-1);
-      word-break: break-word;
+      color: var(--color-grey-400);
+      max-width: 42rem;
+    }
+    .sg__ui-meta code {
+      font-size: 10px;
+    }
+    .sg__ui-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 36rem;
+    }
+    .sg__ui-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      align-items: center;
+    }
+    .sg__ui-strip {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--color-grey-100);
+      background: var(--color-grey-100);
+      width: 100%;
+      max-width: 40rem;
+      box-sizing: border-box;
+    }
+    .sg__ui-strip--dark {
+      background: linear-gradient(
+        165deg,
+        var(--color-orange-100) 0%,
+        var(--color-hero-headline-end) 100%
+      );
+      border: none;
+    }
+    .sg__ui-strip--dark .body-md,
+    .sg__ui-strip--dark a {
+      color: rgba(255, 255, 255, 0.92);
+    }
+    .sg__ui-strip--dark a {
+      font-size: 13px;
+      text-decoration: none;
+      transition: color var(--motion-duration) var(--motion-ease);
+    }
+    .sg__ui-strip--dark a:hover,
+    .sg__ui-strip--dark a:focus-visible {
+      color: var(--color-white-100);
+      outline: none;
+    }
+    /* Round mobile-style search CTA (same as ≤1200px hero / fixed bar) — always visible here */
+    .sg__round-search-demo .hero__search-inner {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 0.35rem;
+      min-height: 3.25rem;
+      padding: 0.3rem 0.3rem 0.3rem 1rem;
+      border: 2px solid transparent;
+      background:
+        linear-gradient(var(--color-white-100), var(--color-white-100)) padding-box,
+        linear-gradient(
+          120deg,
+          var(--color-orange-100) 0%,
+          var(--color-pricing-badge-end) 45%,
+          var(--color-hero-headline-end) 100%
+        )
+          border-box;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+    .sg__round-search-demo .hero__input {
+      flex: 1 1 auto;
+      min-width: 0;
+      padding: 0.5rem 0.15rem;
+      font-size: var(--text-3);
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: inherit;
+      color: var(--color-grey-800);
+    }
+    .sg__round-search-demo .hero__submit {
+      position: relative;
+      flex-shrink: 0;
+      width: 2.875rem;
+      height: 2.875rem;
+      min-width: 2.875rem;
+      padding: 0;
+      margin: 0;
+      text-transform: none;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(
+        165deg,
+        var(--color-cta-gradient-1) 0%,
+        var(--color-orange-red) 45%,
+        var(--color-hero-headline-end) 100%
+      );
+      box-shadow: 0 4px 14px rgba(204, 72, 0, 0.38);
+    }
+    .sg__round-search-demo .hero__submit-text {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .sg__round-search-demo .hero__submit-icon {
+      display: block;
+      width: 1.35rem;
+      height: 1.35rem;
+      flex-shrink: 0;
+      color: var(--color-white-100);
+    }
+    /* Header nav address bar — desktop chrome is gated to ≥901px in global.css; duplicate for this page */
+    .sg-chrome-nav-search {
+      width: 100%;
+      max-width: min(32rem, 100%);
+    }
+    .sg-chrome-nav-search .nav-cta__shell {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      gap: 0.45rem;
+      width: 100%;
+      min-width: 0;
+      height: 3rem;
+      min-height: 3rem;
+      max-height: 3rem;
+      padding: 3px 4px 3px 18px;
+      box-sizing: border-box;
+      border-radius: var(--radius-pill);
+      border: 1px solid #d3d3d3;
+      background: radial-gradient(
+        120% 180% at 100% 50%,
+        rgba(255, 255, 255, 0.98) 0%,
+        rgba(255, 255, 255, 0.94) 45%,
+        #ffffff 100%
+      );
+    }
+    .sg-chrome-nav-search .nav-cta__input-track {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      align-self: stretch;
+      min-height: 0;
+    }
+    .sg-chrome-nav-search .nav-cta__input.hero__input {
+      width: 100%;
+      min-width: 0;
+      padding: 0;
+      font-size: var(--font-size-input-large);
+      letter-spacing: -0.02em;
+      line-height: var(--line-height-input-large);
+      color: var(--color-grey-800);
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: inherit;
+    }
+    .sg-chrome-nav-search .nav-cta__submit {
+      flex-shrink: 0;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      appearance: none;
+      margin: 0;
+      padding: 0 1.35rem;
+      box-sizing: border-box;
+      font-family: inherit;
+      font-size: var(--text-4);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--line-height-button);
+      letter-spacing: -0.02em;
+      text-transform: capitalize;
+      white-space: nowrap;
+      color: var(--color-white-100);
+      background: var(--cta-primary-bg);
+      border: none;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition:
+        background var(--motion-duration) var(--motion-ease),
+        box-shadow var(--motion-duration) var(--motion-ease),
+        transform var(--motion-duration) var(--motion-ease);
+    }
+    .sg-chrome-nav-search .nav-cta__submit:hover {
+      background: var(--cta-primary-bg-hover);
+      box-shadow: var(--cta-primary-shadow-hover);
+    }
+    .sg-chrome-nav-search .nav-cta__submit:active {
+      background: var(--cta-primary-bg-active);
+      transform: scale(0.98);
+      box-shadow: none;
+    }
+    .sg-chrome-nav-search .nav-cta__submit:focus-visible {
+      outline: 2px solid var(--cta-primary-focus-ring);
+      outline-offset: 2px;
+    }
+    .sg__input-plain {
+      width: 100%;
+      max-width: 20rem;
+      padding: 0.5rem 0.75rem;
+      font-family: inherit;
+      font-size: var(--text-4);
+      line-height: var(--line-height-body);
+      color: var(--color-grey-800);
+      border: 1px solid var(--color-grey-100);
+      border-radius: 8px;
+      background: var(--color-white-100);
+      box-sizing: border-box;
+    }
+    .sg__input-plain:focus-visible {
+      outline: 2px solid var(--color-orange-red);
+      outline-offset: 2px;
+    }
+    .sg__input-plain:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+    /* Style guide — address/search state matrix */
+    .sg__micro-heading {
+      margin: 2rem 0 0.75rem;
+      font-size: var(--text-3);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-grey-800);
+    }
+    .sg__micro-heading:first-child {
+      margin-top: 0;
+    }
+    .sg-input-states {
+      display: grid;
+      /* Minimum track ~18rem so hero/footer pills + CTA never share a column too narrow (was overlap with repeat(4, …)) */
+      grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+      gap: 1.25rem 1.25rem;
+      width: 100%;
+      max-width: min(100%, 33rem);
+      align-items: start;
+    }
+    .sg-input-state {
+      min-width: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .sg-input-states .hero__search,
+    .sg-input-states .hero__search-inner,
+    .sg-input-states .sg-chrome-nav-search,
+    .sg-input-states .footer-cta__search-inner {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .sg-input-states .sg__input-plain {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .sg-state-label {
+      margin: 0 0 0.45rem;
+      font-size: var(--text-1);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-grey-400);
+    }
+    /* Static “Active” column — mirrors real :focus-within / focus ring */
+    .sg .hero__search-inner.sg-demo--active {
+      box-shadow:
+        var(--shadow-search-focus),
+        0 0 0 3px var(--color-orange-red-15);
+    }
+    .sg .hero .hero__search-inner.sg-demo--active {
+      box-shadow:
+        0 6px 28px rgba(0, 0, 0, 0.1),
+        0 0 0 3px var(--color-orange-red-15);
+    }
+    .sg .sg__round-search-demo .hero__search-inner.sg-demo--active {
+      box-shadow:
+        0 6px 28px rgba(0, 0, 0, 0.1),
+        0 0 0 3px var(--color-orange-red-15);
+    }
+    .sg .sg-chrome-nav-search .nav-cta__shell.sg-demo--active {
+      border-color: var(--color-orange-red);
+      box-shadow: 0 0 0 3px var(--color-orange-red-15);
+    }
+    .sg .footer-cta__search-inner.sg-demo--active {
+      box-shadow:
+        0 6px 28px rgba(0, 0, 0, 0.1),
+        0 0 0 3px var(--color-orange-red-15);
+    }
+    .sg .sg__input-plain.sg-demo--active {
+      outline: 2px solid var(--color-orange-red);
+      outline-offset: 2px;
+    }
+    .sg .sg-chrome-nav-search .nav-cta__input.hero__input:disabled {
+      cursor: not-allowed;
+      color: var(--color-grey-400);
+    }
+    .sg .sg-chrome-nav-search .nav-cta__shell:has(.hero__input:disabled) {
+      opacity: 0.76;
+    }
+    .sg .sg-chrome-nav-search .nav-cta__shell:has(.hero__input:disabled) .nav-cta__submit {
+      opacity: 0.48;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .sg .footer-cta.sg__footer-demo {
+      padding: 0;
+      margin: 0;
+      max-width: none;
+      background: transparent;
+      color: inherit;
+    }
+    /* Keep nav link demos visible (global header hides .primary-nav at ≤900px) */
+    .sg__section nav.primary-nav {
+      display: flex !important;
+      position: static;
+      left: auto;
+      top: auto;
+      transform: none;
+      flex: 0 1 auto;
+      min-width: 0;
+      pointer-events: auto;
+    }
+    .sg__section nav.primary-nav ul {
+      pointer-events: auto;
+    }
+    /* Menu icon is hidden until ≤900px in production header */
+    .sg__section .nav-menu-btn {
+      display: inline-flex !important;
     }
   </style>
 </head>
 <body class="sg">
+  <div class="sg__layout">
+    <nav class="sg__nav" aria-label="Style guide sections">
+      <p class="sg__nav-title">On this page</p>
+      <ul>
+        <li><a href="#sg-intro">Overview</a></li>
+        <li><a href="#sg-h1">Color primitives (Figma)</a></li>
+        <li><a href="#sg-h2">Product &amp; gradients</a></li>
+        <li><a href="#sg-h3">Borders &amp; fills</a></li>
+        <li><a href="#sg-h-cta">Primary CTA button</a></li>
+        <li><a href="#sg-h-links">Text links</a></li>
+        <li><a href="#sg-h-ui">Forms &amp; Input</a></li>
+        <li><a href="#sg-h4">Display sizes (clamp)</a></li>
+        <li><a href="#sg-h5">Spacing</a></li>
+        <li><a href="#sg-h6">Border radius</a></li>
+      </ul>
+    </nav>
+
+    <div class="sg__main">
   <div class="sg__banner">STYLEGUIDE: not for production — local preview only.</div>
 
-  <div class="sg__intro">
+  <div class="sg__intro" id="sg-intro">
     <h1>RISE Internet — design tokens</h1>
     <p class="body-lg">
-      Live preview of tokens from <code>global.css</code>: color ramps (§1–4), font families and the <code>--text-*</code> scale (§5, §8), semantic <code>h1</code>–<code>h5</code> via <code>--font-size-h*</code> (§6–7), line heights (§10), and body utilities <code>.body-xl</code> through <code>.body-sm</code> (§11). At <code>max-width: 480px</code>, global base styles slightly loosen <code>h1</code>/<code>h2</code> line-height and set <code>body</code> to <code>line-height: 1.7</code>.
+      Live preview of tokens from <code>global.css</code>: color primitives and product palettes, primitive neutrals for borders and fills, typography (fluid display clamps), spacing tokens, and border radius. At <code>max-width: 480px</code>, global base styles slightly loosen <code>h1</code>/<code>h2</code> line-height and set <code>body</code> to <code>line-height: 1.7</code>.
     </p>
   </div>
 
-  <!-- 1. Brand & accents -->
+  <!-- Figma color primitives -->
   <section class="sg__section" aria-labelledby="sg-h1">
-    <h2 id="sg-h1">1. Color — Brand &amp; Accents</h2>
+    <h2 id="sg-h1">Color — Primitives (Figma)</h2>
+
+    <h3 class="sg__subsection-title">Black</h3>
+    <div class="sg__neutral-row">
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-black-100)"></div>
+        <span class="sg__token-name">--color-black-100</span>
+        <span class="sg__hex">#161616</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-black-80)"></div>
+        <span class="sg__token-name">--color-black-80</span>
+        <span class="sg__hex">#000 80%</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-black-60)"></div>
+        <span class="sg__token-name">--color-black-60</span>
+        <span class="sg__hex">#000 60%</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-black-40)"></div>
+        <span class="sg__token-name">--color-black-40</span>
+        <span class="sg__hex">#000 40%</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-black-20)"></div>
+        <span class="sg__token-name">--color-black-20</span>
+        <span class="sg__hex">#000 20%</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-black-08)"></div>
+        <span class="sg__token-name">--color-black-08</span>
+        <span class="sg__hex">#000 8%</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-black-04)"></div>
+        <span class="sg__token-name">--color-black-04</span>
+        <span class="sg__hex">#000 4%</span>
+      </div>
+    </div>
+
+    <h3 class="sg__subsection-title">White</h3>
+    <div class="sg__neutral-row">
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-white-100); border: 1px solid var(--color-grey-200)"></div>
+        <span class="sg__token-name">--color-white-100</span>
+        <span class="sg__hex">#FFFFFF</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-white-80)"></div>
+        <span class="sg__token-name">--color-white-80</span>
+        <span class="sg__hex">#FFF 80%</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-white-60)"></div>
+        <span class="sg__token-name">--color-white-60</span>
+        <span class="sg__hex">#FFF 60%</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-white-40)"></div>
+        <span class="sg__token-name">--color-white-40</span>
+        <span class="sg__hex">#FFF 40%</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-white-20)"></div>
+        <span class="sg__token-name">--color-white-20</span>
+        <span class="sg__hex">#FFF 20%</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-white-08)"></div>
+        <span class="sg__token-name">--color-white-08</span>
+        <span class="sg__hex">#FFF 8%</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-white-04)"></div>
+        <span class="sg__token-name">--color-white-04</span>
+        <span class="sg__hex">#FFF 4%</span>
+      </div>
+    </div>
+
+    <h3 class="sg__subsection-title">Orange</h3>
+    <div class="sg__neutral-row">
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-orange-red)"></div>
+        <span class="sg__token-name">--color-orange-red</span>
+        <span class="sg__hex">#CC4800</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-orange-100)"></div>
+        <span class="sg__token-name">--color-orange-100</span>
+        <span class="sg__hex">#FF5601</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-orange-80)"></div>
+        <span class="sg__token-name">--color-orange-80</span>
+        <span class="sg__hex">#FF5601 80%</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-orange-40)"></div>
+        <span class="sg__token-name">--color-orange-40</span>
+        <span class="sg__hex">#FF5601 40%</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-orange-20)"></div>
+        <span class="sg__token-name">--color-orange-20</span>
+        <span class="sg__hex">#FF5601 20%</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 104px">
+        <div class="sg__swatch-fill" style="background: var(--color-orange-02)"></div>
+        <span class="sg__token-name">--color-orange-02</span>
+        <span class="sg__hex">#FF5601 2%</span>
+      </div>
+    </div>
+
+    <h3 class="sg__subsection-title">Grey</h3>
+    <div class="sg__neutral-row">
+      <div class="sg__swatch" style="min-width: 120px">
+        <div class="sg__swatch-fill" style="background: var(--color-grey-100); border: 1px solid var(--color-grey-200)"></div>
+        <span class="sg__token-name">--color-grey-100</span>
+        <span class="sg__hex">#EFF0EA</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 120px">
+        <div class="sg__swatch-fill" style="background: var(--color-grey-200)"></div>
+        <span class="sg__token-name">--color-grey-200</span>
+        <span class="sg__hex">#B3B3B3</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 120px">
+        <div class="sg__swatch-fill" style="background: var(--color-grey-400)"></div>
+        <span class="sg__token-name">--color-grey-400</span>
+        <span class="sg__hex">#706A6A</span>
+      </div>
+      <div class="sg__swatch" style="min-width: 120px">
+        <div class="sg__swatch-fill" style="background: var(--color-grey-800)"></div>
+        <span class="sg__token-name">--color-grey-800</span>
+        <span class="sg__hex">#262626</span>
+      </div>
+    </div>
+
+    <h3 class="sg__subsection-title">Orange-Red alpha (focus / shadow — same hue as Orange-Red)</h3>
+    <p class="sg__font-name" style="margin-top: 0">Same fills on dark vs light surround — used for focus rings and tinted shadows.</p>
+    <div class="sg__alpha-row">
+      <div class="sg__alpha-stage sg__alpha-stage--dark">
+        <p class="sg__alpha-stage-label">Dark surround</p>
+        <div class="sg__grid">
+          <div class="sg__swatch">
+            <div class="sg__swatch-fill" style="background: var(--color-orange-red-15)"></div>
+            <span class="sg__token-name">--color-orange-red-15</span>
+            <span class="sg__hex">rgba(204,72,0,0.15)</span>
+          </div>
+          <div class="sg__swatch">
+            <div class="sg__swatch-fill" style="background: var(--color-orange-red-20)"></div>
+            <span class="sg__token-name">--color-orange-red-20</span>
+            <span class="sg__hex">rgba(204,72,0,0.2)</span>
+          </div>
+          <div class="sg__swatch">
+            <div class="sg__swatch-fill" style="background: var(--color-orange-red-35)"></div>
+            <span class="sg__token-name">--color-orange-red-35</span>
+            <span class="sg__hex">rgba(204,72,0,0.35)</span>
+          </div>
+        </div>
+      </div>
+      <div class="sg__alpha-stage sg__alpha-stage--light">
+        <p class="sg__alpha-stage-label">Light surround</p>
+        <div class="sg__grid">
+          <div class="sg__swatch">
+            <div class="sg__swatch-fill" style="background: var(--color-orange-red-15)"></div>
+            <span class="sg__token-name">--color-orange-red-15</span>
+            <span class="sg__hex">rgba(204,72,0,0.15)</span>
+          </div>
+          <div class="sg__swatch">
+            <div class="sg__swatch-fill" style="background: var(--color-orange-red-20)"></div>
+            <span class="sg__token-name">--color-orange-red-20</span>
+            <span class="sg__hex">rgba(204,72,0,0.2)</span>
+          </div>
+          <div class="sg__swatch">
+            <div class="sg__swatch-fill" style="background: var(--color-orange-red-35)"></div>
+            <span class="sg__token-name">--color-orange-red-35</span>
+            <span class="sg__hex">rgba(204,72,0,0.35)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product-only & gradients -->
+  <section class="sg__section" aria-labelledby="sg-h2">
+    <h2 id="sg-h2">Color — Product &amp; gradients</h2>
+
+    <h3 class="sg__subsection-title">Gradient fills (Figma)</h3>
+    <div class="sg__grid sg__grid--wide" style="margin-bottom: 1.75rem">
+      <div class="sg__swatch">
+        <div
+          class="sg__swatch-fill"
+          style="height: 5rem; background-image: var(--gradient-orange-linear); background-color: transparent"
+        ></div>
+        <span class="sg__token-name">--gradient-orange-linear</span>
+        <span class="sg__hex">#E43D00 → #FF5601 → #FF7C01</span>
+      </div>
+      <div class="sg__swatch">
+        <div
+          class="sg__swatch-fill"
+          style="height: 5rem; width: 5rem; max-width: 100%; background-image: var(--gradient-orange-radial); background-color: transparent"
+        ></div>
+        <span class="sg__token-name">--gradient-orange-radial</span>
+        <span class="sg__hex">#FF7B00 → #E34C06</span>
+      </div>
+    </div>
+
     <div class="sg__grid sg__grid--wide">
       <div class="sg__swatch">
         <div class="sg__swatch-fill" style="background: var(--color-brand-orange)"></div>
         <span class="sg__token-name">--color-brand-orange</span>
         <span class="sg__hex">#e85c0d</span>
-      </div>
-      <div class="sg__swatch">
-        <div class="sg__swatch-fill" style="background: var(--color-brand-orange-nav)"></div>
-        <span class="sg__token-name">--color-brand-orange-nav</span>
-        <span class="sg__hex">#ff5601</span>
-      </div>
-      <div class="sg__swatch">
-        <div class="sg__swatch-fill" style="background: var(--color-hero-headline-start)"></div>
-        <span class="sg__token-name">--color-hero-headline-start</span>
-        <span class="sg__hex">#ff5601</span>
       </div>
       <div class="sg__swatch">
         <div class="sg__swatch-fill" style="background: var(--color-hero-headline-end)"></div>
@@ -378,529 +1221,919 @@
       <div class="sg__swatch">
         <div class="sg__swatch-fill" style="background: var(--color-cta-gradient-4)"></div>
         <span class="sg__token-name">--color-cta-gradient-4</span>
-        <span class="sg__hex">#c73a08</span>
-      </div>
-      <div class="sg__swatch">
-        <div class="sg__swatch-fill" style="background: var(--color-cta-button)"></div>
-        <span class="sg__token-name">--color-cta-button</span>
-        <span class="sg__hex">#c73a08</span>
+        <span class="sg__hex">#a33a00</span>
       </div>
       <div class="sg__swatch">
         <div class="sg__swatch-fill" style="background: var(--color-cta-button-border)"></div>
         <span class="sg__token-name">--color-cta-button-border</span>
-        <span class="sg__hex">#a82f06</span>
-      </div>
-    </div>
-
-    <h3 class="sg__subsection-title">Transparent / alpha (on dark gray)</h3>
-    <div class="sg__alpha-stage">
-      <div class="sg__grid">
-        <div class="sg__swatch">
-          <div class="sg__swatch-fill" style="background: var(--color-white-transparent)"></div>
-          <span class="sg__token-name">--color-white-transparent</span>
-          <span class="sg__hex">rgba(255,255,255,0)</span>
-        </div>
-        <div class="sg__swatch">
-          <div class="sg__swatch-fill" style="background: var(--color-white-25)"></div>
-          <span class="sg__token-name">--color-white-25</span>
-          <span class="sg__hex">rgba(255,255,255,0.25)</span>
-        </div>
-        <div class="sg__swatch">
-          <div class="sg__swatch-fill" style="background: var(--color-white-35)"></div>
-          <span class="sg__token-name">--color-white-35</span>
-          <span class="sg__hex">rgba(255,255,255,0.35)</span>
-        </div>
-        <div class="sg__swatch">
-          <div class="sg__swatch-fill" style="background: var(--color-brand-orange-15)"></div>
-          <span class="sg__token-name">--color-brand-orange-15</span>
-          <span class="sg__hex">rgba(232,92,13,0.15)</span>
-        </div>
-        <div class="sg__swatch">
-          <div class="sg__swatch-fill" style="background: var(--color-brand-orange-20)"></div>
-          <span class="sg__token-name">--color-brand-orange-20</span>
-          <span class="sg__hex">rgba(232,92,13,0.2)</span>
-        </div>
-        <div class="sg__swatch">
-          <div class="sg__swatch-fill" style="background: var(--color-brand-orange-35)"></div>
-          <span class="sg__token-name">--color-brand-orange-35</span>
-          <span class="sg__hex">rgba(232,92,13,0.35)</span>
-        </div>
+        <span class="sg__hex">#8a3000</span>
       </div>
     </div>
   </section>
 
-  <!-- 2. Neutrals -->
-  <section class="sg__section" aria-labelledby="sg-h2">
-    <h2 id="sg-h2">2. Color — Neutrals</h2>
-    <div class="sg__neutral-row">
-      <div class="sg__swatch" style="min-width: 120px">
-        <div class="sg__swatch-fill" style="background: var(--color-neutral-900)"></div>
-        <span class="sg__token-name">--color-neutral-900</span>
-        <span class="sg__hex">#1a1a1a</span>
-      </div>
-      <div class="sg__swatch" style="min-width: 120px">
-        <div class="sg__swatch-fill" style="background: var(--color-neutral-850)"></div>
-        <span class="sg__token-name">--color-neutral-850</span>
-        <span class="sg__hex">#1c1c1c</span>
-      </div>
-      <div class="sg__swatch" style="min-width: 120px">
-        <div class="sg__swatch-fill" style="background: var(--color-neutral-800)"></div>
-        <span class="sg__token-name">--color-neutral-800</span>
-        <span class="sg__hex">#262626</span>
-      </div>
-      <div class="sg__swatch" style="min-width: 120px">
-        <div class="sg__swatch-fill" style="background: var(--color-neutral-700)"></div>
-        <span class="sg__token-name">--color-neutral-700</span>
-        <span class="sg__hex">#333</span>
-      </div>
-      <div class="sg__swatch" style="min-width: 120px">
-        <div class="sg__swatch-fill" style="background: var(--color-neutral-650)"></div>
-        <span class="sg__token-name">--color-neutral-650</span>
-        <span class="sg__hex">#444</span>
-      </div>
-      <div class="sg__swatch" style="min-width: 120px">
-        <div class="sg__swatch-fill" style="background: var(--color-neutral-600)"></div>
-        <span class="sg__token-name">--color-neutral-600</span>
-        <span class="sg__hex">#555</span>
-      </div>
-      <div class="sg__swatch" style="min-width: 120px">
-        <div class="sg__swatch-fill" style="background: var(--color-neutral-550)"></div>
-        <span class="sg__token-name">--color-neutral-550</span>
-        <span class="sg__hex">#666</span>
-      </div>
-      <div class="sg__swatch" style="min-width: 120px">
-        <div class="sg__swatch-fill" style="background: var(--color-neutral-500)"></div>
-        <span class="sg__token-name">--color-neutral-500</span>
-        <span class="sg__hex">#757575</span>
-      </div>
-      <div class="sg__swatch" style="min-width: 120px">
-        <div class="sg__swatch-fill" style="background: var(--color-neutral-450)"></div>
-        <span class="sg__token-name">--color-neutral-450</span>
-        <span class="sg__hex">#888</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. Semantic text -->
+  <!-- Borders & fills (primitives) -->
   <section class="sg__section" aria-labelledby="sg-h3">
-    <h2 id="sg-h3">3. Color — Semantic Text Aliases</h2>
-    <div class="sg__semantic-line" style="color: var(--color-text-primary); background: var(--color-white)">
-      The quick brown fox jumps
-      <code>--color-text-primary → var(--color-neutral-900) → #1a1a1a</code>
+    <h2 id="sg-h3">Color — Borders &amp; fills (primitives)</h2>
+    <div class="sg__border-demo" style="border: 2px solid var(--color-grey-100)">
+      <strong>--color-grey-100</strong> — Default hairline / card edge (#EFF0EA). Same chroma as <code>--color-border-default</code> and <code>--color-border-subtle</code>.
     </div>
-    <div class="sg__semantic-line" style="color: var(--color-text-body); background: var(--color-white)">
-      The quick brown fox jumps
-      <code>--color-text-body → var(--color-neutral-700) → #333</code>
+    <div class="sg__border-demo sg__border-demo--fill" style="background: var(--color-white-100); border: 1px dashed var(--color-grey-200)">
+      <strong>--color-white-100</strong> — Primary surface (#FFFFFF). Semantic <code>--color-surface</code> resolves here.
     </div>
-    <div class="sg__semantic-line" style="color: var(--color-text-muted); background: var(--color-white)">
-      The quick brown fox jumps
-      <code>--color-text-muted → var(--color-neutral-600) → #555</code>
-    </div>
-    <div class="sg__semantic-line" style="color: var(--color-text-subtle); background: var(--color-white)">
-      The quick brown fox jumps
-      <code>--color-text-subtle → var(--color-neutral-550) → #666</code>
-    </div>
-    <div class="sg__semantic-line" style="color: var(--color-text-placeholder); background: var(--color-white)">
-      The quick brown fox jumps
-      <code>--color-text-placeholder → var(--color-neutral-500) → #757575</code>
-    </div>
-    <div class="sg__semantic-line" style="color: var(--color-text-on-brand); background: var(--color-brand-orange)">
-      The quick brown fox jumps
-      <code>--color-text-on-brand → var(--color-white) → #fff</code>
-    </div>
-    <div class="sg__semantic-line" style="color: var(--color-text-secondary); background: var(--color-white)">
-      The quick brown fox jumps
-      <code>--color-text-secondary → var(--color-neutral-450) → #888</code> (default for <code>.body-sm</code>)
-    </div>
-
-    <h3 class="sg__subsection-title">Marketing / footer aliases</h3>
-    <div class="sg__semantic-line" style="color: var(--color-text-dark); background: var(--color-white)">
-      The quick brown fox jumps
-      <code>--color-text-dark → var(--color-neutral-900)</code>
-    </div>
-    <div class="sg__semantic-line" style="color: var(--color-text-label); background: var(--color-white)">
-      The quick brown fox jumps
-      <code>--color-text-label → var(--color-neutral-550)</code>
-    </div>
-    <div class="sg__semantic-line" style="color: var(--color-white); background: var(--color-orange-primary)">
-      The quick brown fox jumps
-      <code>--color-orange-primary → var(--color-brand-orange-nav)</code>
-    </div>
-    <div class="sg__semantic-line" style="color: var(--color-white); background: var(--color-orange-dark)">
-      The quick brown fox jumps
-      <code>--color-orange-dark → var(--color-hero-headline-end)</code>
+    <div class="sg__border-demo sg__border-demo--fill" style="background: var(--color-grey-100); border: 1px dashed var(--color-grey-200)">
+      <strong>--color-grey-100</strong> — Muted panel / wash. Semantic <code>--color-surface-muted</code> resolves here.
     </div>
   </section>
 
-  <!-- 4. Borders & surfaces -->
+  <!-- Primary global CTA -->
+  <section class="sg__section" aria-labelledby="sg-h-cta">
+    <h2 id="sg-h-cta">Primary CTA button</h2>
+
+    <h3 class="sg__subsection-title">On light background</h3>
+    <div class="sg__cta-showcase">
+      <div class="sg__cta-row">
+        <div class="sg__cta-item">
+          <label for="sg-cta-default">Default</label>
+          <button type="button" class="cta-primary" id="sg-cta-default">Check availability</button>
+        </div>
+        <div class="sg__cta-item">
+          <label>Hover</label>
+          <button type="button" class="cta-primary sg__cta--hover" tabindex="-1" aria-hidden="true">Check availability</button>
+        </div>
+        <div class="sg__cta-item">
+          <label>Pressed</label>
+          <button type="button" class="cta-primary sg__cta--pressed" tabindex="-1" aria-hidden="true">Check availability</button>
+        </div>
+        <div class="sg__cta-item">
+          <label>Focus visible</label>
+          <button type="button" class="cta-primary sg__cta--focus" tabindex="-1" aria-hidden="true">Check availability</button>
+        </div>
+        <div class="sg__cta-item">
+          <label for="sg-cta-disabled"><code>:disabled</code></label>
+          <button type="button" class="cta-primary" id="sg-cta-disabled" disabled>Check availability</button>
+        </div>
+      </div>
+      <p class="sg__font-name" style="margin: 1rem 0 0">Disabled · muted gradient fill · <code>--cta-primary-bg-disabled</code> · <code>--cta-primary-fg-disabled</code></p>
+    </div>
+
+    <h3 class="sg__subsection-title" style="margin-top: 1.5rem">Secondary button — orange</h3>
+    <div class="sg__cta-showcase">
+      <div class="sg__cta-row">
+        <div class="sg__cta-item">
+          <label for="sg-cta-secondary-orange-default">Default</label>
+          <button type="button" class="cta-secondary cta-secondary--orange" id="sg-cta-secondary-orange-default">Check availability</button>
+        </div>
+        <div class="sg__cta-item">
+          <label>Hover</label>
+          <button type="button" class="cta-secondary cta-secondary--orange sg__cta--hover" tabindex="-1" aria-hidden="true">Check availability</button>
+        </div>
+        <div class="sg__cta-item">
+          <label>Pressed</label>
+          <button type="button" class="cta-secondary cta-secondary--orange sg__cta--pressed" tabindex="-1" aria-hidden="true">Check availability</button>
+        </div>
+        <div class="sg__cta-item">
+          <label>Focus visible</label>
+          <button type="button" class="cta-secondary cta-secondary--orange sg__cta--focus" tabindex="-1" aria-hidden="true">Check availability</button>
+        </div>
+        <div class="sg__cta-item">
+          <label for="sg-cta-secondary-orange-disabled"><code>:disabled</code></label>
+          <button type="button" class="cta-secondary cta-secondary--orange" id="sg-cta-secondary-orange-disabled" disabled>Check availability</button>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sg__subsection-title" style="margin-top: 1.75rem">With icons</h3>
+    <p style="margin: 0 0 0.85rem; font-size: var(--text-2); color: var(--color-grey-400); max-width: 42rem">
+      Optional icons use <code>.btn__icon</code> plus <code>.btn__label</code>. Put the icon element before or after the label depending on variation.
+    </p>
+    <div class="sg__cta-showcase sg__cta-showcase--icons">
+      <h4 class="sg__micro-heading" style="margin-top: 0">Primary</h4>
+      <div class="sg__cta-row">
+        <div class="sg__cta-item">
+          <label for="sg-cta-primary-icon-before">Icon before text</label>
+          <button type="button" class="cta-primary" id="sg-cta-primary-icon-before">
+            <span class="btn__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 12h14M13 6l6 6-6 6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <span class="btn__label">Check availability</span>
+          </button>
+        </div>
+        <div class="sg__cta-item">
+          <label for="sg-cta-primary-icon-after">Icon after text</label>
+          <button type="button" class="cta-primary" id="sg-cta-primary-icon-after">
+            <span class="btn__label">Check availability</span>
+            <span class="btn__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 12h14M13 6l6 6-6 6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+      <h4 class="sg__micro-heading" style="margin-top: 1.25rem">Secondary — orange</h4>
+      <div class="sg__cta-row">
+        <div class="sg__cta-item">
+          <label for="sg-cta-secondary-orange-icon-before">Icon before text</label>
+          <button type="button" class="cta-secondary cta-secondary--orange" id="sg-cta-secondary-orange-icon-before">
+            <span class="btn__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 12h14M13 6l6 6-6 6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <span class="btn__label">Check availability</span>
+          </button>
+        </div>
+        <div class="sg__cta-item">
+          <label for="sg-cta-secondary-orange-icon-after">Icon after text</label>
+          <button type="button" class="cta-secondary cta-secondary--orange" id="sg-cta-secondary-orange-icon-after">
+            <span class="btn__label">Check availability</span>
+            <span class="btn__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 12h14M13 6l6 6-6 6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="sg__micro-heading" style="margin-top: 1.25rem">Light background · dark button</h4>
+    <div class="sg__pricing-secondary-panel sg__pricing-secondary-panel--light">
+      <div class="sg__pricing-secondary-grid">
+        <div class="sg__pricing-secondary-item">
+          <label>Default</label>
+          <div class="pricing-card sg__pricing-secondary-card">
+            <span class="pricing-card__cta">Check availability</span>
+          </div>
+        </div>
+        <div class="sg__pricing-secondary-item">
+          <label>Hover</label>
+          <div class="pricing-card sg__pricing-secondary-card sg__pricing-secondary--hover">
+            <span class="pricing-card__cta" tabindex="-1">Check availability</span>
+          </div>
+        </div>
+        <div class="sg__pricing-secondary-item">
+          <label>Active</label>
+          <div class="pricing-card sg__pricing-secondary-card sg__pricing-secondary--active">
+            <span class="pricing-card__cta" tabindex="-1">Check availability</span>
+          </div>
+        </div>
+        <div class="sg__pricing-secondary-item">
+          <label>Focus visible</label>
+          <div class="pricing-card sg__pricing-secondary-card sg__pricing-secondary--focus">
+            <span class="pricing-card__cta" tabindex="-1">Check availability</span>
+          </div>
+        </div>
+        <div class="sg__pricing-secondary-item">
+          <label for="sg-pr-sec-dis"><code>:disabled</code></label>
+          <div class="pricing-card sg__pricing-secondary-card">
+            <button type="button" class="pricing-card__cta" id="sg-pr-sec-dis" disabled tabindex="-1">Check availability</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="sg__micro-heading" style="margin-top: 1.25rem">Dark background · white button</h4>
+    <div class="sg__pricing-secondary-panel sg__pricing-secondary-panel--dark">
+      <div class="sg__pricing-secondary-grid">
+        <div class="sg__pricing-secondary-item">
+          <label>Default</label>
+          <div class="pricing-card sg__pricing-secondary-card">
+            <span class="pricing-card__cta">Check availability</span>
+          </div>
+        </div>
+        <div class="sg__pricing-secondary-item">
+          <label>Hover</label>
+          <div class="pricing-card sg__pricing-secondary-card sg__pricing-secondary--hover">
+            <span class="pricing-card__cta" tabindex="-1">Check availability</span>
+          </div>
+        </div>
+        <div class="sg__pricing-secondary-item">
+          <label>Active</label>
+          <div class="pricing-card sg__pricing-secondary-card sg__pricing-secondary--active">
+            <span class="pricing-card__cta" tabindex="-1">Check availability</span>
+          </div>
+        </div>
+        <div class="sg__pricing-secondary-item">
+          <label>Focus visible</label>
+          <div class="pricing-card sg__pricing-secondary-card sg__pricing-secondary--focus">
+            <span class="pricing-card__cta" tabindex="-1">Check availability</span>
+          </div>
+        </div>
+        <div class="sg__pricing-secondary-item">
+          <label for="sg-pr-sec-dis-d"><code>:disabled</code></label>
+          <div class="pricing-card sg__pricing-secondary-card">
+            <button type="button" class="pricing-card__cta" id="sg-pr-sec-dis-d" disabled tabindex="-1">Check availability</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Text links -->
+  <section class="sg__section" aria-labelledby="sg-h-links">
+    <h2 id="sg-h-links">Text links</h2>
+
+    <h3 class="sg__subsection-title">Links — navigation</h3>
+    <div class="sg__ui-strip">
+      <div class="sg__ui-inline">
+        <nav class="primary-nav" aria-label="Demo primary nav">
+          <ul>
+            <li class="nav-item">
+              <a class="nav-item__btn" href="#sg-h-links">
+                Plans
+                <svg class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-item__btn" href="#sg-h-links">Business</a>
+            </li>
+          </ul>
+        </nav>
+        <a class="account-link" href="#sg-h-links">
+          <span class="body-md">Account</span>
+          <svg class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+      <p class="sg__ui-meta" style="margin-top: 0.65rem"><code>.primary-nav</code> · <code>.nav-item__btn</code> · <code>.account-link</code></p>
+    </div>
+
+    <h3 class="sg__subsection-title">Links — <code>.gofaster__link-row</code></h3>
+    <div style="width: min(100%, 26rem)">
+      <nav class="gofaster__links" aria-label="Demo support links">
+        <ul class="gofaster__link-list">
+          <li class="gofaster__link-item">
+            <a href="tel:18442007473" class="gofaster__link-row">
+              <span class="gofaster__link-label">
+                24/7 Support
+                <span class="gofaster__link-phone">1.844.200.7473</span>
+              </span>
+              <span class="gofaster__link-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="gofaster__link-item">
+            <a href="#" class="gofaster__link-row">
+              <span class="gofaster__link-label">Pay My Bill</span>
+              <span class="gofaster__link-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Forms & Input -->
+  <section class="sg__section" aria-labelledby="sg-h-ui">
+    <h2 id="sg-h-ui">Forms &amp; Input</h2>
+
+    <div class="sg__ui-stack">
+      <div>
+        <h4 class="sg__micro-heading">Hero · desktop pill</h4>
+        <div class="sg-input-states">
+          <div class="sg-input-state">
+            <p class="sg-state-label">Default</p>
+            <div class="hero__search-inner">
+              <input
+                type="search"
+                class="hero__input"
+                placeholder="Enter address"
+                autocomplete="street-address"
+                aria-label="Hero desktop default"
+              />
+              <button type="button" class="hero__submit">
+                <span class="hero__submit-text">Check Availability</span>
+              </button>
+            </div>
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Filled</p>
+            <div class="hero__search-inner">
+              <input type="search" class="hero__input" value="742 Evergreen Terrace" aria-label="Hero desktop filled" />
+              <button type="button" class="hero__submit">
+                <span class="hero__submit-text">Check Availability</span>
+              </button>
+            </div>
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Active</p>
+            <div class="hero__search-inner sg-demo--active">
+              <input
+                type="search"
+                class="hero__input"
+                placeholder="Enter address"
+                aria-label="Hero desktop active (preview)"
+                readonly
+                tabindex="-1"
+              />
+              <button type="button" class="hero__submit" tabindex="-1">
+                <span class="hero__submit-text">Check Availability</span>
+              </button>
+            </div>
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Disabled</p>
+            <div class="hero__search-inner">
+              <input type="search" class="hero__input" value="Service unavailable" disabled aria-label="Hero desktop disabled" />
+              <button type="button" class="hero__submit" disabled aria-disabled="true">
+                <span class="hero__submit-text">Check Availability</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="sg__micro-heading">Search bar · lead icon (hero UI)</h4>
+        <div class="sg-input-states">
+          <div class="sg-input-state">
+            <p class="sg-state-label">Default</p>
+            <div class="hero__search-inner hero__search-inner--lead-icon">
+              <span class="hero__lead-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                  <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.75" />
+                  <path d="M16 16l4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+                </svg>
+              </span>
+              <input
+                type="search"
+                class="hero__input"
+                placeholder="Search plans, ZIP, address…"
+                autocomplete="off"
+                aria-label="Search bar default"
+              />
+              <button type="button" class="hero__submit">
+                <span class="hero__submit-text">Check Availability</span>
+              </button>
+            </div>
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Filled</p>
+            <div class="hero__search-inner hero__search-inner--lead-icon">
+              <span class="hero__lead-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                  <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.75" />
+                  <path d="M16 16l4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+                </svg>
+              </span>
+              <input type="search" class="hero__input" value="fiber near me" aria-label="Search bar filled" />
+              <button type="button" class="hero__submit">
+                <span class="hero__submit-text">Check Availability</span>
+              </button>
+            </div>
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Active</p>
+            <div class="hero__search-inner hero__search-inner--lead-icon sg-demo--active">
+              <span class="hero__lead-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                  <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.75" />
+                  <path d="M16 16l4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+                </svg>
+              </span>
+              <input
+                type="search"
+                class="hero__input"
+                placeholder="Search plans, ZIP, address…"
+                aria-label="Search bar active (preview)"
+                readonly
+                tabindex="-1"
+              />
+              <button type="button" class="hero__submit" tabindex="-1">
+                <span class="hero__submit-text">Check Availability</span>
+              </button>
+            </div>
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Disabled</p>
+            <div class="hero__search-inner hero__search-inner--lead-icon">
+              <span class="hero__lead-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                  <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.75" />
+                  <path d="M16 16l4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+                </svg>
+              </span>
+              <input type="search" class="hero__input" value="Search unavailable" disabled aria-label="Search bar disabled" />
+              <button type="button" class="hero__submit" disabled aria-disabled="true">
+                <span class="hero__submit-text">Check Availability</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="sg__micro-heading">Hero · mobile / narrow (round submit)</h4>
+        <div class="sg-input-states">
+          <div class="sg-input-state">
+            <p class="sg-state-label">Default</p>
+            <div class="hero__search sg__round-search-demo">
+              <div class="hero__search-inner">
+                <input type="search" class="hero__input" placeholder="Enter address" aria-label="Hero round default" />
+                <button type="button" class="hero__submit" aria-label="Search">
+                  <span class="hero__submit-text">Check Availability</span>
+                  <svg class="hero__submit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.75" />
+                    <path d="M16 16l4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Filled</p>
+            <div class="hero__search sg__round-search-demo">
+              <div class="hero__search-inner">
+                <input type="search" class="hero__input" value="80202" aria-label="Hero round filled" />
+                <button type="button" class="hero__submit" aria-label="Search">
+                  <span class="hero__submit-text">Check Availability</span>
+                  <svg class="hero__submit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.75" />
+                    <path d="M16 16l4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Active</p>
+            <div class="hero__search sg__round-search-demo">
+              <div class="hero__search-inner sg-demo--active">
+                <input
+                  type="search"
+                  class="hero__input"
+                  placeholder="Enter address"
+                  aria-label="Hero round active (preview)"
+                  readonly
+                  tabindex="-1"
+                />
+                <button type="button" class="hero__submit" aria-label="Search" tabindex="-1">
+                  <span class="hero__submit-text">Check Availability</span>
+                  <svg class="hero__submit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.75" />
+                    <path d="M16 16l4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Disabled</p>
+            <div class="hero__search sg__round-search-demo">
+              <div class="hero__search-inner">
+                <input type="search" class="hero__input" value="ZIP check offline" disabled aria-label="Hero round disabled" />
+                <button type="button" class="hero__submit" aria-label="Search" disabled aria-disabled="true">
+                  <span class="hero__submit-text">Check Availability</span>
+                  <svg class="hero__submit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.75" />
+                    <path d="M16 16l4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="sg__micro-heading">Header · nav address bar</h4>
+        <div class="sg-input-states">
+          <div class="sg-input-state">
+            <p class="sg-state-label">Default</p>
+            <div class="sg-chrome-nav-search">
+              <div class="nav-cta__shell">
+                <div class="nav-cta__input-track">
+                  <input type="search" class="hero__input nav-cta__input" placeholder="Enter address" aria-label="Nav default" />
+                </div>
+                <button type="button" class="nav-cta__submit">Check Availability</button>
+              </div>
+            </div>
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Filled</p>
+            <div class="sg-chrome-nav-search">
+              <div class="nav-cta__shell">
+                <div class="nav-cta__input-track">
+                  <input type="search" class="hero__input nav-cta__input" value="Springfield, IL" aria-label="Nav filled" />
+                </div>
+                <button type="button" class="nav-cta__submit">Check Availability</button>
+              </div>
+            </div>
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Active</p>
+            <div class="sg-chrome-nav-search">
+              <div class="nav-cta__shell sg-demo--active">
+                <div class="nav-cta__input-track">
+                  <input
+                    type="search"
+                    class="hero__input nav-cta__input"
+                    placeholder="Enter address"
+                    aria-label="Nav active (preview)"
+                    readonly
+                    tabindex="-1"
+                  />
+                </div>
+                <button type="button" class="nav-cta__submit" tabindex="-1">Check Availability</button>
+              </div>
+            </div>
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Disabled</p>
+            <div class="sg-chrome-nav-search">
+              <div class="nav-cta__shell">
+                <div class="nav-cta__input-track">
+                  <input type="search" class="hero__input nav-cta__input" placeholder="Unavailable" disabled aria-label="Nav disabled" />
+                </div>
+                <button type="button" class="nav-cta__submit" disabled aria-disabled="true">Check Availability</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="sg__micro-heading">Footer · CTA band</h4>
+        <div class="footer-cta sg__footer-demo">
+          <div class="sg-input-states">
+            <div class="sg-input-state">
+              <p class="sg-state-label">Default</p>
+              <div class="footer-cta__search-inner">
+                <input type="search" class="footer-cta__input" placeholder="Enter address" aria-label="Footer default" />
+                <button type="button" class="footer-cta__submit">
+                  <span class="footer-cta__submit-text">Check Availability</span>
+                </button>
+              </div>
+            </div>
+            <div class="sg-input-state">
+              <p class="sg-state-label">Filled</p>
+              <div class="footer-cta__search-inner">
+                <input type="search" class="footer-cta__input" value="Unit 4 · Denver, CO" aria-label="Footer filled" />
+                <button type="button" class="footer-cta__submit">
+                  <span class="footer-cta__submit-text">Check Availability</span>
+                </button>
+              </div>
+            </div>
+            <div class="sg-input-state">
+              <p class="sg-state-label">Active</p>
+              <div class="footer-cta__search-inner sg-demo--active">
+                <input
+                  type="search"
+                  class="footer-cta__input"
+                  placeholder="Enter address"
+                  aria-label="Footer active (preview)"
+                  readonly
+                  tabindex="-1"
+                />
+                <button type="button" class="footer-cta__submit" tabindex="-1">
+                  <span class="footer-cta__submit-text">Check Availability</span>
+                </button>
+              </div>
+            </div>
+            <div class="sg-input-state">
+              <p class="sg-state-label">Disabled</p>
+              <div class="footer-cta__search-inner">
+                <input type="search" class="footer-cta__input" value="Lookup paused" disabled aria-label="Footer disabled" />
+                <button type="button" class="footer-cta__submit" disabled aria-disabled="true">
+                  <span class="footer-cta__submit-text">Check Availability</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="sg__micro-heading">Plain field (style guide baseline)</h4>
+        <div class="sg-input-states">
+          <div class="sg-input-state">
+            <p class="sg-state-label">Default</p>
+            <input type="text" class="sg__input-plain" placeholder="Placeholder only" aria-label="Plain default" />
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Filled</p>
+            <input type="text" class="sg__input-plain" value="Typed value" aria-label="Plain filled" />
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Active</p>
+            <input
+              type="text"
+              class="sg__input-plain sg-demo--active"
+              placeholder="Focus ring preview"
+              aria-label="Plain active (preview)"
+              readonly
+              tabindex="-1"
+            />
+          </div>
+          <div class="sg-input-state">
+            <p class="sg-state-label">Disabled</p>
+            <input type="text" class="sg__input-plain" value="Disabled" disabled aria-label="Plain disabled" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clamp / display sizes -->
   <section class="sg__section" aria-labelledby="sg-h4">
-    <h2 id="sg-h4">4. Color — Borders &amp; Surfaces</h2>
-    <div class="sg__border-demo" style="border: 2px solid var(--color-border-default)">
-      <strong>--color-border-default</strong> — #e0e0e0 (2px solid on card)
-    </div>
-    <div class="sg__border-demo" style="border: 2px solid var(--color-border-muted)">
-      <strong>--color-border-muted</strong> — #e7e7e7 (dividers / horizontal rules)
-    </div>
-    <div class="sg__border-demo" style="border: 2px solid var(--color-border-subtle)">
-      <strong>--color-border-subtle</strong> — #e7e7e7 (dividers / horizontal rules)
-    </div>
-    <div class="sg__border-demo sg__border-demo--fill" style="background: var(--color-surface); border: 1px dashed var(--color-border-default)">
-      <strong>--color-surface</strong> — filled background (#fff)
-    </div>
-    <div class="sg__border-demo sg__border-demo--fill" style="background: var(--color-surface-muted); border: 1px dashed var(--color-border-default)">
-      <strong>--color-surface-muted</strong> — #f5f5f5
-    </div>
-    <div class="sg__border-demo sg__border-demo--fill" style="background: var(--color-white); border: 1px solid var(--color-neutral-450)">
-      <strong>--color-white</strong> — #fff
+    <h2 id="sg-h4">Typography — Responsive Display Sizes (clamp)</h2>
+
+    <div class="sg__type-stage">
+      <div class="sg__type-group">
+        <div class="sg__type-group-label">Core display clamps</div>
+        <div class="sg__type-row">
+          <div
+            class="sg__type-sample"
+            style="
+              font-family: var(--font-family-display);
+              font-weight: var(--font-weight-black);
+              font-size: var(--font-size-h1);
+              line-height: var(--line-height-display);
+              letter-spacing: -0.01em;
+              text-transform: uppercase;
+            "
+          >
+            Simply Dependable
+          </div>
+          <p class="sg__type-meta">
+            Typography / Display / h1 · Barlow Semi Condensed · clamp up to 160px (10rem) / 0.95 lh · 800 · -0.01em ·
+            <code>--text-9</code>
+          </p>
+        </div>
+        <div class="sg__type-row">
+          <div
+            class="sg__type-sample"
+            style="
+              font-family: var(--font-family-display);
+              font-weight: var(--font-weight-black);
+              font-size: var(--font-size-h2);
+              line-height: var(--line-height-xxl);
+              letter-spacing: -0.02em;
+              text-transform: uppercase;
+            "
+          >
+            Simply Dependable
+          </div>
+          <p class="sg__type-meta">
+            Typography / Headline / h2 · Barlow Semi Condensed · clamp up to 120px (7.5rem) / 0.90 lh · 800 · -0.02em ·
+            <code>--text-8</code>
+          </p>
+        </div>
+        <div class="sg__type-row">
+          <div
+            class="sg__type-sample"
+            style="
+              font-family: var(--font-family-display);
+              font-weight: var(--font-weight-black);
+              font-size: var(--font-size-section-h2);
+              line-height: 0.95;
+              letter-spacing: 0.02em;
+              text-transform: uppercase;
+            "
+          >
+            NO MORE COMPROMISE
+          </div>
+          <p class="sg__type-meta">
+            Typography / Headline / NMC h2 · Barlow Semi Condensed · <code>--font-size-section-h2</code> clamp / 0.95 lh · 800 · 0.02em ·
+            <code>.nmc</code> sets <code>--font-size-h2: var(--font-size-section-h2)</code> · <code>.nmc h2</code> line-height &amp; letter-spacing
+          </p>
+        </div>
+      </div>
+
+      <div class="sg__type-group">
+        <div class="sg__type-group-label">Section-specific display (same as <code>global.css</code>)</div>
+        <div class="sg__type-row">
+          <div
+            class="sg__type-sample"
+            style="
+              font-family: var(--font-family-display);
+              font-weight: var(--font-weight-black);
+              font-size: clamp(48px, 7.5vw, var(--type-max-ioyt-headline));
+              line-height: 0.95;
+              letter-spacing: -0.01em;
+              text-transform: uppercase;
+              color: var(--color-brand-orange);
+            "
+          >
+            Internet on Your Terms
+          </div>
+          <p class="sg__type-meta">
+            Typography / Display / IOYT h2 · Barlow Semi Condensed · clamp(48px, 7.5vw, var(--type-max-ioyt-headline)) / 0.95 lh · 800 ·
+            -0.01em · <code>.ioyt__headline h2</code>
+          </p>
+        </div>
+        <div class="sg__type-row">
+          <div
+            class="sg__type-sample"
+            style="
+              font-family: var(--font-family-display);
+              font-weight: var(--font-weight-black);
+              font-size: clamp(36px, 9vw, 56px);
+              line-height: 0.95;
+              letter-spacing: -0.01em;
+              text-transform: uppercase;
+              color: var(--color-brand-orange);
+            "
+          >
+            Internet on Your Terms
+          </div>
+          <p class="sg__type-meta">
+            Typography / Display / IOYT h2 mobile · Barlow Semi Condensed · clamp(36px, 9vw, 56px) / 0.95 lh · 800 · -0.01em · max-width
+            768px
+          </p>
+        </div>
+        <div class="sg__type-row">
+          <div
+            class="sg__type-sample"
+            style="
+              font-family: var(--font-family-display);
+              font-weight: var(--font-weight-black);
+              font-size: clamp(36px, 5vw, var(--type-max-section-h2));
+              line-height: var(--line-height-snug);
+              letter-spacing: -0.02em;
+              text-transform: uppercase;
+            "
+          >
+            Go Faster With Rise
+          </div>
+          <p class="sg__type-meta">
+            Typography / Headline / Go Faster · Barlow Semi Condensed · clamp(36px, 5vw, var(--type-max-section-h2)) / 1.05 lh · 800 ·
+            -0.02em · <code>.gofaster__headline-col</code>
+          </p>
+        </div>
+        <div class="sg__type-row">
+          <div
+            class="sg__type-sample"
+            style="
+              font-family: var(--font-family-display);
+              font-weight: var(--font-weight-black);
+              font-size: clamp(28px, 7.5vw, 42px);
+              line-height: var(--line-height-snug);
+              letter-spacing: -0.02em;
+              text-transform: uppercase;
+            "
+          >
+            Go Faster With Rise
+          </div>
+          <p class="sg__type-meta">
+            Typography / Headline / Go Faster narrow · Barlow Semi Condensed · clamp(28px, 7.5vw, 42px) / 1.05 lh · 800 · -0.02em ·
+            max-width 480px column
+          </p>
+        </div>
+        <div class="sg__type-row">
+          <div
+            class="sg__type-sample"
+            style="
+              font-family: var(--font-family-display);
+              font-weight: var(--font-weight-bold);
+              font-size: clamp(28px, 3.4vw, var(--type-max-ioyt-card-title));
+              line-height: 1;
+              letter-spacing: -0.01em;
+              text-transform: uppercase;
+              color: var(--color-text-primary);
+            "
+          >
+            Card title
+          </div>
+          <p class="sg__type-meta">
+            Typography / Title / IOYT card · Barlow Semi Condensed · clamp(28px, 3.4vw, var(--type-max-ioyt-card-title)) / 1 lh · 700 ·
+            -0.01em · <code>.ioyt__card__title</code>
+          </p>
+        </div>
+        <div class="sg__type-row">
+          <div
+            class="sg__type-sample"
+            style="
+              font-family: var(--font-family-display);
+              font-weight: var(--font-weight-bold);
+              font-size: clamp(14px, 1.5vw, 20px);
+              line-height: var(--line-height-label);
+              letter-spacing: 0.06em;
+              text-transform: uppercase;
+              color: var(--color-text-muted);
+            "
+          >
+            Peek label
+          </div>
+          <p class="sg__type-meta">
+            Typography / Label / IOYT peek · Barlow Semi Condensed · clamp(14px, 1.5vw, 20px) / 1.25 lh · 700 · 0.06em ·
+            <code>.ioyt__card__peek-label</code>
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- 5. Font families -->
+  <!-- Spacing -->
   <section class="sg__section" aria-labelledby="sg-h5">
-    <h2 id="sg-h5">5. Typography — Font Families</h2>
-    <p style="font-family: var(--font-family-sans); font-size: var(--text-5); margin: 0 0 0.5rem">
-      RISE Internet — Blazing Fast
+    <h2 id="sg-h5">Spacing</h2>
+    <p class="sg__font-name" style="margin-top: 0">
+      Tokens live in <code>global.css</code>. Orange block width follows each variable; grey track scrolls horizontally when the bar is wider than the column. At <code>max-width: 768px</code>, steps halve except
+      <code>--space-4</code>. <code>--margins-r</code> is the horizontal page gutter (not the same as <code>--space-144</code> on narrow viewports).
     </p>
-    <code class="sg__token-name">--font-family-sans</code>
-    <p class="sg__font-name">Font: Barlow</p>
-    <p style="font-family: var(--font-family-display); font-size: var(--text-5); margin: 1rem 0 0.5rem">
-      RISE Internet — Blazing Fast
-    </p>
-    <code class="sg__token-name">--font-family-display</code>
-    <p class="sg__font-name">Font: Barlow Condensed</p>
+
+    <h3 class="sg__subsection-title">Visual blocks</h3>
+    <p class="sg__font-name" style="margin-top: 0">Every spacing token as a live swatch (resize the viewport to compare desktop vs mobile values).</p>
+    <ul class="sg__spacing-live" aria-label="All spacing tokens — visual width">
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-4</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-4)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-8</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-8)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-12</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-12)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-16</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-16)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-24</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-24)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-32</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-32)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-40</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-40)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-48</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-48)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-64</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-64)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-80</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-80)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-96</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-96)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-120</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-120)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-144</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-144)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-192</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-192)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--space-256</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--space-256)"></span></span>
+      </li>
+      <li>
+        <span class="sg__spacing-live-label"><code>--margins-r</code></span>
+        <span class="sg__spacing-live-bar-wrap"><span class="sg__spacing-live-bar" style="width: var(--margins-r)"></span></span>
+      </li>
+    </ul>
   </section>
 
-  <!-- 6. Semantic headings -->
+  <!-- Border radius -->
   <section class="sg__section" aria-labelledby="sg-h6">
-    <h2 id="sg-h6">6. Semantic headings (production)</h2>
-    <p class="sg__note">
-      Use plain <code>h1</code>–<code>h5</code> in markup. Base styles use <code>font-size: var(--font-size-h*)</code>. Section-specific <strong>size</strong> differences are done by setting <code>--font-size-h2</code> (or another level) on a layout ancestor—custom properties inherit, so <code>h2</code> picks up the value without extra <code>font-size</code> rules. Avoid BEM-style heading classes and avoid new <code>--font-size-{section}-*</code> tokens.
-    </p>
-
-    <h3 class="sg__subsection-title">Level tokens (<code>:root</code>)</h3>
-    <div class="sg__semantic-line">
-      <strong>--font-size-h1</strong> → <code>var(--text-9)</code>
-      <code>clamp(3rem, 5.5vw + 1.75rem, 9rem)</code>
-    </div>
-    <div class="sg__semantic-line">
-      <strong>--font-size-h2</strong> → <code>var(--text-8)</code>
-      <code>clamp(2rem, 5.5vw + 0.5rem, 3.75rem)</code>
-    </div>
-    <div class="sg__semantic-line">
-      <strong>--font-size-h3</strong> → <code>var(--text-6)</code> <code>1.625rem</code>
-    </div>
-    <div class="sg__semantic-line">
-      <strong>--font-size-h4</strong> → <code>var(--text-4)</code> <code>1rem</code>
-    </div>
-    <div class="sg__semantic-line">
-      <strong>--font-size-h5</strong> → <code>var(--text-2)</code> <code>14px</code>
-    </div>
-
-    <h3 class="sg__subsection-title">Utilities (accent lines inside headings)</h3>
-    <div class="sg__semantic-line">
-      <strong>.text-primary</strong> — <code>color: var(--color-text-primary)</code>
-    </div>
-    <div class="sg__semantic-line">
-      <strong>.text-brand</strong> — <code>color: var(--color-brand-orange)</code>
-    </div>
-    <div class="sg__semantic-line">
-      <strong>.heading-line</strong> — <code>display: block</code> (stack lines; <code>.nmc h2</code> adds spacing between adjacent lines)
-    </div>
-
-    <h3 class="sg__subsection-title">Two-tone section title (example)</h3>
-    <div class="sg__marketing">
-      <h2>
-        <span class="text-primary heading-line">Simply Dependable,</span>
-        <span class="text-brand heading-line">Affordable Service</span>
-      </h2>
-    </div>
-    <code class="sg__token-name" style="display: block; margin-top: 0.25rem">&lt;h2&gt;&lt;span class="text-primary heading-line"&gt;…&lt;/span&gt;&lt;span class="text-brand heading-line"&gt;…&lt;/span&gt;&lt;/h2&gt;</code>
-
-    <h3 class="sg__subsection-title">Default levels (global element styles)</h3>
-    <p class="sg__font-name">Preview below matches <code>h1</code>–<code>h5</code> in <code>global.css</code> (not section overrides).</p>
-    <div class="sg__marketing">
-      <h1>Hero level</h1>
-      <h2>Section title</h2>
-      <h3>Subsection or card title</h3>
-      <h4>Plan name · muted</h4>
-      <h5>Small heading</h5>
-    </div>
-
-    <h3 class="sg__subsection-title">Where layouts override headings</h3>
-    <p class="sg__font-name">These selectors in <code>global.css</code> adjust size, color, or treatment for a specific block. Headings in HTML stay unclassed.</p>
-    <table class="sg__override-table">
-      <thead>
-        <tr>
-          <th scope="col">Selector</th>
-          <th scope="col">Purpose</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>.hero h1</code></td>
-          <td>Gradient fill (size from base <code>h1</code> / <code>--font-size-h1</code>)</td>
-        </tr>
-        <tr>
-          <td><code>.ioyt__headline h2</code></td>
-          <td>Large display <code>font-size</code> clamp on the headline (not inherited <code>--font-size-h2</code>); color and animation for the IOYT hero</td>
-        </tr>
-        <tr>
-          <td><code>.nmc</code></td>
-          <td>Sets <code>--font-size-h2: var(--text-8)</code> (same step as default h2)</td>
-        </tr>
-        <tr>
-          <td><code>.nmc h2</code></td>
-          <td>Letter-spacing and line-height (inherits size)</td>
-        </tr>
-        <tr>
-          <td><code>.gofaster__headline-col</code></td>
-          <td>Sets <code>--font-size-h2</code>; narrow viewports use a smaller clamp</td>
-        </tr>
-        <tr>
-          <td><code>.gofaster__headline-col h2</code></td>
-          <td>Line-height and color (inherits size)</td>
-        </tr>
-        <tr>
-          <td><code>.gofaster__team-col h3</code></td>
-          <td>Margin below the heading in the team column</td>
-        </tr>
-        <tr>
-          <td><code>.pricing-card__speed-block h4</code></td>
-          <td>Plan name label inside each pricing card</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- 7. Clamp -->
-  <section class="sg__section" aria-labelledby="sg-h7">
-    <h2 id="sg-h7">7. Typography — Responsive Display Sizes (clamp)</h2>
-    <p class="sg__font-name">
-      Role-based scale (see §6). Headline samples use <code>var(--font-family-display)</code> (Barlow Condensed).
-      Fluid <code>--text-8</code> / <code>--text-9</code> max bounds are set in each <code>clamp()</code>; IOYT and section-specific caps use <code>--type-max-ioyt-*</code> / <code>--type-max-section-h2</code> (see <code>global.css</code>).
-    </p>
-
-    <div class="sg__clamp-row">
-      <div class="sg__clamp-meta">--text-9 / <code>--font-size-h1</code></div>
-      <p class="sg__clamp-meta" style="margin: 0">clamp(3rem, 5.5vw + 1.75rem, 6rem)</p>
-      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: var(--font-size-h1); line-height: var(--line-height-display)">
-        Simply Dependable
-      </p>
-    </div>
-    <div class="sg__clamp-row">
-      <div class="sg__clamp-meta">--text-8 / <code>--font-size-h2</code></div>
-      <p class="sg__clamp-meta" style="margin: 0">clamp(2rem, 5.5vw + 0.5rem, 3rem)</p>
-      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: var(--font-size-h2); line-height: var(--line-height-snug)">
-        Simply Dependable
-      </p>
-    </div>
-    <div class="sg__clamp-row">
-      <div class="sg__clamp-meta"><code>.nmc</code> uses the same step: <code>--font-size-h2: var(--text-8)</code></div>
-      <p class="sg__clamp-meta" style="margin: 0">same as row above</p>
-      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: var(--text-8); line-height: var(--line-height-heading)">
-        NO MORE COMPROMISE
-      </p>
-    </div>
-
-    <h3 class="sg__subsection-title">Other <code>h2</code> scales (scoped <code>--font-size-h2</code>, not separate tokens)</h3>
-    <p class="sg__clamp-meta" style="margin-bottom: 0.75rem">Demonstrations only—same values as in <code>global.css</code> on <code>.ioyt</code> and <code>.gofaster__headline-col</code>.</p>
-    <div class="sg__clamp-row">
-      <div class="sg__clamp-meta">IOYT · <code>.ioyt__headline h2</code> (same clamp as in <code>global.css</code>)</div>
-      <p class="sg__clamp-meta" style="margin: 0">clamp(48px, 7.5vw, var(--type-max-ioyt-headline))</p>
-      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: clamp(48px, 7.5vw, var(--type-max-ioyt-headline)); line-height: 0.95; color: var(--color-brand-orange); text-transform: uppercase; letter-spacing: -0.01em">
-        Internet on Your Terms
-      </p>
-    </div>
-    <div class="sg__clamp-row">
-      <div class="sg__clamp-meta">IOYT (mobile) · <code>@media (max-width: 768px) .ioyt__headline h2</code></div>
-      <p class="sg__clamp-meta" style="margin: 0">clamp(36px, 9vw, 56px)</p>
-      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: clamp(36px, 9vw, 56px); line-height: 0.95; color: var(--color-brand-orange); text-transform: uppercase; letter-spacing: -0.01em">
-        Internet on Your Terms
-      </p>
-    </div>
-    <div class="sg__clamp-row">
-      <div class="sg__clamp-meta">Go Faster · <code>.gofaster__headline-col { --font-size-h2 }</code></div>
-      <p class="sg__clamp-meta" style="margin: 0">clamp(36px, 5vw, var(--type-max-section-h2))</p>
-      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: clamp(36px, 5vw, var(--type-max-section-h2)); line-height: var(--line-height-snug); text-transform: uppercase">
-        Go Faster With Rise
-      </p>
-    </div>
-    <div class="sg__clamp-row">
-      <div class="sg__clamp-meta">Go Faster (narrow) · <code>@media (max-width: 480px)</code> on column</div>
-      <p class="sg__clamp-meta" style="margin: 0">clamp(28px, 7.5vw, 42px)</p>
-      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-black); font-size: clamp(28px, 7.5vw, 42px); line-height: var(--line-height-snug); text-transform: uppercase">
-        Go Faster With Rise
-      </p>
-    </div>
-    <div class="sg__clamp-row">
-      <div class="sg__clamp-meta">IOYT card title — <code>clamp(28px, 3.4vw, var(--type-max-ioyt-card-title))</code> (no single <code>--text-*</code> step; see <code>.ioyt__card__title</code>)</div>
-      <p class="sg__clamp-meta" style="margin: 0">clamp(28px, 3.4vw, var(--type-max-ioyt-card-title))</p>
-      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-bold); font-size: clamp(28px, 3.4vw, var(--type-max-ioyt-card-title)); text-transform: uppercase; color: #ffffff">
-        Card title
-      </p>
-    </div>
-    <div class="sg__clamp-row">
-      <div class="sg__clamp-meta">IOYT peek label — <code>clamp(14px, 1.5vw, 20px)</code> (bespoke; see <code>.ioyt__card__peek-label</code>)</div>
-      <p class="sg__clamp-meta" style="margin: 0">clamp(14px, 1.5vw, 20px)</p>
-      <p style="margin: 0; font-family: var(--font-family-display); font-weight: var(--font-weight-bold); font-size: clamp(14px, 1.5vw, 20px); text-transform: uppercase; color: rgba(255, 255, 255, 0.92)">
-        Peek label
-      </p>
-    </div>
-  </section>
-
-  <!-- 8. Type scale -->
-  <section class="sg__section" aria-labelledby="sg-h8">
-    <h2 id="sg-h8">8. Typography — Type scale (<code>--text-*</code>)</h2>
-    <p class="sg__font-name">Font: Barlow (sans). Steps <code>--text-8</code> and <code>--text-9</code> are fluid clamps; see §7.</p>
-    <div style="font-family: var(--font-family-sans); font-weight: var(--font-weight-normal)">
-      <div class="sg__fixed-row"><code>--text-1 · 13px</code><span style="font-size: var(--text-1)">The quick brown fox jumps over the lazy dog.</span></div>
-      <div class="sg__fixed-row"><code>--text-2 · 14px</code><span style="font-size: var(--text-2)">The quick brown fox jumps over the lazy dog.</span></div>
-      <div class="sg__fixed-row"><code>--text-3 · 15px</code><span style="font-size: var(--text-3)">The quick brown fox jumps over the lazy dog.</span></div>
-      <div class="sg__fixed-row"><code>--text-4 · 1rem</code><span style="font-size: var(--text-4)">The quick brown fox jumps over the lazy dog.</span></div>
-      <div class="sg__fixed-row"><code>--text-5 · 1.25rem</code><span style="font-size: var(--text-5)">The quick brown fox jumps over the lazy dog.</span></div>
-      <div class="sg__fixed-row"><code>--text-6 · 1.625rem</code><span style="font-size: var(--text-6)">The quick brown fox jumps over the lazy dog.</span></div>
-      <div class="sg__fixed-row"><code>--text-7 · 2.25rem</code><span style="font-size: var(--text-7)">The quick brown fox jumps over the lazy dog.</span></div>
-      <div class="sg__fixed-row"><code>--text-8 · clamp</code><span style="font-size: var(--text-8)">The quick brown fox jumps over the lazy dog.</span></div>
-      <div class="sg__fixed-row"><code>--text-9 · clamp</code><span style="font-size: var(--text-9)">The quick brown fox jumps over the lazy dog.</span></div>
-    </div>
-  </section>
-
-  <!-- 9. Weights -->
-  <section class="sg__section" aria-labelledby="sg-h9">
-    <h2 id="sg-h9">9. Typography — Font Weights</h2>
-    <p class="sg__font-name">Barlow Condensed (display): Google Fonts loads 700, 800. Barlow (sans): 400–700.</p>
-    <p class="sg__weight-row" style="font-family: var(--font-family-display); font-size: var(--text-5); font-weight: var(--font-weight-normal)">RISE Internet</p>
-    <code class="sg__token-name">--font-weight-normal · 400</code>
-    <p class="sg__weight-row" style="font-family: var(--font-family-display); font-size: var(--text-5); font-weight: var(--font-weight-medium)">RISE Internet</p>
-    <code class="sg__token-name">--font-weight-medium · 500</code>
-    <p class="sg__weight-row" style="font-family: var(--font-family-display); font-size: var(--text-5); font-weight: var(--font-weight-semibold)">RISE Internet</p>
-    <code class="sg__token-name">--font-weight-semibold · 600</code>
-    <p class="sg__weight-row" style="font-family: var(--font-family-display); font-size: var(--text-5); font-weight: var(--font-weight-bold)">RISE Internet</p>
-    <code class="sg__token-name">--font-weight-bold · 700</code>
-    <p class="sg__weight-row" style="font-family: var(--font-family-display); font-size: var(--text-5); font-weight: var(--font-weight-extrabold)">RISE Internet</p>
-    <code class="sg__token-name">--font-weight-extrabold · 800</code>
-    <p class="sg__weight-row" style="font-family: var(--font-family-display); font-size: var(--text-5); font-weight: var(--font-weight-black)">RISE Internet</p>
-    <code class="sg__token-name">--font-weight-black → 800 (var(--font-weight-extrabold))</code>
-  </section>
-
-  <!-- 10. Line heights -->
-  <section class="sg__section" aria-labelledby="sg-h10">
-    <h2 id="sg-h10">10. Typography — Line Heights</h2>
-    <p class="sg__font-name">Font: Barlow · size <code>var(--text-4)</code></p>
-    <p class="sg__clamp-meta" style="margin-bottom: 1rem">Same three lines in one block (forced line breaks); only <code>line-height</code> changes.</p>
-
-    <div class="sg__lh-block" style="line-height: var(--line-height-display); font-size: var(--text-4); font-family: var(--font-family-sans)">
-      <div class="sg__lh-lines">
-        Line one of sample paragraph text for comparison.<br />
-        Line two continues the thought with more words.<br />
-        Line three concludes this short demonstration block.
-      </div>
-    </div>
-    <code class="sg__token-name">--line-height-display · 0.95</code>
-
-    <div class="sg__lh-block" style="line-height: var(--line-height-snug); font-size: var(--text-4); font-family: var(--font-family-sans)">
-      <div class="sg__lh-lines">
-        Line one of sample paragraph text for comparison.<br />
-        Line two continues the thought with more words.<br />
-        Line three concludes this short demonstration block.
-      </div>
-    </div>
-    <code class="sg__token-name">--line-height-snug · 1.05</code>
-
-    <div class="sg__lh-block" style="line-height: var(--line-height-heading); font-size: var(--text-4); font-family: var(--font-family-sans)">
-      <div class="sg__lh-lines">
-        Line one of sample paragraph text for comparison.<br />
-        Line two continues the thought with more words.<br />
-        Line three concludes this short demonstration block.
-      </div>
-    </div>
-    <code class="sg__token-name">--line-height-heading · 1.1</code>
-
-    <div class="sg__lh-block" style="line-height: var(--line-height-title); font-size: var(--text-4); font-family: var(--font-family-sans)">
-      <div class="sg__lh-lines">
-        Line one of sample paragraph text for comparison.<br />
-        Line two continues the thought with more words.<br />
-        Line three concludes this short demonstration block.
-      </div>
-    </div>
-    <code class="sg__token-name">--line-height-title · 1.2</code>
-
-    <div class="sg__lh-block" style="line-height: var(--line-height-label); font-size: var(--text-4); font-family: var(--font-family-sans)">
-      <div class="sg__lh-lines">
-        Line one of sample paragraph text for comparison.<br />
-        Line two continues the thought with more words.<br />
-        Line three concludes this short demonstration block.
-      </div>
-    </div>
-    <code class="sg__token-name">--line-height-label · 1.25</code>
-
-    <div class="sg__lh-block" style="line-height: var(--line-height-body); font-size: var(--text-4); font-family: var(--font-family-sans)">
-      <div class="sg__lh-lines">
-        Line one of sample paragraph text for comparison.<br />
-        Line two continues the thought with more words.<br />
-        Line three concludes this short demonstration block.
-      </div>
-    </div>
-    <code class="sg__token-name">--line-height-body · 1.4</code>
-
-    <div class="sg__lh-block" style="line-height: var(--line-height-prose); font-size: var(--text-4); font-family: var(--font-family-sans)">
-      <div class="sg__lh-lines">
-        Line one of sample paragraph text for comparison.<br />
-        Line two continues the thought with more words.<br />
-        Line three concludes this short demonstration block.
-      </div>
-    </div>
-    <code class="sg__token-name">--line-height-prose · 1.6</code>
-
-    <div class="sg__lh-block" style="line-height: var(--line-height-loose); font-size: var(--text-4); font-family: var(--font-family-sans)">
-      <div class="sg__lh-lines">
-        Line one of sample paragraph text for comparison.<br />
-        Line two continues the thought with more words.<br />
-        Line three concludes this short demonstration block.
-      </div>
-    </div>
-    <code class="sg__token-name">--line-height-loose · 1.65</code>
-
-    <p class="sg__note" style="margin-top: 1.25rem; margin-bottom: 0">
-      <strong>Narrow viewports:</strong> in <code>global.css</code>, <code>@media (max-width: 480px)</code> sets <code>h1</code> to <code>line-height: var(--line-height-snug)</code>, <code>h2</code> to <code>var(--line-height-heading)</code>, and <code>body</code> to <code>line-height: 1.7</code> (one-off; <code>--line-height-prose</code> stays <code>1.6</code> in <code>:root</code>).
-    </p>
-  </section>
-
-  <!-- 11. Body text classes -->
-  <section class="sg__section" aria-labelledby="sg-h11">
-    <h2 id="sg-h11">11. Body Text Classes</h2>
-    <p class="sg__note">
-      Utilities map to the <code>--text-*</code> scale and semantic text colors (see §3). Use <code>.body-xl</code> / <code>.body-lg</code> / <code>.body-md</code> / <code>.body-sm</code> on paragraphs and supporting copy; on orange or dark fills, override <code>color</code> (e.g. <code>var(--color-text-on-brand)</code>).
-    </p>
-    <p class="sg__font-name">Font: Barlow via <code>var(--font-family-sans)</code></p>
-
-    <p class="body-xl" style="margin: 0 0 0.35rem">Large supporting line — subheads, hero subcopy, emphasis paragraphs.</p>
-    <code class="sg__token-name">.body-xl · var(--text-5)</code>
-
-    <p class="body-lg" style="margin: 1rem 0 0.35rem">Default long-form and section intros.</p>
-    <code class="sg__token-name">.body-lg · var(--text-4)</code>
-
-    <p class="body-md" style="margin: 1rem 0 0.35rem">Compact UI copy, announcements, dense blocks.</p>
-    <code class="sg__token-name">.body-md · var(--text-3)</code>
-
-    <p class="body-sm" style="margin: 1rem 0 0.35rem">Captions, legal, fine print (uses <code>--color-text-secondary</code>).</p>
-    <code class="sg__token-name">.body-sm · var(--text-1)</code>
-
-    <div style="background: var(--color-brand-orange); padding: 1rem; border-radius: 8px; margin-top: 1rem">
-      <p class="body-xl" style="margin: 0; color: var(--color-text-on-brand)">On-brand: override color so text isn’t <code>--color-text-body</code>.</p>
-    </div>
-    <code class="sg__token-name">.body-xl</code> + <code>color: var(--color-text-on-brand)</code>
-  </section>
-
-  <!-- 12. Spacing -->
-  <section class="sg__section" aria-labelledby="sg-h12">
-    <h2 id="sg-h12">12. Spacing</h2>
-    <p class="sg__todo">No <code>--space-*</code> tokens defined yet — TODO.</p>
-  </section>
-
-  <!-- 13. Radius -->
-  <section class="sg__section" aria-labelledby="sg-h13">
-    <h2 id="sg-h13">13. Border Radius</h2>
+    <h2 id="sg-h6">Border Radius</h2>
     <div class="sg__radius-label">--radius-pill · 9999px</div>
     <div class="sg__radius-demo" style="width: 200px; height: 48px; border-radius: var(--radius-pill)"></div>
 
@@ -916,5 +2149,54 @@
     <div class="sg__radius-label" style="margin-top: 1rem">--radius-ioyt-image · 12px</div>
     <div class="sg__radius-demo" style="width: 120px; height: 80px; border-radius: var(--radius-ioyt-image)"></div>
   </section>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var nav = document.querySelector(".sg__nav");
+      if (!nav) return;
+      var links = [].slice.call(nav.querySelectorAll('a[href^="#"]'));
+      var ids = links
+        .map(function (a) {
+          return a.getAttribute("href").slice(1);
+        })
+        .filter(Boolean);
+
+      function setActive(activeId) {
+        links.forEach(function (a) {
+          var id = a.getAttribute("href").slice(1);
+          var on = id === activeId;
+          a.classList.toggle("is-active", on);
+          if (on) a.setAttribute("aria-current", "location");
+          else a.removeAttribute("aria-current");
+        });
+      }
+
+      function pickActiveSection() {
+        var marker = window.scrollY + Math.min(140, window.innerHeight * 0.22);
+        var current = ids[0];
+        ids.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (!el) return;
+          var top = window.scrollY + el.getBoundingClientRect().top;
+          if (top <= marker + 2) current = id;
+        });
+        setActive(current);
+      }
+
+      window.addEventListener("scroll", pickActiveSection, { passive: true });
+      window.addEventListener("resize", pickActiveSection);
+      window.addEventListener("hashchange", pickActiveSection);
+      links.forEach(function (a) {
+        a.addEventListener("click", function () {
+          var id = a.getAttribute("href").slice(1);
+          window.requestAnimationFrame(function () {
+            setActive(id);
+          });
+        });
+      });
+      pickActiveSection();
+    })();
+  </script>
 </body>
 </html>
